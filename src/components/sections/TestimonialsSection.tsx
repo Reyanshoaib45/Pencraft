@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowLeft, ArrowRight, Star } from 'lucide-react';
 
 const testimonials = [
@@ -31,13 +31,40 @@ const testimonials = [
 
 const TestimonialsSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [animating, setAnimating] = useState(false);
+  const [slideDirection, setSlideDirection] = useState('');
+
+  useEffect(() => {
+    // Auto-rotate testimonials every 5 seconds
+    const interval = setInterval(() => {
+      nextTestimonial();
+    }, 5000);
+    
+    return () => clearInterval(interval);
+  }, [activeIndex]);
 
   const nextTestimonial = () => {
-    setActiveIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+    if (animating) return;
+    
+    setSlideDirection('slide-left');
+    setAnimating(true);
+    
+    setTimeout(() => {
+      setActiveIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+      setAnimating(false);
+    }, 300);
   };
 
   const prevTestimonial = () => {
-    setActiveIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+    if (animating) return;
+    
+    setSlideDirection('slide-right');
+    setAnimating(true);
+    
+    setTimeout(() => {
+      setActiveIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+      setAnimating(false);
+    }, 300);
   };
 
   return (
@@ -56,7 +83,13 @@ const TestimonialsSection = () => {
         {/* Testimonials Carousel */}
         <div className="max-w-4xl mx-auto relative">
           {/* Testimonial Card */}
-          <div className="bg-white rounded-2xl shadow-soft border border-gray-100 p-8 md:p-10 animate-scale-in">
+          <div 
+            className={`bg-white rounded-2xl shadow-soft border border-gray-100 p-8 md:p-10 transition-all duration-300 ${
+              slideDirection === 'slide-left' ? 'animate-slide-left' : 
+              slideDirection === 'slide-right' ? 'animate-slide-right' : 
+              'animate-scale-in'
+            }`}
+          >
             <div className="flex items-center mb-6">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="h-5 w-5 text-yellow-400 fill-yellow-400" />
@@ -71,10 +104,10 @@ const TestimonialsSection = () => {
               <img 
                 src={testimonials[activeIndex].avatar} 
                 alt={testimonials[activeIndex].author} 
-                className="h-12 w-12 rounded-full object-cover mr-4"
+                className="h-12 w-12 rounded-full object-cover mr-4 animate-fade-in"
                 loading="lazy"
               />
-              <div>
+              <div className="animate-fade-in delay-100">
                 <p className="font-semibold text-gray-900">{testimonials[activeIndex].author}</p>
                 <p className="text-sm text-gray-600">{testimonials[activeIndex].role}, {testimonials[activeIndex].company}</p>
               </div>
@@ -85,7 +118,7 @@ const TestimonialsSection = () => {
           <div className="flex justify-center items-center mt-8 space-x-4">
             <button 
               onClick={prevTestimonial}
-              className="p-2 rounded-full bg-white border border-gray-200 text-gray-700 hover:bg-streamline-50 hover:text-streamline-600 transition-colors"
+              className="p-2 rounded-full bg-white border border-gray-200 text-gray-700 hover:bg-streamline-50 hover:text-streamline-600 transition-colors transform hover:scale-110 duration-200"
               aria-label="Previous testimonial"
             >
               <ArrowLeft className="h-5 w-5" />
@@ -96,10 +129,17 @@ const TestimonialsSection = () => {
               {testimonials.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => setActiveIndex(index)}
+                  onClick={() => {
+                    if (index > activeIndex) {
+                      setSlideDirection('slide-left');
+                    } else if (index < activeIndex) {
+                      setSlideDirection('slide-right');
+                    }
+                    setActiveIndex(index);
+                  }}
                   className={`h-2.5 rounded-full transition-all ${
                     index === activeIndex 
-                      ? 'w-8 bg-streamline-600' 
+                      ? 'w-8 bg-streamline-600 animate-pulse' 
                       : 'w-2.5 bg-gray-300 hover:bg-gray-400'
                   }`}
                   aria-label={`Go to testimonial ${index + 1}`}
@@ -109,7 +149,7 @@ const TestimonialsSection = () => {
             
             <button 
               onClick={nextTestimonial}
-              className="p-2 rounded-full bg-white border border-gray-200 text-gray-700 hover:bg-streamline-50 hover:text-streamline-600 transition-colors"
+              className="p-2 rounded-full bg-white border border-gray-200 text-gray-700 hover:bg-streamline-50 hover:text-streamline-600 transition-colors transform hover:scale-110 duration-200"
               aria-label="Next testimonial"
             >
               <ArrowRight className="h-5 w-5" />
