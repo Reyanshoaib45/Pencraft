@@ -31,6 +31,10 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
     
+    // Change password routes
+    Route::get('/change-password', [AuthController::class, 'showChangePasswordForm'])->name('password.change');
+    Route::post('/change-password', [AuthController::class, 'changePassword'])->name('password.update');
+    
     // Blog post management routes (protected)
     Route::get('/blog/create', [BlogController::class, 'create'])->name('blog.create');
     Route::post('/blog', [BlogController::class, 'store'])->name('blog.store');

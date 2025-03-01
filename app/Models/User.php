@@ -55,4 +55,36 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class, 'author_id');
     }
+    
+    /**
+     * Get published posts for the user.
+     */
+    public function publishedPosts()
+    {
+        return $this->posts()->where('is_published', true);
+    }
+    
+    /**
+     * Get draft posts for the user.
+     */
+    public function draftPosts()
+    {
+        return $this->posts()->where('is_published', false);
+    }
+    
+    /**
+     * Get total views count for all user's posts.
+     */
+    public function getTotalViewsAttribute()
+    {
+        return $this->posts()->sum('views');
+    }
+    
+    /**
+     * Get total likes count for all user's posts.
+     */
+    public function getTotalLikesAttribute()
+    {
+        return $this->posts()->sum('likes');
+    }
 }

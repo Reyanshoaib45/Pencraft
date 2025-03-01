@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Http\Controllers;
@@ -89,6 +88,46 @@ class AuthController extends Controller
     // Show dashboard
     public function dashboard()
     {
-        return view('dashboard');
+        $user = Auth::user();
+        $posts = $user->posts()->latest()->take(5)->get();
+        $totalPosts = $user->posts()->count();
+        $publishedPosts = $user->publishedPosts()->count();
+        $draftPosts = $user->draftPosts()->count();
+        
+        return view('dashboard', compact('user', 'posts', 'totalPosts', 'publishedPosts', 'draftPosts'));
+    }
+    
+    // Show change password form
+    public function showChangePasswordForm()
+    {
+        return view('auth.change-password');
+    }
+    
+    // Handle change password
+    public function changePassword(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'current_password' => 'required',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+        
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+        
+        $user = Auth::user();
+        
+        // Check current password
+        if (!Hash::check($request->current_password, $user->password)) {
+            return back()->withErrors(['current_password' => 'The current password is incorrect.']);
+        }
+        
+        // Update password
+        $user->password = Hash::make($request->password);
+        $user->save();
+        
+        return redirect()->route('dashboard')->with('success', 'Password changed successfully!');
     }
 }
