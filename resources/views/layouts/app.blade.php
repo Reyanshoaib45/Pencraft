@@ -13,8 +13,80 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <!-- CDN for Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        streamline: {
+                            50: "#f0f9ff",
+                            100: "#e0f2fe",
+                            200: "#bae6fd",
+                            300: "#7dd3fc",
+                            400: "#38bdf8",
+                            500: "#0ea5e9",
+                            600: "#0284c7",
+                            700: "#0369a1",
+                            800: "#075985",
+                            900: "#0c4a6e"
+                        },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Inter', 'sans-serif']
+                    },
+                    animation: {
+                        "fade-in": "fadeIn 0.5s ease-out",
+                        "scale-in": "scaleIn 0.3s ease-out",
+                        "slide-in": "slideInLeft 0.6s ease-out",
+                        "float": "float 6s ease-in-out infinite",
+                        "pulse-soft": "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite"
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        scaleIn: {
+                            '0%': { transform: 'scale(0.95)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' }
+                        },
+                        slideInLeft: {
+                            '0%': { transform: 'translateX(-20px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        pulse: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0.7' }
+                        }
+                    }
+                },
+            }
+        }
+    </script>
+
+    <!-- CDN for Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CDN for jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    
+    <!-- Custom Styles -->
+    <style>
+        .btn-primary {
+            @apply bg-streamline-600 text-white px-4 py-2 rounded-md hover:bg-streamline-700 transition-colors inline-block;
+        }
+        .link-underline {
+            @apply relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:w-0 after:bg-streamline-500 after:transition-all hover:after:w-full;
+        }
+        /* Add more custom styles as needed */
+    </style>
 </head>
 <body class="font-sans antialiased">
     <div class="min-h-screen flex flex-col">
@@ -27,41 +99,38 @@
         @include('partials.footer')
     </div>
 
-    <!-- Additional Scripts -->
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Mobile Menu JavaScript -->
     <script>
-        // Initialize mobile menu functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
+        $(document).ready(function() {
+            // Initialize mobile menu functionality
+            const mobileMenuButton = $('#mobile-menu-button');
+            const mobileMenu = $('#mobile-menu');
             
-            if (mobileMenuButton && mobileMenu) {
-                mobileMenuButton.addEventListener('click', function() {
-                    const isOpen = mobileMenu.classList.contains('block');
-                    if (isOpen) {
-                        mobileMenu.classList.remove('block', 'animate-fade-in');
-                        mobileMenu.classList.add('hidden');
-                    } else {
-                        mobileMenu.classList.remove('hidden');
-                        mobileMenu.classList.add('block', 'animate-fade-in');
-                    }
-                });
-            }
+            mobileMenuButton.on('click', function() {
+                const isOpen = mobileMenu.hasClass('block');
+                if (isOpen) {
+                    mobileMenu.removeClass('block animate-fade-in').addClass('hidden');
+                } else {
+                    mobileMenu.removeClass('hidden').addClass('block animate-fade-in');
+                }
+            });
 
             // Handle scroll for navbar
             const handleScroll = () => {
-                const header = document.querySelector('header');
-                if (header) {
-                    if (window.scrollY > 20) {
-                        header.classList.add('py-3', 'bg-white/95', 'backdrop-blur-md', 'shadow-sm');
-                        header.classList.remove('py-5', 'bg-transparent');
+                const header = $('header');
+                if (header.length) {
+                    if ($(window).scrollTop() > 20) {
+                        header.addClass('py-3 bg-white/95 backdrop-blur-md shadow-sm').removeClass('py-5 bg-transparent');
                     } else {
-                        header.classList.add('py-5', 'bg-transparent');
-                        header.classList.remove('py-3', 'bg-white/95', 'backdrop-blur-md', 'shadow-sm');
+                        header.addClass('py-5 bg-transparent').removeClass('py-3 bg-white/95 backdrop-blur-md shadow-sm');
                     }
                 }
             };
 
-            window.addEventListener('scroll', handleScroll);
+            $(window).on('scroll', handleScroll);
             // Initialize on page load
             handleScroll();
         });
