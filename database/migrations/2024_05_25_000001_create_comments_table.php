@@ -29,6 +29,7 @@ class CreateCommentsTable extends Migration
             // Add indexes for better performance
             $table->index(['post_id', 'created_at']);
             $table->index('parent_id');
+            $table->index('user_id');
         });
     }
 

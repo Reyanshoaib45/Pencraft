@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Http\Controllers;
@@ -228,13 +227,18 @@ class BlogController extends Controller
         
         $post->comments()->save($comment);
         
+        // Load the user relationship for the new comment
+        $comment->load('user');
+        
         if ($request->ajax()) {
-            $comment->load('user');
             return response()->json([
                 'success' => true,
                 'comment' => $comment,
                 'username' => $comment->user->name,
                 'created_at' => $comment->created_at->diffForHumans(),
+                'user_profile_picture' => $comment->user->profile_picture,
+                'user_initial' => substr($comment->user->name, 0, 1),
+                'comment_html' => view('partials.comment', ['comment' => $comment])->render()
             ]);
         }
         

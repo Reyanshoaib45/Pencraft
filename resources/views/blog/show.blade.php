@@ -15,11 +15,13 @@
         </div>
 
         <!-- Flash Messages -->
-        @if (session('success'))
-            <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-8" role="alert">
-                <p>{{ session('success') }}</p>
-            </div>
-        @endif
+        <div id="flash-message-container">
+            @if (session('success'))
+                <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-8" role="alert">
+                    <p>{{ session('success') }}</p>
+                </div>
+            @endif
+        </div>
 
         <!-- Article Header -->
         <header class="mb-10 animate-fade-in">
@@ -69,7 +71,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
                         </svg>
-                        {{ $post->comments->count() }} comments
+                        <span id="comment-count">{{ $post->comments->count() }}</span> comments
                     </div>
                 </div>
             </div>
@@ -119,24 +121,24 @@
                 <!-- Like/Dislike -->
                 <div class="flex items-center space-x-4 mb-10 border-t border-b border-gray-100 py-6">
                     <span class="text-gray-700 font-medium">Was this article helpful?</span>
-                    <form action="{{ route('blog.like', $post->id) }}" method="POST" class="inline-block">
-                        @csrf
-                        <button type="submit" class="flex items-center bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-md transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
-                            </svg>
-                            Yes ({{ $post->likes }})
-                        </button>
-                    </form>
-                    <form action="{{ route('blog.dislike', $post->id) }}" method="POST" class="inline-block">
-                        @csrf
-                        <button type="submit" class="flex items-center bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-md transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14H5.236a2 2 0 01-1.789-2.894l3.5-7A2 2 0 018.736 3h4.018a2 2 0 01.485.06l3.76.94m-7 10v5a2 2 0 002 2h.095c.5 0 .905-.405.905-.905 0-.714.211-1.412.608-2.006L17 13V4m-7 10h2m5-10h2a2 2 0 012 2v6a2 2 0 01-2 2h-2.5" />
-                            </svg>
-                            No ({{ $post->dislikes }})
-                        </button>
-                    </form>
+                    <button 
+                        type="button" 
+                        class="like-button flex items-center bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-md transition-colors"
+                        data-post-id="{{ $post->id }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+                        </svg>
+                        Yes (<span id="likes-count">{{ $post->likes }}</span>)
+                    </button>
+                    <button 
+                        type="button" 
+                        class="dislike-button flex items-center bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-md transition-colors"
+                        data-post-id="{{ $post->id }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14H5.236a2 2 0 01-1.789-2.894l3.5-7A2 2 0 018.736 3h4.018a2 2 0 01.485.06l3.76.94m-7 10v5a2 2 0 002 2h.095c.5 0 .905-.405.905-.905 0-.714.211-1.412.608-2.006L17 13V4m-7 10h2m5-10h2a2 2 0 012 2v6a2 2 0 01-2 2h-2.5" />
+                        </svg>
+                        No (<span id="dislikes-count">{{ $post->dislikes }}</span>)
+                    </button>
                     
                     <!-- Share Buttons -->
                     <div class="ml-auto">
@@ -218,12 +220,14 @@
                 
                 <!-- Comments Section -->
                 <section class="mb-10">
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-6">Comments ({{ $post->comments->count() }})</h3>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-6">
+                        Comments (<span id="comments-count">{{ $post->comments->count() }}</span>)
+                    </h3>
                     
                     @auth
                     <!-- Comment Form -->
                     <div class="mb-8">
-                        <form action="{{ route('blog.comment', $post->id) }}" method="POST">
+                        <form id="comment-form" data-post-id="{{ $post->id }}">
                             @csrf
                             <div class="mb-4">
                                 <label for="content" class="block text-sm font-medium text-gray-700 mb-2">Leave a comment</label>
@@ -247,7 +251,7 @@
                     @endauth
                     
                     <!-- Comments List -->
-                    <div class="space-y-6">
+                    <div id="comments-container" class="space-y-6">
                         @forelse($post->comments->where('parent_id', null) as $comment)
                             <div class="bg-white border border-gray-100 rounded-lg p-6" id="comment-{{ $comment->id }}">
                                 <div class="flex items-start gap-4">
@@ -278,7 +282,7 @@
                                         
                                         <!-- Reply Form (Hidden by default) -->
                                         <div class="hidden reply-form" id="reply-form-{{ $comment->id }}">
-                                            <form action="{{ route('blog.comment', $post->id) }}" method="POST" class="mb-4">
+                                            <form class="reply-comment-form" data-post-id="{{ $post->id }}" data-parent-id="{{ $comment->id }}">
                                                 @csrf
                                                 <input type="hidden" name="parent_id" value="{{ $comment->id }}">
                                                 <div class="mb-2">
@@ -303,8 +307,8 @@
                                         @endauth
                                         
                                         <!-- Replies -->
-                                        @if($comment->replies->count() > 0)
-                                            <div class="ml-6 pl-6 border-l border-gray-100 mt-4 space-y-4">
+                                        <div class="ml-6 pl-6 border-l border-gray-100 mt-4 space-y-4 replies-container" id="replies-container-{{ $comment->id }}">
+                                            @if($comment->replies->count() > 0)
                                                 @foreach($comment->replies as $reply)
                                                     <div class="pt-4" id="comment-{{ $reply->id }}">
                                                         <div class="flex items-start gap-3">
@@ -327,13 +331,13 @@
                                                         </div>
                                                     </div>
                                                 @endforeach
-                                            </div>
-                                        @endif
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         @empty
-                            <div class="text-center py-8">
+                            <div class="text-center py-8" id="no-comments-message">
                                 <p class="text-gray-500">No comments yet. Be the first to comment!</p>
                             </div>
                         @endforelse
@@ -407,6 +411,9 @@
 @section('scripts')
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // CSRF Token
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        
         // Reply toggle functionality
         const replyToggles = document.querySelectorAll('.reply-toggle');
         const cancelButtons = document.querySelectorAll('.cancel-reply');
@@ -426,6 +433,331 @@
                 replyForm.classList.add('hidden');
             });
         });
+
+        // Handle main comment form submission
+        const commentForm = document.getElementById('comment-form');
+        if (commentForm) {
+            commentForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const postId = this.getAttribute('data-post-id');
+                const content = this.querySelector('textarea[name="content"]').value;
+                
+                if (!content.trim()) return;
+                
+                // Send AJAX request
+                fetch(`/blog/${postId}/comment`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken,
+                        'Accept': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    body: JSON.stringify({
+                        content: content
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Clear form
+                        commentForm.reset();
+                        
+                        // Update comments count
+                        const commentsCount = document.getElementById('comments-count');
+                        const commentCount = document.getElementById('comment-count');
+                        const currentCount = parseInt(commentsCount.textContent);
+                        commentsCount.textContent = currentCount + 1;
+                        commentCount.textContent = currentCount + 1;
+                        
+                        // Create new comment HTML
+                        const commentsContainer = document.getElementById('comments-container');
+                        const noCommentsMessage = document.getElementById('no-comments-message');
+                        
+                        // Remove "no comments" message if it exists
+                        if (noCommentsMessage) {
+                            noCommentsMessage.remove();
+                        }
+                        
+                        // Create comment element
+                        const commentElement = document.createElement('div');
+                        commentElement.className = 'bg-white border border-gray-100 rounded-lg p-6';
+                        commentElement.id = `comment-${data.comment.id}`;
+                        
+                        // Profile picture HTML
+                        let profilePicHtml = '';
+                        if (data.user_profile_picture) {
+                            profilePicHtml = `<img src="${data.user_profile_picture}" alt="${data.username}" class="w-10 h-10 rounded-full object-cover">`;
+                        } else {
+                            profilePicHtml = `<div class="w-10 h-10 rounded-full bg-streamline-100 text-streamline-600 flex items-center justify-center">${data.user_initial}</div>`;
+                        }
+                        
+                        // Set inner HTML
+                        commentElement.innerHTML = `
+                            <div class="flex items-start gap-4">
+                                ${profilePicHtml}
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <div class="font-medium text-gray-900">${data.username}</div>
+                                        <div class="text-sm text-gray-500">${data.created_at}</div>
+                                    </div>
+                                    <div class="text-gray-700 mb-4">
+                                        ${data.comment.content}
+                                    </div>
+                                    
+                                    <button 
+                                        class="text-sm text-streamline-600 hover:text-streamline-700 mb-4 reply-toggle"
+                                        data-comment-id="${data.comment.id}"
+                                    >
+                                        Reply
+                                    </button>
+                                    
+                                    <div class="hidden reply-form" id="reply-form-${data.comment.id}">
+                                        <form class="reply-comment-form" data-post-id="${postId}" data-parent-id="${data.comment.id}">
+                                            <input type="hidden" name="_token" value="${csrfToken}">
+                                            <input type="hidden" name="parent_id" value="${data.comment.id}">
+                                            <div class="mb-2">
+                                                <textarea
+                                                    name="content"
+                                                    rows="3"
+                                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-transparent text-sm"
+                                                    required
+                                                    placeholder="Write your reply..."
+                                                ></textarea>
+                                            </div>
+                                            <div class="flex justify-end">
+                                                <button type="button" class="text-gray-500 hover:text-gray-700 py-1 px-3 text-sm mr-2 cancel-reply" data-comment-id="${data.comment.id}">
+                                                    Cancel
+                                                </button>
+                                                <button type="submit" class="bg-streamline-600 hover:bg-streamline-700 text-white font-medium py-1 px-3 rounded-md transition-colors text-sm">
+                                                    Post Reply
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    
+                                    <div class="ml-6 pl-6 border-l border-gray-100 mt-4 space-y-4 replies-container" id="replies-container-${data.comment.id}">
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        
+                        // Add new comment to top of comments
+                        commentsContainer.prepend(commentElement);
+                        
+                        // Re-bind event listeners for the new elements
+                        bindReplyEvents();
+                        
+                        // Show success message
+                        showFlashMessage('Comment added successfully!', 'success');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showFlashMessage('There was an error posting your comment. Please try again.', 'error');
+                });
+            });
+        }
+        
+        // Function to bind reply form events for dynamically added elements
+        function bindReplyEvents() {
+            // Bind new reply toggle buttons
+            document.querySelectorAll('.reply-toggle').forEach(button => {
+                button.addEventListener('click', function() {
+                    const commentId = this.getAttribute('data-comment-id');
+                    const replyForm = document.getElementById('reply-form-' + commentId);
+                    replyForm.classList.toggle('hidden');
+                });
+            });
+            
+            // Bind new cancel buttons
+            document.querySelectorAll('.cancel-reply').forEach(button => {
+                button.addEventListener('click', function() {
+                    const commentId = this.getAttribute('data-comment-id');
+                    const replyForm = document.getElementById('reply-form-' + commentId);
+                    replyForm.classList.add('hidden');
+                });
+            });
+            
+            // Bind reply form submissions
+            document.querySelectorAll('.reply-comment-form').forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const postId = this.getAttribute('data-post-id');
+                    const parentId = this.getAttribute('data-parent-id');
+                    const content = this.querySelector('textarea[name="content"]').value;
+                    
+                    if (!content.trim()) return;
+                    
+                    // Send AJAX request
+                    fetch(`/blog/${postId}/comment`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': csrfToken,
+                            'Accept': 'application/json',
+                            'X-Requested-With': 'XMLHttpRequest'
+                        },
+                        body: JSON.stringify({
+                            content: content,
+                            parent_id: parentId
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Clear form and hide it
+                            form.reset();
+                            const replyForm = document.getElementById('reply-form-' + parentId);
+                            replyForm.classList.add('hidden');
+                            
+                            // Update comments count
+                            const commentsCount = document.getElementById('comments-count');
+                            const commentCount = document.getElementById('comment-count');
+                            const currentCount = parseInt(commentsCount.textContent);
+                            commentsCount.textContent = currentCount + 1;
+                            commentCount.textContent = currentCount + 1;
+                            
+                            // Get replies container
+                            const repliesContainer = document.getElementById('replies-container-' + parentId);
+                            
+                            // Create reply element
+                            const replyElement = document.createElement('div');
+                            replyElement.className = 'pt-4';
+                            replyElement.id = `comment-${data.comment.id}`;
+                            
+                            // Profile picture HTML
+                            let profilePicHtml = '';
+                            if (data.user_profile_picture) {
+                                profilePicHtml = `<img src="${data.user_profile_picture}" alt="${data.username}" class="w-8 h-8 rounded-full object-cover">`;
+                            } else {
+                                profilePicHtml = `<div class="w-8 h-8 rounded-full bg-streamline-100 text-streamline-600 flex items-center justify-center text-xs">${data.user_initial}</div>`;
+                            }
+                            
+                            // Set inner HTML
+                            replyElement.innerHTML = `
+                                <div class="flex items-start gap-3">
+                                    ${profilePicHtml}
+                                    <div class="flex-1">
+                                        <div class="flex items-center justify-between mb-1">
+                                            <div class="font-medium text-gray-900 text-sm">${data.username}</div>
+                                            <div class="text-xs text-gray-500">${data.created_at}</div>
+                                        </div>
+                                        <div class="text-gray-700 text-sm">
+                                            ${data.comment.content}
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                            
+                            // Add new reply to the replies container
+                            repliesContainer.appendChild(replyElement);
+                            
+                            // Show success message
+                            showFlashMessage('Reply added successfully!', 'success');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        showFlashMessage('There was an error posting your reply. Please try again.', 'error');
+                    });
+                });
+            });
+        }
+        
+        // Bind initial reply events
+        bindReplyEvents();
+        
+        // Like/Dislike functionality
+        const likeButton = document.querySelector('.like-button');
+        const dislikeButton = document.querySelector('.dislike-button');
+        
+        if (likeButton) {
+            likeButton.addEventListener('click', function() {
+                const postId = this.getAttribute('data-post-id');
+                
+                fetch(`/blog/${postId}/like`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken,
+                        'Accept': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    body: JSON.stringify({})
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById('likes-count').textContent = data.likes;
+                        document.getElementById('dislikes-count').textContent = data.dislikes;
+                        showFlashMessage('Thanks for your feedback!', 'success');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            });
+        }
+        
+        if (dislikeButton) {
+            dislikeButton.addEventListener('click', function() {
+                const postId = this.getAttribute('data-post-id');
+                
+                fetch(`/blog/${postId}/dislike`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken,
+                        'Accept': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    body: JSON.stringify({})
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById('likes-count').textContent = data.likes;
+                        document.getElementById('dislikes-count').textContent = data.dislikes;
+                        showFlashMessage('Thanks for your feedback!', 'success');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            });
+        }
+        
+        // Flash message function
+        function showFlashMessage(message, type = 'success') {
+            const container = document.getElementById('flash-message-container');
+            const messageElement = document.createElement('div');
+            
+            let bgColor = 'bg-green-100';
+            let borderColor = 'border-green-500';
+            let textColor = 'text-green-700';
+            
+            if (type === 'error') {
+                bgColor = 'bg-red-100';
+                borderColor = 'border-red-500';
+                textColor = 'text-red-700';
+            }
+            
+            messageElement.className = `${bgColor} border-l-4 ${borderColor} ${textColor} p-4 mb-8 animate-fade-in`;
+            messageElement.innerHTML = `<p>${message}</p>`;
+            
+            container.appendChild(messageElement);
+            
+            // Remove after 5 seconds
+            setTimeout(() => {
+                messageElement.classList.add('animate-fade-out');
+                setTimeout(() => {
+                    container.removeChild(messageElement);
+                }, 500);
+            }, 5000);
+        }
     });
 </script>
 @endsection
