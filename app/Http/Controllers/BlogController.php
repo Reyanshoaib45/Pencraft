@@ -228,6 +228,16 @@ class BlogController extends Controller
         
         $post->comments()->save($comment);
         
+        if ($request->ajax()) {
+            $comment->load('user');
+            return response()->json([
+                'success' => true,
+                'comment' => $comment,
+                'username' => $comment->user->name,
+                'created_at' => $comment->created_at->diffForHumans(),
+            ]);
+        }
+        
         return back()->with('success', 'Comment added successfully!');
     }
 
@@ -238,10 +248,18 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function like($id)
+    public function like(Request $request, $id)
     {
         $post = Post::findOrFail($id);
         $post->increment('likes');
+        
+        if ($request->ajax()) {
+            return response()->json([
+                'success' => true,
+                'likes' => $post->likes,
+                'dislikes' => $post->dislikes
+            ]);
+        }
         
         return back();
     }
@@ -253,10 +271,18 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function dislike($id)
+    public function dislike(Request $request, $id)
     {
         $post = Post::findOrFail($id);
         $post->increment('dislikes');
+        
+        if ($request->ajax()) {
+            return response()->json([
+                'success' => true,
+                'likes' => $post->likes,
+                'dislikes' => $post->dislikes
+            ]);
+        }
         
         return back();
     }

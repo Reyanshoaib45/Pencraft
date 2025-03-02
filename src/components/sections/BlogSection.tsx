@@ -1,6 +1,7 @@
 
 import React from 'react';
-import { ArrowRight, CalendarDays, Clock } from 'lucide-react';
+import { ArrowRight, CalendarDays, Clock, ThumbsUp, ThumbsDown, MessageSquare } from 'lucide-react';
+import { useToast } from "../../hooks/use-toast";
 
 const blogPosts = [
   {
@@ -10,7 +11,10 @@ const blogPosts = [
     image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
     date: "May 12, 2023",
     readTime: "5 min read",
-    category: "Productivity"
+    category: "Productivity",
+    likes: 24,
+    dislikes: 3,
+    commentCount: 8
   },
   {
     id: 2,
@@ -19,7 +23,10 @@ const blogPosts = [
     image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
     date: "Apr 28, 2023",
     readTime: "7 min read",
-    category: "Technology"
+    category: "Technology",
+    likes: 42,
+    dislikes: 5,
+    commentCount: 12
   },
   {
     id: 3,
@@ -28,11 +35,40 @@ const blogPosts = [
     image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
     date: "Apr 14, 2023",
     readTime: "6 min read",
-    category: "Remote Work"
+    category: "Remote Work",
+    likes: 36,
+    dislikes: 2,
+    commentCount: 15
   }
 ];
 
 const BlogSection = () => {
+  const { toast } = useToast();
+
+  const handleLike = (postId: number) => {
+    toast({
+      title: "Demo mode",
+      description: "Like feature available in the full version",
+      variant: "default",
+    });
+  };
+
+  const handleDislike = (postId: number) => {
+    toast({
+      title: "Demo mode",
+      description: "Dislike feature available in the full version",
+      variant: "default",
+    });
+  };
+
+  const handleCommentClick = (postId: number) => {
+    toast({
+      title: "Demo mode",
+      description: "Comments available in the full version",
+      variant: "default",
+    });
+  };
+
   return (
     <section id="blog" className="section-padding bg-streamline-50">
       <div className="container mx-auto px-4 md:px-6">
@@ -84,7 +120,7 @@ const BlogSection = () => {
                 </p>
                 
                 {/* Meta */}
-                <div className="flex items-center text-sm text-gray-500">
+                <div className="flex items-center text-sm text-gray-500 mb-4">
                   <div className="flex items-center mr-4">
                     <CalendarDays className="h-4 w-4 mr-1" />
                     {post.date}
@@ -93,6 +129,33 @@ const BlogSection = () => {
                     <Clock className="h-4 w-4 mr-1" />
                     {post.readTime}
                   </div>
+                </div>
+                
+                {/* Engagement */}
+                <div className="flex items-center pt-3 border-t border-gray-100">
+                  <button 
+                    onClick={() => handleLike(post.id)}
+                    className="like-button flex items-center mr-4 text-gray-500 hover:text-streamline-600 transition-colors"
+                    data-post-id={post.id}
+                  >
+                    <ThumbsUp className="h-4 w-4 mr-1" />
+                    <span className="like-count">{post.likes}</span>
+                  </button>
+                  <button 
+                    onClick={() => handleDislike(post.id)}
+                    className="dislike-button flex items-center mr-4 text-gray-500 hover:text-streamline-600 transition-colors"
+                    data-post-id={post.id}
+                  >
+                    <ThumbsDown className="h-4 w-4 mr-1" />
+                    <span className="dislike-count">{post.dislikes}</span>
+                  </button>
+                  <button 
+                    onClick={() => handleCommentClick(post.id)}
+                    className="flex items-center text-gray-500 hover:text-streamline-600 transition-colors"
+                  >
+                    <MessageSquare className="h-4 w-4 mr-1" />
+                    <span>{post.commentCount}</span>
+                  </button>
                 </div>
               </div>
             </article>
