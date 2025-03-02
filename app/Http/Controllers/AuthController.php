@@ -1,3 +1,4 @@
+
 <?php
 
 namespace App\Http\Controllers;
@@ -7,6 +8,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class AuthController extends Controller
 {
@@ -62,6 +64,12 @@ class AuthController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
+            'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'bio' => 'nullable|string',
+            'twitter' => 'nullable|string|max:255',
+            'facebook' => 'nullable|string|max:255',
+            'linkedin' => 'nullable|string|max:255',
+            'instagram' => 'nullable|string|max:255',
         ]);
 
         if ($validator->fails()) {
@@ -70,11 +78,27 @@ class AuthController extends Controller
                 ->withInput();
         }
 
-        $user = User::create([
+        // Create user with basic info
+        $userData = [
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-        ]);
+            'bio' => $request->bio,
+            'twitter' => $request->twitter,
+            'facebook' => $request->facebook,
+            'linkedin' => $request->linkedin,
+            'instagram' => $request->instagram,
+        ];
+
+        // Handle profile picture upload
+        if ($request->hasFile('profile_picture')) {
+            $image = $request->file('profile_picture');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->storeAs('public/profile_pictures', $imageName);
+            $userData['profile_picture'] = 'profile_pictures/' . $imageName;
+        }
+
+        $user = User::create($userData);
 
         Auth::login($user);
 
