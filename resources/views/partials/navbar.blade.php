@@ -19,19 +19,36 @@
             <a href="#pricing" class="text-sm font-medium text-gray-700 hover:text-streamline-600 transition-colors link-underline">
                 Pricing
             </a>
-            <a href="#blog" class="text-sm font-medium text-gray-700 hover:text-streamline-600 transition-colors link-underline">
+            <a href="{{ route('blog.index') }}" class="text-sm font-medium text-gray-700 hover:text-streamline-600 transition-colors link-underline">
                 Blog
             </a>
         </nav>
 
         <!-- CTA Buttons -->
         <div class="hidden md:flex items-center space-x-4">
-            <a href="{{ route('login') }}" class="text-sm font-medium text-gray-700 hover:text-streamline-600">
-                Sign in
-            </a>
-            <a href="{{ route('register') }}" class="bg-streamline-600 hover:bg-streamline-700 text-white font-medium py-2 px-4 rounded-md transition-colors text-sm">
-                Get Started
-            </a>
+            @guest
+                <a href="{{ route('login') }}" class="text-sm font-medium text-gray-700 hover:text-streamline-600">
+                    Sign in
+                </a>
+                <a href="{{ route('register') }}" class="bg-streamline-600 hover:bg-streamline-700 text-white font-medium py-2 px-4 rounded-md transition-colors text-sm">
+                    Get Started
+                </a>
+            @else
+                <a href="{{ route('dashboard') }}" class="text-sm font-medium text-gray-700 hover:text-streamline-600">
+                    Dashboard
+                </a>
+                @if(Auth::user()->is_admin)
+                    <a href="{{ route('admin.dashboard') }}" class="text-sm font-medium text-streamline-600 hover:text-streamline-700">
+                        Admin
+                    </a>
+                @endif
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="bg-streamline-600 hover:bg-streamline-700 text-white font-medium py-2 px-4 rounded-md transition-colors text-sm">
+                        Logout
+                    </button>
+                </form>
+            @endguest
         </div>
 
         <!-- Mobile Menu Button -->
@@ -69,24 +86,47 @@
                     Pricing
                 </a>
                 <a 
-                    href="#blog" 
+                    href="{{ route('blog.index') }}" 
                     class="px-4 py-2 text-base font-medium text-gray-700 hover:text-streamline-600 hover:bg-gray-50 rounded-md transition-colors"
                 >
                     Blog
                 </a>
                 <div class="pt-2 border-t border-gray-100 flex flex-col space-y-3">
-                    <a 
-                        href="{{ route('login') }}" 
-                        class="px-4 py-2 text-base font-medium text-gray-700 hover:text-streamline-600 hover:bg-gray-50 rounded-md transition-colors"
-                    >
-                        Sign in
-                    </a>
-                    <a 
-                        href="{{ route('register') }}" 
-                        class="bg-streamline-600 hover:bg-streamline-700 text-white font-medium py-2 px-4 rounded-md transition-colors mx-4"
-                    >
-                        Get Started
-                    </a>
+                    @guest
+                        <a 
+                            href="{{ route('login') }}" 
+                            class="px-4 py-2 text-base font-medium text-gray-700 hover:text-streamline-600 hover:bg-gray-50 rounded-md transition-colors"
+                        >
+                            Sign in
+                        </a>
+                        <a 
+                            href="{{ route('register') }}" 
+                            class="bg-streamline-600 hover:bg-streamline-700 text-white font-medium py-2 px-4 rounded-md transition-colors mx-4"
+                        >
+                            Get Started
+                        </a>
+                    @else
+                        <a 
+                            href="{{ route('dashboard') }}" 
+                            class="px-4 py-2 text-base font-medium text-gray-700 hover:text-streamline-600 hover:bg-gray-50 rounded-md transition-colors"
+                        >
+                            Dashboard
+                        </a>
+                        @if(Auth::user()->is_admin)
+                            <a 
+                                href="{{ route('admin.dashboard') }}" 
+                                class="px-4 py-2 text-base font-medium text-streamline-600 hover:text-streamline-700 hover:bg-streamline-50 rounded-md transition-colors"
+                            >
+                                Admin Panel
+                            </a>
+                        @endif
+                        <form action="{{ route('logout') }}" method="POST" class="mx-4">
+                            @csrf
+                            <button type="submit" class="w-full bg-streamline-600 hover:bg-streamline-700 text-white font-medium py-2 px-4 rounded-md transition-colors">
+                                Logout
+                            </button>
+                        </form>
+                    @endguest
                 </div>
             </nav>
         </div>

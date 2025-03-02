@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Models;
@@ -27,6 +26,7 @@ class User extends Authenticatable
         'facebook',
         'linkedin',
         'instagram',
+        'is_admin',
     ];
 
     /**
@@ -46,6 +46,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'is_admin' => 'boolean',
     ];
 
     /**
