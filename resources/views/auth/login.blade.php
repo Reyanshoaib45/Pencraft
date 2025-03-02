@@ -19,6 +19,12 @@
             </div>
         @endif
 
+        @if (session('status'))
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+                {{ session('status') }}
+            </div>
+        @endif
+
         <form action="{{ route('login') }}" method="POST" class="space-y-6">
             @csrf
             
@@ -32,7 +38,7 @@
             <div>
                 <div class="flex items-center justify-between mb-1">
                     <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-                    <a href="#" class="text-sm text-streamline-600 hover:text-streamline-500">Forgot password?</a>
+                    <a href="{{ route('password.change') }}" class="text-sm text-streamline-600 hover:text-streamline-500">Forgot password?</a>
                 </div>
                 <input id="password" name="password" type="password" required 
                     class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-streamline-500"
