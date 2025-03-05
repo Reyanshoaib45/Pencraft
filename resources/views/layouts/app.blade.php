@@ -1,25 +1,40 @@
-
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'StreamLine') }}</title>
-
-    <!-- Fonts -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@yield('title', 'BlogHub - Modern Blogging Platform')</title>
+    <meta name="description" content="A modern blogging platform for creative minds" />
+    <meta name="author" content="BlogHub" />
+    <meta property="og:image" content="/og-image.png" />
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="/src/App.css">
+    <script src="{{ asset('js/tailwind.js') }}"></script>
 
-    <!-- CDN for Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Tailwind Configuration -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
+                        primary: '#9b87f5',
+                        secondary: '#7E69AB',
+                        tertiary: '#6E59A5',
+                        dark: '#1A1F2C',
+                        light: '#F6F6F7',
+                        accent: '#D6BCFA',
+                        muted: '#8E9196',
                         streamline: {
                             50: "#f0f9ff",
                             100: "#e0f2fe",
@@ -37,6 +52,10 @@
                         sans: ['Inter', 'sans-serif'],
                         display: ['Inter', 'sans-serif']
                     },
+                    boxShadow: {
+                        'soft': '0 5px 15px rgba(0, 0, 0, 0.05)',
+                        // 'hover': '0 10px 25px rgba(155, 135, 245, 0.2)'
+                    },
                     animation: {
                         "fade-in": "fadeIn 0.5s ease-out",
                         "scale-in": "scaleIn 0.3s ease-out",
@@ -46,94 +65,78 @@
                     },
                     keyframes: {
                         fadeIn: {
-                            '0%': { opacity: '0', transform: 'translateY(10px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                            '0%': {
+                                opacity: '0',
+                                transform: 'translateY(10px)'
+                            },
+                            '100%': {
+                                opacity: '1',
+                                transform: 'translateY(0)'
+                            }
                         },
                         scaleIn: {
-                            '0%': { transform: 'scale(0.95)', opacity: '0' },
-                            '100%': { transform: 'scale(1)', opacity: '1' }
+                            '0%': {
+                                transform: 'scale(0.95)',
+                                opacity: '0'
+                            },
+                            '100%': {
+                                transform: 'scale(1)',
+                                opacity: '1'
+                            }
                         },
                         slideInLeft: {
-                            '0%': { transform: 'translateX(-20px)', opacity: '0' },
-                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                            '0%': {
+                                transform: 'translateX(-20px)',
+                                opacity: '0'
+                            },
+                            '100%': {
+                                transform: 'translateX(0)',
+                                opacity: '1'
+                            }
                         },
                         float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' }
+                            '0%, 100%': {
+                                transform: 'translateY(0)'
+                            },
+                            '50%': {
+                                transform: 'translateY(-10px)'
+                            }
                         },
                         pulse: {
-                            '0%, 100%': { opacity: '1' },
-                            '50%': { opacity: '0.7' }
+                            '0%, 100%': {
+                                opacity: '1'
+                            },
+                            '50%': {
+                                opacity: '0.7'
+                            }
                         }
                     }
-                },
+                }
             }
         }
     </script>
-
-    <!-- CDN for Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- CDN for jQuery -->
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    
-    <!-- Custom Styles -->
-    <style>
-        .btn-primary {
-            @apply bg-streamline-600 text-white px-4 py-2 rounded-md hover:bg-streamline-700 transition-colors inline-block;
-        }
-        .link-underline {
-            @apply relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:w-0 after:bg-streamline-500 after:transition-all hover:after:w-full;
-        }
-        /* Add more custom styles as needed */
-    </style>
 </head>
-<body class="font-sans antialiased">
-    <div class="min-h-screen flex flex-col">
-        @include('partials.navbar')
 
-        <main class="flex-grow">
-            @yield('content')
-        </main>
+<body class="bg-gray-50 font-sans text-gray-800">
+@include('partials.navbar') <!-- Include Navbar -->
 
-        @include('partials.footer')
-    </div>
+<div class="container mt-16">
+    @yield('content') <!-- Dynamic Content -->
+</div>
 
-    <!-- Bootstrap JS Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+@include('partials.footer') <!-- Include Footer -->
+<script>
+    < script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" >
+</script>
+<script src="{{ asset('js/custom.js') }}"></script>
+<script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+</script>
 
-    <!-- Mobile Menu JavaScript -->
-    <script>
-        $(document).ready(function() {
-            // Initialize mobile menu functionality
-            const mobileMenuButton = $('#mobile-menu-button');
-            const mobileMenu = $('#mobile-menu');
-            
-            mobileMenuButton.on('click', function() {
-                const isOpen = mobileMenu.hasClass('block');
-                if (isOpen) {
-                    mobileMenu.removeClass('block animate-fade-in').addClass('hidden');
-                } else {
-                    mobileMenu.removeClass('hidden').addClass('block animate-fade-in');
-                }
-            });
-
-            // Handle scroll for navbar
-            const handleScroll = () => {
-                const header = $('header');
-                if (header.length) {
-                    if ($(window).scrollTop() > 20) {
-                        header.addClass('py-3 bg-white/95 backdrop-blur-md shadow-sm').removeClass('py-5 bg-transparent');
-                    } else {
-                        header.addClass('py-5 bg-transparent').removeClass('py-3 bg-white/95 backdrop-blur-md shadow-sm');
-                    }
-                }
-            };
-
-            $(window).on('scroll', handleScroll);
-            // Initialize on page load
-            handleScroll();
-        });
-    </script>
+<!-- Page-Specific Scripts -->
+@stack('scripts')
+<!-- Section for Blade Script -->
+@yield('scripts')
 </body>
+
 </html>

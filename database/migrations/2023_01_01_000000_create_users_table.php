@@ -22,11 +22,11 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('profile_picture')->nullable();
             $table->text('bio')->nullable();
+            $table->boolean('is_admin')->default(false)->after('remember_token');
             $table->string('twitter')->nullable();
             $table->string('facebook')->nullable();
             $table->string('linkedin')->nullable();
             $table->string('instagram')->nullable();
-            $table->boolean('is_admin')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

@@ -1,6 +1,4 @@
-
 @extends('layouts.app')
-
 @section('content')
 <div class="container mx-auto px-4 py-8">
     <div class="flex justify-between items-center mb-6">
@@ -66,7 +64,7 @@
             </tbody>
         </table>
     </div>
-    
+
     <div class="mt-4">
         {{ $posts->links() }}
     </div>

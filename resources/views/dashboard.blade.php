@@ -19,18 +19,18 @@
                     </a>
                 </div>
             </div>
-            
+
             @if (session('success'))
                 <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6" role="alert">
                     <p>{{ session('success') }}</p>
                 </div>
             @endif
-            
+
             <div class="bg-streamline-50 border border-streamline-200 rounded-lg p-6 mb-6">
                 <h2 class="text-lg font-semibold text-streamline-800 mb-2">Welcome, {{ $user->name }}!</h2>
                 <p class="text-streamline-600">You've successfully logged into your StreamLine account.</p>
             </div>
-            
+
             <!-- Blog Statistics -->
             <div class="mb-8">
                 <h2 class="text-xl font-semibold text-gray-800 mb-4">Your Blog Statistics</h2>
@@ -39,24 +39,24 @@
                         <h3 class="font-medium text-gray-800 mb-2">Total Posts</h3>
                         <p class="text-3xl font-bold text-streamline-600">{{ $totalPosts }}</p>
                     </div>
-                    
+
                     <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm hover:shadow-md transition-shadow">
                         <h3 class="font-medium text-gray-800 mb-2">Published</h3>
                         <p class="text-3xl font-bold text-green-600">{{ $publishedPosts }}</p>
                     </div>
-                    
+
                     <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm hover:shadow-md transition-shadow">
                         <h3 class="font-medium text-gray-800 mb-2">Drafts</h3>
                         <p class="text-3xl font-bold text-amber-600">{{ $draftPosts }}</p>
                     </div>
-                    
+
                     <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm hover:shadow-md transition-shadow">
                         <h3 class="font-medium text-gray-800 mb-2">Total Views</h3>
                         <p class="text-3xl font-bold text-blue-600">{{ $user->total_views }}</p>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Recent Posts -->
             <div class="mb-8">
                 <div class="flex items-center justify-between mb-4">
@@ -65,7 +65,7 @@
                         View All Posts
                     </a>
                 </div>
-                
+
                 @if($posts->count() > 0)
                     <div class="overflow-x-auto">
                         <table class="min-w-full bg-white border border-gray-200 rounded-lg overflow-hidden">
@@ -130,7 +130,7 @@
                     </div>
                 @endif
             </div>
-            
+
             <div class="flex justify-end">
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
