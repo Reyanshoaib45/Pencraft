@@ -2,6 +2,7 @@
 <?php
 
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\StatusController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
@@ -36,6 +37,56 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('pages.contact');
 })->name('contact');
+
+Route::get('/terms', function () {
+    return view('pages.terms');
+})->name('terms');
+
+Route::get('/privacy', function () {
+    return view('pages.privacy');
+})->name('privacy');
+
+Route::get('/writing-tips', function () {
+    return view('pages.writing-tips');
+})->name('writing.tips');
+
+// Added new static pages
+Route::get('/customers', function () {
+    return view('pages.customers');
+})->name('customers');
+
+Route::get('/features', function () {
+    return view('pages.features');
+})->name('features');
+
+Route::get('/careers', function () {
+    return view('pages.careers');
+})->name('careers');
+
+Route::get('/blog-page', function () {
+    return view('pages.blog');
+})->name('blog-page');
+
+Route::get('/changelog', function () {
+    return view('pages.changelog');
+})->name('changelog');
+
+// Help Center routes
+Route::get('/help-center', function () {
+    return view('pages.help-center');
+})->name('help-center');
+
+Route::get('/help-center/search', function () {
+    return view('pages.help-center', ['query' => request('query')]);
+})->name('help-center.search');
+
+Route::get('/documentation', function () {
+    return view('pages.documentation');
+})->name('documentation');
+
+Route::get('/status', function () {
+    return view('pages.status');
+})->name('status');
 Route::post('/contact', [MessageController::class, 'store'])->name('contact.submit');
 
 // Protected Routes
@@ -64,14 +115,14 @@ Route::middleware('auth')->group(function () {
 // Admin Routes
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-
     // User management routes
     Route::get('/users', [AdminController::class, 'users'])->name('admin.users');
     Route::get('/users/{id}', [AdminController::class, 'showUser'])->name('admin.users.show');
     Route::get('/users/{id}/edit', [AdminController::class, 'editUser'])->name('admin.users.edit');
     Route::put('/users/{id}', [AdminController::class, 'updateUser'])->name('admin.users.update');
-
     Route::get('/posts', [AdminController::class, 'posts'])->name('admin.posts');
+
+    //status route
 
     // Messages routes
     Route::get('/messages', [MessageController::class, 'index'])->name('admin.messages');
@@ -81,3 +132,6 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 // Public blog routes
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
+Route::get('/statuses', [StatusController::class, 'adminIndex'])->name('admin.statuses.index');
+Route::get('/statuses/{id}/edit', [StatusController::class, 'edit'])->name('admin.statuses.edit');
+Route::put('/statuses/{id}', [StatusController::class, 'update'])->name('admin.statuses.update');
