@@ -1,4 +1,3 @@
-
 <?php
 
 use App\Http\Controllers\MessageController;
@@ -8,16 +7,6 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\AdminController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('/', function () {
     return view('home');
@@ -122,8 +111,6 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::put('/users/{id}', [AdminController::class, 'updateUser'])->name('admin.users.update');
     Route::get('/posts', [AdminController::class, 'posts'])->name('admin.posts');
 
-    //status route
-
     // Messages routes
     Route::get('/messages', [MessageController::class, 'index'])->name('admin.messages');
     Route::post('/messages/{id}/mark-read', [MessageController::class, 'markAsRead'])->name('admin.messages.mark-read');
@@ -132,6 +119,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 // Public blog routes
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
+
+    //status route
 Route::get('/statuses', [StatusController::class, 'adminIndex'])->name('admin.statuses.index');
 Route::get('/statuses/{id}/edit', [StatusController::class, 'edit'])->name('admin.statuses.edit');
 Route::put('/statuses/{id}', [StatusController::class, 'update'])->name('admin.statuses.update');
