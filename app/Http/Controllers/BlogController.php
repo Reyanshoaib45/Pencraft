@@ -4,17 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Comment;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Facades\Seo;
 
 class BlogController extends Controller
 {
     /**
      * Display a listing of the posts.
      *
-     * @return \Illuminate\Http\Response
+     * @return Factory|View|Application|object
      */
     public function index()
     {
@@ -22,8 +26,13 @@ class BlogController extends Controller
             ->published()
             ->orderBy('published_at', 'desc')
             ->paginate(10);
-            
-        return view('blog.index', compact('posts'));
+
+        $seo = Seo::setTitle('Blog')
+            ->setDescription('Read the latest insights, tips, and strategies about productivity and team collaboration.')
+            ->setKeywords('blog, productivity tips, team collaboration, project management, streamline')
+            ->render();
+
+        return view('blog.index', compact('posts', 'seo'));
     }
 
     /**
@@ -68,7 +77,7 @@ class BlogController extends Controller
 
         $validated['slug'] = Str::slug($validated['title']) . '-' . Str::random(5);
         $validated['author_id'] = Auth::id();
-        
+
         if (isset($validated['is_published']) && $validated['is_published']) {
             $validated['published_at'] = now();
         }
@@ -89,10 +98,10 @@ class BlogController extends Controller
         $post = Post::with(['author', 'comments.user', 'comments.replies.user'])
             ->where('slug', $slug)
             ->firstOrFail();
-            
+
         // Increment view count
         $post->increment('views');
-        
+
         // Get related posts
         $relatedPosts = Post::published()
             ->where('id', '!=', $post->id)
@@ -100,8 +109,19 @@ class BlogController extends Controller
             ->orderBy('published_at', 'desc')
             ->limit(3)
             ->get();
-            
-        return view('blog.show', compact('post', 'relatedPosts'));
+
+        // Generate meta description from content
+        $metaDescription = Str::limit(strip_tags($post->content), 160);
+
+        // Set SEO meta data
+        $seo = Seo::setTitle($post->title)
+            ->setDescription($metaDescription)
+            ->setKeywords($post->tags ? implode(', ', $post->tags) : $post->category)
+            ->setType('article')
+            ->setImage($post->featured_image ? asset('storage/' . $post->featured_image) : asset('og-image.png'))
+            ->render();
+
+        return view('blog.show', compact('post', 'relatedPosts', 'seo'));
     }
 
     /**
@@ -113,13 +133,13 @@ class BlogController extends Controller
     public function edit($id)
     {
         $post = Post::findOrFail($id);
-        
+
         // Authorization check
         if ($post->author_id !== Auth::id() && !Auth::user()->is_admin) {
             return redirect()->route('blog.index')
                 ->with('error', 'You are not authorized to edit this post.');
         }
-        
+
         return view('blog.edit', compact('post'));
     }
 
@@ -133,13 +153,13 @@ class BlogController extends Controller
     public function update(Request $request, $id)
     {
         $post = Post::findOrFail($id);
-        
+
         // Authorization check
         if ($post->author_id !== Auth::id() && !Auth::user()->is_admin) {
             return redirect()->route('blog.index')
                 ->with('error', 'You are not authorized to update this post.');
         }
-        
+
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
@@ -155,7 +175,7 @@ class BlogController extends Controller
             if ($post->featured_image) {
                 Storage::disk('public')->delete($post->featured_image);
             }
-            
+
             $imagePath = $request->file('featured_image')->store('featured_images', 'public');
             $validated['featured_image'] = $imagePath;
         }
@@ -185,18 +205,18 @@ class BlogController extends Controller
     public function destroy($id)
     {
         $post = Post::findOrFail($id);
-        
+
         // Authorization check
         if ($post->author_id !== Auth::id() && !Auth::user()->is_admin) {
             return redirect()->route('blog.index')
                 ->with('error', 'You are not authorized to delete this post.');
         }
-        
+
         // Delete featured image if it exists
         if ($post->featured_image) {
             Storage::disk('public')->delete($post->featured_image);
         }
-        
+
         $post->delete();
 
         return redirect()->route('blog.index')
@@ -213,23 +233,23 @@ class BlogController extends Controller
     public function storeComment(Request $request, $postId)
     {
         $post = Post::findOrFail($postId);
-        
+
         $validated = $request->validate([
             'content' => 'required|string',
             'parent_id' => 'nullable|exists:comments,id',
         ]);
-        
+
         $comment = new Comment([
             'content' => $validated['content'],
             'user_id' => Auth::id(),
             'parent_id' => $validated['parent_id'] ?? null,
         ]);
-        
+
         $post->comments()->save($comment);
-        
+
         // Load the user relationship for the new comment
         $comment->load('user');
-        
+
         if ($request->ajax()) {
             return response()->json([
                 'success' => true,
@@ -241,7 +261,7 @@ class BlogController extends Controller
                 'comment_html' => view('partials.comment', ['comment' => $comment])->render()
             ]);
         }
-        
+
         return back()->with('success', 'Comment added successfully!');
     }
 
@@ -256,7 +276,7 @@ class BlogController extends Controller
     {
         $post = Post::findOrFail($id);
         $post->increment('likes');
-        
+
         if ($request->ajax()) {
             return response()->json([
                 'success' => true,
@@ -264,7 +284,7 @@ class BlogController extends Controller
                 'dislikes' => $post->dislikes
             ]);
         }
-        
+
         return back();
     }
 
@@ -279,7 +299,7 @@ class BlogController extends Controller
     {
         $post = Post::findOrFail($id);
         $post->increment('dislikes');
-        
+
         if ($request->ajax()) {
             return response()->json([
                 'success' => true,
@@ -287,7 +307,7 @@ class BlogController extends Controller
                 'dislikes' => $post->dislikes
             ]);
         }
-        
+
         return back();
     }
 }
