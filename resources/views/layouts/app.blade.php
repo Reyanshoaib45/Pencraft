@@ -5,6 +5,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@yield('title', 'BlogHub - Modern Blogging Platform')</title>
+    @if(isset($seo))
+        @include('partials.seo-meta', $seo)
+    @else
+        <title>{{ config('seo.default_title') }}</title>
+        <meta name="description" content="{{ config('seo.default_description') }}">
+    @endif
+
     <meta name="description" content="A modern blogging platform for creative minds" />
     <meta name="author" content="BlogHub" />
     <meta property="og:image" content="/og-image.png" />
