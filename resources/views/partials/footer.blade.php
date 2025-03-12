@@ -7,12 +7,12 @@
             <div class="lg:col-span-2">
                 <a href="{{ route('home') }}" class="flex items-center gap-2 mb-4">
                     <div class="h-8 w-8 rounded-full bg-streamline-600 flex items-center justify-center">
-                        <span class="text-white font-display font-bold text-lg">S</span>
+                        <span class="text-white font-display font-bold text-lg">B</span>
                     </div>
-                    <span class="font-display font-semibold text-xl text-gray-900">StreamLine</span>
+                    <span class="font-display font-semibold text-xl text-gray-900">Blog Hub</span>
                 </a>
                 <p class="text-gray-600 mb-6 max-w-sm">
-                    StreamLine helps teams collaborate seamlessly, automate repetitive tasks, 
+                    Blog Hub helps teams collaborate seamlessly, automate repetitive tasks,
                     and boost productivity with intuitive tools designed for modern workplaces.
                 </p>
                 <div class="flex space-x-4">
@@ -48,51 +48,50 @@
                     </a>
                 </div>
             </div>
-            
+
             <!-- Links -->
             <div>
                 <h3 class="font-semibold text-gray-900 mb-4">Product</h3>
                 <ul class="space-y-3">
-                    <li><a href="#" class="text-gray-600 hover:text-streamline-600 transition-colors">Features</a></li>
-                    <li><a href="#" class="text-gray-600 hover:text-streamline-600 transition-colors">Pricing</a></li>
-                    <li><a href="#" class="text-gray-600 hover:text-streamline-600 transition-colors">Integrations</a></li>
-                    <li><a href="#" class="text-gray-600 hover:text-streamline-600 transition-colors">Changelog</a></li>
-                    <li><a href="#" class="text-gray-600 hover:text-streamline-600 transition-colors">Documentation</a></li>
+                    <li><a href="{{ route('features') }}" class="text-gray-600 hover:text-streamline-600 transition-colors">Features</a></li>
+                    <li><a href="{{ route('writing.tips') }}" class="text-gray-600 hover:text-streamline-600 transition-colors">Writing Tips</a></li>
+                    <li><a href="{{ route('changelog') }}" class="text-gray-600 hover:text-streamline-600 transition-colors">Changelog</a></li>
+                    <li><a href="{{ route('writing.tips') }}" class="text-gray-600 hover:text-streamline-600 transition-colors">Changelog</a></li>
+                    <li><a href="{{ route('documentation') }}" class="text-gray-600 hover:text-streamline-600 transition-colors">Documentation</a></li>
                 </ul>
             </div>
-            
+
             <div>
                 <h3 class="font-semibold text-gray-900 mb-4">Company</h3>
                 <ul class="space-y-3">
-                    <li><a href="#" class="text-gray-600 hover:text-streamline-600 transition-colors">About Us</a></li>
-                    <li><a href="#" class="text-gray-600 hover:text-streamline-600 transition-colors">Blog</a></li>
-                    <li><a href="#" class="text-gray-600 hover:text-streamline-600 transition-colors">Careers</a></li>
-                    <li><a href="#" class="text-gray-600 hover:text-streamline-600 transition-colors">Customers</a></li>
-                    <li><a href="#" class="text-gray-600 hover:text-streamline-600 transition-colors">Press</a></li>
+                    <li><a href="{{ route('about') }}" class="text-gray-600 hover:text-streamline-600 transition-colors">About Us</a></li>
+                    <li><a href="{{ route('blog-page') }}" class="text-gray-600 hover:text-streamline-600 transition-colors">Blog</a></li>
+                    <li><a href="{{ route('careers') }}" class="text-gray-600 hover:text-streamline-600 transition-colors">Careers</a></li>
+                    <li><a href="{{ route('customers') }}" class="text-gray-600 hover:text-streamline-600 transition-colors">Customers</a></li>
                 </ul>
             </div>
-            
+
             <div>
                 <h3 class="font-semibold text-gray-900 mb-4">Resources</h3>
                 <ul class="space-y-3">
-                    <li><a href="#" class="text-gray-600 hover:text-streamline-600 transition-colors">Help Center</a></li>
-                    <li><a href="#" class="text-gray-600 hover:text-streamline-600 transition-colors">Contact Us</a></li>
-                    <li><a href="#" class="text-gray-600 hover:text-streamline-600 transition-colors">Privacy Policy</a></li>
-                    <li><a href="#" class="text-gray-600 hover:text-streamline-600 transition-colors">Terms of Service</a></li>
-                    <li><a href="#" class="text-gray-600 hover:text-streamline-600 transition-colors">Status</a></li>
+                    <li><a href="{{ route('help-center') }}" class="text-gray-600 hover:text-streamline-600 transition-colors">Help Center</a></li>
+                    <li><a href="{{ route('contact') }}" class="text-gray-600 hover:text-streamline-600 transition-colors">Contact Us</a></li>
+                    <li><a href="{{ route('privacy') }}" class="text-gray-600 hover:text-streamline-600 transition-colors">Privacy Policy</a></li>
+                    <li><a href="{{ route('terms') }}" class="text-gray-600 hover:text-streamline-600 transition-colors">Terms of Service</a></li>
+                    <li><a href="{{ route('status') }}" class="text-gray-600 hover:text-streamline-600 transition-colors">Status</a></li>
                 </ul>
             </div>
         </div>
-        
+
         <!-- Bottom Footer -->
         <div class="border-t border-gray-100 py-6 flex flex-col md:flex-row justify-between items-center">
             <p class="text-gray-500 text-sm mb-4 md:mb-0">
-                &copy; {{ date('Y') }} StreamLine. All rights reserved.
+                &copy; {{ date('Y') }} Blog Hub. All rights reserved.
             </p>
             <div class="flex space-x-6">
-                <a href="#" class="text-sm text-gray-500 hover:text-streamline-600 transition-colors">Privacy Policy</a>
-                <a href="#" class="text-sm text-gray-500 hover:text-streamline-600 transition-colors">Terms of Service</a>
-                <a href="#" class="text-sm text-gray-500 hover:text-streamline-600 transition-colors">Cookie Policy</a>
+                <a href="{{ route('privacy') }}" class="text-sm text-gray-500 hover:text-streamline-600 transition-colors">Privacy Policy</a>
+                <a href="{{ route('terms') }}" class="text-sm text-gray-500 hover:text-streamline-600 transition-colors">Terms of Service</a>
+                <a href="{{ route('features') }}" class="text-sm text-gray-500 hover:text-streamline-600 transition-colors">Cookie Policy</a>
             </div>
         </div>
     </div>

@@ -1,11 +1,10 @@
 @extends('layouts.app')
-
 @section('content')
     <main class="container mx-auto px-4 py-16 max-w-7xl">
         <div class="text-center mb-16">
             <h1 class="text-4xl md:text-5xl font-bold mb-4">Our Customers</h1>
             <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                Thousands of teams trust StreamLine to boost their productivity
+                Thousands of teams trust Blog Hub to boost their productivity
             </p>
         </div>
 
@@ -53,7 +52,7 @@
                         </div>
                         <div class="md:w-2/3">
                             <blockquote class="text-lg text-gray-700 italic mb-6">
-                                "StreamLine has transformed how our team collaborates. We've seen a 40% increase in productivity since implementing the platform across our organization."
+                                "Blog Hub has transformed how our team collaborates. We've seen a 40% increase in productivity since implementing the platform across our organization."
                             </blockquote>
                             <div class="flex items-center">
                                 <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5" alt="Profile" class="h-12 w-12 rounded-full mr-4">
@@ -75,7 +74,7 @@
                         </div>
                         <div class="md:w-2/3">
                             <blockquote class="text-lg text-gray-700 italic mb-6">
-                                "The automation capabilities in StreamLine have saved us countless hours of manual work. Our team can now focus on what really matters — building great products."
+                                "The automation capabilities in Blog Hub have saved us countless hours of manual work. Our team can now focus on what really matters — building great products."
                             </blockquote>
                             <div class="flex items-center">
                                 <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330" alt="Profile" class="h-12 w-12 rounded-full mr-4">
@@ -97,7 +96,7 @@
                         </div>
                         <div class="md:w-2/3">
                             <blockquote class="text-lg text-gray-700 italic mb-6">
-                                "Implementing StreamLine across our 500+ employee organization was seamless. The customer support team was exceptional throughout the onboarding process."
+                                "Implementing Blog Hub across our 500+ employee organization was seamless. The customer support team was exceptional throughout the onboarding process."
                             </blockquote>
                             <div class="flex items-center">
                                 <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d" alt="Profile" class="h-12 w-12 rounded-full mr-4">

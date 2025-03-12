@@ -6,7 +6,7 @@
     <div class="text-center mb-16">
         <h1 class="text-4xl md:text-5xl font-bold mb-4">Changelog</h1>
         <p class="text-xl text-gray-600">
-            Keep track of all the updates and improvements to StreamLine
+            Keep track of all the updates and improvements to Blog Hub
         </p>
     </div>
 
@@ -31,7 +31,7 @@
                 </ul>
             </div>
         </div>
-        
+
         <div class="border-l-4 border-streamline-500 pl-6 relative">
             <div class="absolute -left-3 top-0 h-6 w-6 rounded-full bg-streamline-500 flex items-center justify-center">
                 <div class="h-2 w-2 rounded-full bg-white"></div>
@@ -51,7 +51,7 @@
                 </ul>
             </div>
         </div>
-        
+
         <div class="border-l-4 border-streamline-500 pl-6 relative">
             <div class="absolute -left-3 top-0 h-6 w-6 rounded-full bg-streamline-500 flex items-center justify-center">
                 <div class="h-2 w-2 rounded-full bg-white"></div>
@@ -71,7 +71,7 @@
                 </ul>
             </div>
         </div>
-        
+
         <div class="border-l-4 border-streamline-500 pl-6 relative">
             <div class="absolute -left-3 top-0 h-6 w-6 rounded-full bg-streamline-500 flex items-center justify-center">
                 <div class="h-2 w-2 rounded-full bg-white"></div>
@@ -91,7 +91,7 @@
                 </ul>
             </div>
         </div>
-        
+
         <div class="border-l-4 border-streamline-500 pl-6 relative">
             <div class="absolute -left-3 top-0 h-6 w-6 rounded-full bg-streamline-500 flex items-center justify-center">
                 <div class="h-2 w-2 rounded-full bg-white"></div>
