@@ -61,7 +61,7 @@
                     },
                     boxShadow: {
                         'soft': '0 5px 15px rgba(0, 0, 0, 0.05)',
-                        // 'hover': '0 10px 25px rgba(155, 135, 245, 0.2)'
+                        'hover': '0 10px 25px rgba(155, 135, 245, 0.2)'
                     },
                     animation: {
                         "fade-in": "fadeIn 0.5s ease-out",

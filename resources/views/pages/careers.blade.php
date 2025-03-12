@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('content')
@@ -11,7 +10,7 @@
     </div>
 
     <div class="bg-white p-8 rounded-lg shadow-md mb-12">
-        <h2 class="text-2xl font-bold mb-4">Why Work at StreamLine?</h2>
+        <h2 class="text-2xl font-bold mb-4">Why Work at Blog Hub?</h2>
         <div class="grid md:grid-cols-3 gap-8 mb-8">
             <div>
                 <div class="h-12 w-12 bg-streamline-100 text-streamline-600 rounded-md flex items-center justify-center mb-4">
@@ -22,7 +21,7 @@
                     We're pushing the boundaries of what's possible in productivity software.
                 </p>
             </div>
-            
+
             <div>
                 <div class="h-12 w-12 bg-streamline-100 text-streamline-600 rounded-md flex items-center justify-center mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 20H8"/><path d="M17 9h.01"/><rect width="10" height="16" x="7" y="4" rx="2"/><path d="M11 4h2"/><path d="M12 18.5v.5"/></svg>
@@ -32,7 +31,7 @@
                     Work from anywhere in the world with our distributed team setup.
                 </p>
             </div>
-            
+
             <div>
                 <div class="h-12 w-12 bg-streamline-100 text-streamline-600 rounded-md flex items-center justify-center mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg>
@@ -44,10 +43,10 @@
             </div>
         </div>
     </div>
-    
+
     <div class="mb-16">
         <h2 class="text-2xl font-bold mb-6 text-center">Open Positions</h2>
-        
+
         <div class="space-y-6">
             <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 hover:border-streamline-200 transition-all">
                 <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
@@ -59,7 +58,7 @@
                     <a href="#" class="btn-primary whitespace-nowrap">Apply Now</a>
                 </div>
             </div>
-            
+
             <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 hover:border-streamline-200 transition-all">
                 <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
                     <div>
@@ -70,7 +69,7 @@
                     <a href="#" class="btn-primary whitespace-nowrap">Apply Now</a>
                 </div>
             </div>
-            
+
             <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 hover:border-streamline-200 transition-all">
                 <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
                     <div>
@@ -81,18 +80,18 @@
                     <a href="#" class="btn-primary whitespace-nowrap">Apply Now</a>
                 </div>
             </div>
-            
+
             <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 hover:border-streamline-200 transition-all">
                 <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
                     <div>
                         <h3 class="text-xl font-semibold">Customer Success Manager</h3>
                         <p class="text-gray-500 mb-3">Customer Success • Remote • Full-time</p>
-                        <p class="text-gray-700">Help our customers get the most out of StreamLine and ensure they're successful.</p>
+                        <p class="text-gray-700">Help our customers get the most out of Blog Hub and ensure they're successful.</p>
                     </div>
                     <a href="#" class="btn-primary whitespace-nowrap">Apply Now</a>
                 </div>
             </div>
-            
+
             <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 hover:border-streamline-200 transition-all">
                 <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
                     <div>
@@ -105,7 +104,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="bg-streamline-50 p-8 rounded-lg text-center">
         <h2 class="text-2xl font-bold mb-4">Don't see a position that fits?</h2>
         <p class="text-gray-700 mb-6 max-w-2xl mx-auto">

@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <div class="container mx-auto px-4 py-10 max-w-5xl">
         <div class="animate-fade-in">
@@ -83,7 +82,7 @@
 
                 <h2 class="text-xl font-semibold mb-4 text-streamline-700">9. Contact Us</h2>
                 <p class="mb-4 text-gray-700">
-                    If you have any questions about this Privacy Policy, please contact us at privacy@streamline.com.
+                    If you have any questions about this Privacy Policy, please contact us at privacy@BlogHub.com.
                 </p>
 
                 <p class="mt-8 text-gray-500 text-sm">Last Updated: July 1, 2024</p>

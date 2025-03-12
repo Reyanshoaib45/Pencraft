@@ -14,8 +14,8 @@
                 <h2 class="text-xl font-semibold mb-4 text-streamline-700">2. Definitions</h2>
                 <p class="mb-4 text-gray-700">
                     <strong>"User", "You", "Your"</strong>: refers to any individual accessing or using our platform.<br>
-                    <strong>"StreamLine", "We", "Our", "Us"</strong>: refers to the StreamLine platform and its operators.<br>
-                    <strong>"Service"</strong>: refers to the website, content, and features offered by StreamLine.
+                    <strong>"Blog Hub", "We", "Our", "Us"</strong>: refers to the Blog Hub platform and its operators.<br>
+                    <strong>"Service"</strong>: refers to the website, content, and features offered by Blog Hub.
                 </p>
 
                 <h2 class="text-xl font-semibold mb-4 text-streamline-700">3. User Accounts</h2>
@@ -71,7 +71,7 @@
 
                 <h2 class="text-xl font-semibold mb-4 text-streamline-700">10. Contact Information</h2>
                 <p class="mb-4 text-gray-700">
-                    If you have any questions about these Terms, please contact us at support@streamline.com.
+                    If you have any questions about these Terms, please contact us at support@BlogHub.com.
                 </p>
             </div>
 

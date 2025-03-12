@@ -1,6 +1,4 @@
-
 @extends('layouts.app')
-
 @section('content')
     <div class="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
         <div class="bg-white shadow-xl rounded-lg overflow-hidden">
@@ -22,7 +20,7 @@
                     <div>
                         <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">Get in Touch</h2>
                         <p class="text-gray-600 mb-8">
-                            Have questions about StreamLine? Want to partner with us? Or just want to say hello?
+                            Have questions about Blog Hub? Want to partner with us? Or just want to say hello?
                             We'd love to hear from you. Fill out the form and we'll get back to you as soon as possible.
                         </p>
 
@@ -48,7 +46,7 @@
                                 </div>
                                 <div>
                                     <h3 class="text-lg font-semibold text-gray-900">Email</h3>
-                                    <p class="text-gray-600 mt-1">info@streamline.com</p>
+                                    <p class="text-gray-600 mt-1">info@Blog Hub.com</p>
                                     <p class="text-gray-600">We'll respond as soon as possible</p>
                                 </div>
                             </div>
