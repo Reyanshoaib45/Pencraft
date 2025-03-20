@@ -2,7 +2,7 @@
 @section('content')
 <main class="container mx-auto px-4 py-16 max-w-7xl">
     <div class="text-center mb-16">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">Blog Hub Features</h1>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Pencraft Features</h1>
         <p class="text-xl text-gray-600 max-w-3xl mx-auto">
             Powerful tools designed to streamline your workflow and boost productivity
         </p>

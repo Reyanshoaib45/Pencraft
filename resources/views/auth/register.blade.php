@@ -1,12 +1,10 @@
-
 @extends('layouts.app')
-
 @section('content')
 <div class="py-20 min-h-screen flex items-center justify-center bg-gray-50">
     <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md animate-fade-in">
         <div class="text-center mb-8">
             <h1 class="text-2xl font-bold text-gray-900 mb-2">Create Account</h1>
-            <p class="text-gray-600">Join StreamLine and boost your productivity</p>
+            <p class="text-gray-600">Join Pencraft and boost your productivity</p>
         </div>
 
         @if ($errors->any())
@@ -21,17 +19,17 @@
 
         <form action="{{ route('register') }}" method="POST" class="space-y-6" enctype="multipart/form-data">
             @csrf
-            
+
             <div>
                 <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                <input id="name" name="name" type="text" value="{{ old('name') }}" required 
+                <input id="name" name="name" type="text" value="{{ old('name') }}" required
                     class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-streamline-500"
                     placeholder="Enter your name">
             </div>
 
             <div>
                 <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                <input id="email" name="email" type="email" value="{{ old('email') }}" required 
+                <input id="email" name="email" type="email" value="{{ old('email') }}" required
                     class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-streamline-500"
                     placeholder="Enter your email">
             </div>
@@ -45,7 +43,7 @@
                         </svg>
                     </div>
                     <div class="flex-1">
-                        <input id="profile_picture" name="profile_picture" type="file" accept="image/*" 
+                        <input id="profile_picture" name="profile_picture" type="file" accept="image/*"
                             class="w-full text-sm text-gray-500 border border-gray-300 rounded-md file:mr-4 file:py-2 file:px-4 file:bg-streamline-500 file:text-white file:border-none hover:file:bg-streamline-600"
                             onchange="previewImage(this)">
                         <p class="mt-1 text-xs text-gray-500">JPG, PNG or GIF (Max. 2MB)</p>
@@ -55,7 +53,7 @@
 
             <div>
                 <label for="bio" class="block text-sm font-medium text-gray-700 mb-1">Bio</label>
-                <textarea id="bio" name="bio" rows="3" 
+                <textarea id="bio" name="bio" rows="3"
                     class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-streamline-500"
                     placeholder="Tell us about yourself">{{ old('bio') }}</textarea>
             </div>
@@ -63,13 +61,13 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                     <label for="twitter" class="block text-sm font-medium text-gray-700 mb-1">Twitter</label>
-                    <input id="twitter" name="twitter" type="text" value="{{ old('twitter') }}" 
+                    <input id="twitter" name="twitter" type="text" value="{{ old('twitter') }}"
                         class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-streamline-500"
                         placeholder="Twitter username">
                 </div>
                 <div>
                     <label for="facebook" class="block text-sm font-medium text-gray-700 mb-1">Facebook</label>
-                    <input id="facebook" name="facebook" type="text" value="{{ old('facebook') }}" 
+                    <input id="facebook" name="facebook" type="text" value="{{ old('facebook') }}"
                         class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-streamline-500"
                         placeholder="Facebook username">
                 </div>
@@ -78,13 +76,13 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                     <label for="linkedin" class="block text-sm font-medium text-gray-700 mb-1">LinkedIn</label>
-                    <input id="linkedin" name="linkedin" type="text" value="{{ old('linkedin') }}" 
+                    <input id="linkedin" name="linkedin" type="text" value="{{ old('linkedin') }}"
                         class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-streamline-500"
                         placeholder="LinkedIn username">
                 </div>
                 <div>
                     <label for="instagram" class="block text-sm font-medium text-gray-700 mb-1">Instagram</label>
-                    <input id="instagram" name="instagram" type="text" value="{{ old('instagram') }}" 
+                    <input id="instagram" name="instagram" type="text" value="{{ old('instagram') }}"
                         class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-streamline-500"
                         placeholder="Instagram username">
                 </div>
@@ -92,14 +90,14 @@
 
             <div>
                 <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
-                <input id="password" name="password" type="password" required 
+                <input id="password" name="password" type="password" required
                     class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-streamline-500"
                     placeholder="Create a password">
             </div>
 
             <div>
                 <label for="password_confirmation" class="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
-                <input id="password_confirmation" name="password_confirmation" type="password" required 
+                <input id="password_confirmation" name="password_confirmation" type="password" required
                     class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-streamline-500"
                     placeholder="Confirm your password">
             </div>
@@ -113,7 +111,7 @@
 
         <div class="mt-6 text-center">
             <p class="text-sm text-gray-600">
-                Already have an account? 
+                Already have an account?
                 <a href="{{ route('login') }}" class="text-streamline-600 hover:text-streamline-500 font-medium">
                     Sign in
                 </a>
@@ -127,11 +125,11 @@
         const preview = document.getElementById('image-preview');
         if (input.files && input.files[0]) {
             const reader = new FileReader();
-            
+
             reader.onload = function(e) {
                 preview.innerHTML = `<img src="${e.target.result}" class="w-full h-full object-cover" alt="Profile Preview">`;
             };
-            
+
             reader.readAsDataURL(input.files[0]);
         } else {
             preview.innerHTML = `

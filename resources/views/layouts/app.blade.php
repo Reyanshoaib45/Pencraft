@@ -35,24 +35,24 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#9b87f5',
-                        secondary: '#7E69AB',
-                        tertiary: '#6E59A5',
-                        dark: '#1A1F2C',
-                        light: '#F6F6F7',
-                        accent: '#D6BCFA',
-                        muted: '#8E9196',
+                        primary: '#000000',  // Black
+                        secondary: '#333333', // Dark Gray
+                        tertiary: '#666666', // Medium Gray
+                        dark: '#000000', // Black
+                        light: '#FFFFFF', // White
+                        accent: '#DDDDDD', // Light Gray
+                        muted: '#AAAAAA', // Muted Gray
                         streamline: {
-                            50: "#f0f9ff",
-                            100: "#e0f2fe",
-                            200: "#bae6fd",
-                            300: "#7dd3fc",
-                            400: "#38bdf8",
-                            500: "#0ea5e9",
-                            600: "#0284c7",
-                            700: "#0369a1",
-                            800: "#075985",
-                            900: "#0c4a6e"
+                            50: "#F9F9F9",
+                            100: "#EDEDED",
+                            200: "#D6D6D6",
+                            300: "#BFBFBF",
+                            400: "#999999",
+                            500: "#7F7F7F",
+                            600: "#666666",
+                            700: "#4D4D4D",
+                            800: "#333333",
+                            900: "#1A1A1A"
                         },
                     },
                     fontFamily: {
@@ -60,8 +60,8 @@
                         display: ['Inter', 'sans-serif']
                     },
                     boxShadow: {
-                        'soft': '0 5px 15px rgba(0, 0, 0, 0.05)',
-                        'hover': '0 10px 25px rgba(155, 135, 245, 0.2)'
+                        'soft': '0 5px 15px rgba(0, 0, 0, 0.1)',
+                        'hover': '0 10px 25px rgba(0, 0, 0, 0.3)'
                     },
                     animation: {
                         "fade-in": "fadeIn 0.5s ease-out",
@@ -121,6 +121,7 @@
                 }
             }
         }
+
     </script>
 </head>
 
@@ -132,12 +133,76 @@
 </div>
 
 @include('partials.footer') <!-- Include Footer -->
-<script>
-    < script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" >
+
+    <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" >
 </script>
 <script src="{{ asset('js/custom.js') }}"></script>
 <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Load navbar and footer
+        $("#navbar-container").load("navbar.html", function () {
+            // Execute navbar script after loading
+            $("#mobile-menu-button").on("click", function () {
+                $("#mobile-menu").toggleClass("hidden");
+            });
+
+            // Navbar scroll effect
+            $(window).on("scroll", function () {
+                if ($(window).scrollTop() > 10) {
+                    $("#navbar").addClass("bg-white/90 backdrop-blur-sm shadow-sm").removeClass("bg-transparent");
+                } else {
+                    $("#navbar").removeClass("bg-white/90 backdrop-blur-sm shadow-sm").addClass("bg-transparent");
+                }
+            });
+        });
+
+        $("#footer-container").load("footer.html");
+
+        // Featured posts slider
+        let activeIndex = 0;
+        const totalSlides = 5;
+
+        function updateSlider() {
+            $("#slider-container").css("transform", `translateX(-${activeIndex * 100}%)`);
+        }
+
+        $("#next-slide").on("click", function () {
+            activeIndex = (activeIndex === totalSlides - 1) ? 0 : activeIndex + 1;
+            updateSlider();
+        });
+
+        $("#prev-slide").on("click", function () {
+            activeIndex = (activeIndex === 0) ? totalSlides - 1 : activeIndex - 1;
+            updateSlider();
+        });
+
+        // Auto-slide
+        setInterval(function () {
+            activeIndex = (activeIndex === totalSlides - 1) ? 0 : activeIndex + 1;
+            updateSlider();
+        }, 5000);
+
+        // Subscribe form
+        $("#subscribe-form").on("submit", function (e) {
+            e.preventDefault();
+            let emailInput = $(this).find('input[type="email"]');
+            let submitButton = $(this).find('button[type="submit"]');
+
+            // Save original button text
+            let originalText = submitButton.text();
+            submitButton.text("Subscribing...").prop("disabled", true);
+
+            // Simulate API call
+            setTimeout(function () {
+                alert("Thank you for subscribing!");
+                emailInput.val("");
+                submitButton.text(originalText).prop("disabled", false);
+            }, 1500);
+        });
+    });
 </script>
 
 <!-- Page-Specific Scripts -->

@@ -6,7 +6,7 @@
     <div class="bg-white shadow-xl rounded-lg overflow-hidden">
         <div class="bg-gradient-to-r from-purple-600 to-indigo-600 h-32 md:h-64 flex items-center">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
-                <h1 class="text-3xl md:text-5xl font-bold text-white">About Blog Hub</h1>
+                <h1 class="text-3xl md:text-5xl font-bold text-white">About Pencraft</h1>
             </div>
         </div>
 
@@ -15,7 +15,7 @@
                 <div class="space-y-6">
                     <h2 class="text-2xl md:text-3xl font-bold text-gray-900">Our Story</h2>
                     <p class="text-gray-600">
-                        Founded in 2020, Blog Hub began with a simple mission: to help teams collaborate more effectively.
+                        Founded in 2020, Pencraft began with a simple mission: to help teams collaborate more effectively.
                         What started as a small project between friends has grown into a comprehensive platform used by
                         organizations around the world.
                     </p>

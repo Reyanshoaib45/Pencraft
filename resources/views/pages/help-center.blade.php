@@ -4,7 +4,7 @@
         <div class="text-center mb-16">
             <h1 class="text-4xl md:text-5xl font-bold mb-4">Help Center</h1>
             <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                Find answers to your questions and learn how to get the most out of Blog Hub.
+                Find answers to your questions and learn how to get the most out of Pencraft.
             </p>
 
             <div class="mt-8 max-w-2xl mx-auto">
@@ -43,7 +43,7 @@
                     </div>
                     <h3 class="text-xl font-semibold mb-2">Getting Started</h3>
                     <p class="text-gray-600 mb-4">
-                        Everything you need to know to start using Blog Hub effectively.
+                        Everything you need to know to start using Pencraft effectively.
                     </p>
                     <ul class="space-y-2">
                         <li>
@@ -67,7 +67,7 @@
                     </div>
                     <h3 class="text-xl font-semibold mb-2">FAQs</h3>
                     <p class="text-gray-600 mb-4">
-                        Answers to the most commonly asked questions about Blog Hub.
+                        Answers to the most commonly asked questions about Pencraft.
                     </p>
                     <ul class="space-y-2">
                         <li>
@@ -90,7 +90,7 @@
                     </div>
                     <h3 class="text-xl font-semibold mb-2">Tutorials</h3>
                     <p class="text-gray-600 mb-4">
-                        Step-by-step guides to help you master all Blog Hub features.
+                        Step-by-step guides to help you master all Pencraft features.
                     </p>
                     <ul class="space-y-2">
                         <li>
@@ -132,7 +132,7 @@
                     </div>
                     <h3 class="text-xl font-semibold mb-2">Community Forum</h3>
                     <p class="text-gray-600 mb-4">
-                        Connect with other Blog Hub users to share tips and get advice.
+                        Connect with other Pencraft users to share tips and get advice.
                     </p>
                     <a href="#" class="btn-primary">Join Community</a>
                 </div>

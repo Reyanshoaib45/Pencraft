@@ -1,12 +1,10 @@
-
 @extends('layouts.app')
-
 @section('content')
 <div class="py-20 min-h-screen flex items-center justify-center bg-gray-50">
     <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md animate-fade-in">
         <div class="text-center mb-8">
             <h1 class="text-2xl font-bold text-gray-900 mb-2">Welcome Back</h1>
-            <p class="text-gray-600">Sign in to continue to StreamLine</p>
+            <p class="text-gray-600">Sign in to continue to Pencraft</p>
         </div>
 
         @if ($errors->any())
@@ -27,10 +25,10 @@
 
         <form action="{{ route('login') }}" method="POST" class="space-y-6">
             @csrf
-            
+
             <div>
                 <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                <input id="email" name="email" type="email" value="{{ old('email') }}" required 
+                <input id="email" name="email" type="email" value="{{ old('email') }}" required
                     class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-streamline-500"
                     placeholder="Enter your email">
             </div>
@@ -40,7 +38,7 @@
                     <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
                     <a href="{{ route('password.change') }}" class="text-sm text-streamline-600 hover:text-streamline-500">Forgot password?</a>
                 </div>
-                <input id="password" name="password" type="password" required 
+                <input id="password" name="password" type="password" required
                     class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-streamline-500"
                     placeholder="Enter your password">
             </div>
@@ -59,7 +57,7 @@
 
         <div class="mt-6 text-center">
             <p class="text-sm text-gray-600">
-                Don't have an account? 
+                Don't have an account?
                 <a href="{{ route('register') }}" class="text-streamline-600 hover:text-streamline-500 font-medium">
                     Sign up
                 </a>

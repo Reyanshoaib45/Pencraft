@@ -6,7 +6,7 @@
     <div class="text-center mb-16">
         <h1 class="text-4xl md:text-5xl font-bold mb-4">Documentation</h1>
         <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-            Everything you need to know about using Blog Hub effectively
+            Everything you need to know about using Pencraft effectively
         </p>
     </div>
 
@@ -44,7 +44,7 @@
                 <div class="space-y-4">
                     <p class="text-gray-700">Follow these steps to set up your StreamLine account:</p>
                     <ol class="list-decimal pl-5 space-y-3 text-gray-700">
-                        <li>Sign up for an account on the Blog Hub website.</li>
+                        <li>Sign up for an account on the Pencraft website.</li>
                         <li>Verify your email address.</li>
                         <li>Complete your profile information.</li>
                         <li>Select your workspace preferences.</li>

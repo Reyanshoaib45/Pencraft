@@ -6,7 +6,7 @@
     <div class="text-center mb-16">
         <h1 class="text-4xl md:text-5xl font-bold mb-4">Changelog</h1>
         <p class="text-xl text-gray-600">
-            Keep track of all the updates and improvements to Blog Hub
+            Keep track of all the updates and improvements to Pencraft
         </p>
     </div>
 
