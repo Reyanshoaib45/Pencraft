@@ -4,7 +4,7 @@
 @section('content')
 <main class="container mx-auto px-4 py-16 max-w-7xl">
     <div class="text-center mb-16">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">Blog Hub Blogs</h1>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Pencraft Blogs</h1>
         <p class="text-xl text-gray-600 max-w-3xl mx-auto">
             Insights, tips, and news about productivity and team collaboration
         </p>
@@ -16,6 +16,7 @@
                 src="https://images.unsplash.com/photo-1517048676732-d65bc937f952"
                 alt="Team collaboration"
                 class="w-full h-48 object-cover"
+                loading="lazy"
             />
             <div class="p-6">
                 <span class="text-streamline-600 text-sm font-medium">Productivity</span>
@@ -38,6 +39,7 @@
         <div class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100">
             <img
                 src="https://images.unsplash.com/photo-1552664730-d307ca884978"
+                loading="lazy"
                 alt="Meeting"
                 class="w-full h-48 object-cover"
             />
@@ -63,6 +65,7 @@
             <img
                 src="https://images.unsplash.com/photo-1499750310107-5fef28a66643"
                 alt="Project planning"
+                loading="lazy"
                 class="w-full h-48 object-cover"
             />
             <div class="p-6">
@@ -87,6 +90,7 @@
             <img
                 src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0"
                 alt="Data analytics"
+                loading="lazy"
                 class="w-full h-48 object-cover"
             />
             <div class="p-6">
@@ -112,6 +116,8 @@
                 src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3"
                 alt="Integrations"
                 class="w-full h-48 object-cover"
+                loading="lazy"
+
             />
             <div class="p-6">
                 <span class="text-streamline-600 text-sm font-medium">Integrations</span>
@@ -135,6 +141,7 @@
             <img
                 src="https://images.unsplash.com/photo-1551434678-e076c223a692"
                 alt="Company culture"
+                loading="lazy"
                 class="w-full h-48 object-cover"
             />
             <div class="p-6">
@@ -157,9 +164,9 @@
     </div>
 
     <div class="flex justify-center">
-        <button class="bg-streamline-600 text-white px-6 py-3 rounded-md hover:bg-streamline-700 transition-colors">
-            Load More Articles
-        </button>
+        <a href="{{ route('register') }}" class="bg-streamline-600 text-white px-6 py-3 rounded-md hover:bg-streamline-700 transition-colors">
+            Sign up for more articles
+        </a>
     </div>
 </main>
 @endsection

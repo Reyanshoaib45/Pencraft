@@ -10,7 +10,7 @@
     </div>
 
     <div class="bg-white p-8 rounded-lg shadow-md mb-12">
-        <h2 class="text-2xl font-bold mb-4">Why Work at Blog Hub?</h2>
+        <h2 class="text-2xl font-bold mb-4">Why Work at Pencraft?</h2>
         <div class="grid md:grid-cols-3 gap-8 mb-8">
             <div>
                 <div class="h-12 w-12 bg-streamline-100 text-streamline-600 rounded-md flex items-center justify-center mb-4">
@@ -86,7 +86,7 @@
                     <div>
                         <h3 class="text-xl font-semibold">Customer Success Manager</h3>
                         <p class="text-gray-500 mb-3">Customer Success • Remote • Full-time</p>
-                        <p class="text-gray-700">Help our customers get the most out of Blog Hub and ensure they're successful.</p>
+                        <p class="text-gray-700">Help our customers get the most out of Pencraft and ensure they're successful.</p>
                     </div>
                     <a href="#" class="btn-primary whitespace-nowrap">Apply Now</a>
                 </div>

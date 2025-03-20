@@ -20,7 +20,7 @@
                     <div>
                         <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">Get in Touch</h2>
                         <p class="text-gray-600 mb-8">
-                            Have questions about Blog Hub? Want to partner with us? Or just want to say hello?
+                            Have questions about Pencraft? Want to partner with us? Or just want to say hello?
                             We'd love to hear from you. Fill out the form and we'll get back to you as soon as possible.
                         </p>
 
@@ -46,7 +46,7 @@
                                 </div>
                                 <div>
                                     <h3 class="text-lg font-semibold text-gray-900">Email</h3>
-                                    <p class="text-gray-600 mt-1">info@Blog Hub.com</p>
+                                    <p class="text-gray-600 mt-1">info@Pencraft.com</p>
                                     <p class="text-gray-600">We'll respond as soon as possible</p>
                                 </div>
                             </div>

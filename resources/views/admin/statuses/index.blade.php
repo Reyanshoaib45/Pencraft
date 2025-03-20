@@ -4,7 +4,7 @@
         <div class="text-center mb-16">
             <h1 class="text-4xl md:text-5xl font-bold mb-4">System Status</h1>
             <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                Check the current operational status of all StreamLine services
+                Check the current operational status of all Pencraft services
             </p>
         </div>
 
