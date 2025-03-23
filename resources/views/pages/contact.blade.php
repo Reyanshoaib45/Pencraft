@@ -124,7 +124,7 @@
                     <h2 class="text-2xl font-bold text-gray-900 mb-6">Find Us</h2>
                     <div class="h-96 bg-gray-200 rounded-lg overflow-hidden">
                         <!-- Placeholder for a map -->
-                        <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b" alt="Location map" class="w-full h-full object-cover">
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b" alt="Location map" class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>

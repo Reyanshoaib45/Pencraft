@@ -41,27 +41,27 @@
             <form action="{{ route('blog.update', $post->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                
+
                 <!-- Title -->
                 <div class="mb-6">
                     <label for="title" class="block text-sm font-medium text-gray-700 mb-2">Title</label>
-                    <input 
-                        type="text" 
-                        id="title" 
-                        name="title" 
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
                         class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-transparent"
-                        placeholder="Enter post title" 
+                        placeholder="Enter post title"
                         value="{{ old('title', $post->title) }}"
                         required
                     >
                 </div>
-                
+
                 <!-- Category -->
                 <div class="mb-6">
                     <label for="category" class="block text-sm font-medium text-gray-700 mb-2">Category</label>
-                    <select 
-                        id="category" 
-                        name="category" 
+                    <select
+                        id="category"
+                        name="category"
                         class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-transparent"
                         required
                     >
@@ -74,18 +74,18 @@
                         <option value="Remote Work" {{ old('category', $post->category) == 'Remote Work' ? 'selected' : '' }}>Remote Work</option>
                     </select>
                 </div>
-                
+
                 <!-- Featured Image -->
                 <div class="mb-6">
                     <label for="featured_image" class="block text-sm font-medium text-gray-700 mb-2">Featured Image</label>
-                    
+
                     @if ($post->featured_image)
                         <div class="mb-4">
                             <p class="text-sm text-gray-500 mb-2">Current Image:</p>
-                            <img src="{{ asset('storage/' . $post->featured_image) }}" alt="Current featured image" class="w-48 h-auto rounded-md">
+                            <img loading="lazy" loading="lazy" src="{{ asset('storage/' . $post->featured_image) }}" alt="Current featured image" class="w-48 h-auto rounded-md">
                         </div>
                     @endif
-                    
+
                     <div class="border-2 border-dashed border-gray-300 rounded-md px-6 py-8 text-center">
                         <div class="space-y-1 text-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -104,7 +104,7 @@
                         </div>
                         <div id="image-preview" class="mt-4 hidden">
                             <div class="max-w-xs mx-auto">
-                                <img id="preview-image" src="#" alt="Preview" class="max-h-48 rounded-md mx-auto">
+                                <img loading="lazy" loading="lazy" id="preview-image" src="#" alt="Preview" class="max-h-48 rounded-md mx-auto">
                                 <button type="button" id="remove-image" class="mt-2 text-sm text-red-600 hover:text-red-800">
                                     Remove new image
                                 </button>
@@ -112,42 +112,44 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Content -->
                 <div class="mb-6">
                     <label for="content" class="block text-sm font-medium text-gray-700 mb-2">Content</label>
-                    <textarea 
-                        id="content" 
-                        name="content" 
-                        rows="12" 
+                    <textarea
+                        id="content"
+                        name="content"
+                        rows="12"
                         class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-transparent"
                         placeholder="Write your blog post content here..."
                         required
                     >{{ old('content', $post->content) }}</textarea>
                     <p class="text-sm text-gray-500 mt-1">Markdown formatting supported</p>
                 </div>
-                
+
                 <!-- Tags -->
                 <div class="mb-6">
                     <label for="tags" class="block text-sm font-medium text-gray-700 mb-2">Tags</label>
-                    <input 
-                        type="text" 
-                        id="tags" 
-                        name="tags" 
+                    <input
+                        type="text"
+                        id="tags"
+                        name="tags"
                         class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-transparent"
-                        placeholder="Enter tags separated by commas (e.g. productivity, tools, automation)" 
+                        placeholder="Enter tags separated by commas (e.g. productivity, tools, automation)"
                         value="{{ old('tags', is_array($post->tags) ? implode(', ', $post->tags) : $post->tags) }}"
                     >
                     <p class="text-sm text-gray-500 mt-1">Separate tags with commas</p>
                 </div>
-                
+
                 <!-- Publish Status -->
                 <div class="mb-8">
                     <div class="flex items-center">
-                        <input 
-                            type="checkbox" 
-                            id="is_published" 
-                            name="is_published" 
+                        <input type="hidden" name="is_published" value="0">
+                        <input
+                            type="checkbox"
+                            value="1"
+                            id="is_published"
+                            name="is_published"
                             class="h-4 w-4 text-streamline-600 focus:ring-streamline-500 border-gray-300 rounded"
                             {{ old('is_published', $post->is_published) ? 'checked' : '' }}
                         >
@@ -163,7 +165,7 @@
                         @endif
                     </p>
                 </div>
-                
+
                 <!-- Submit Buttons -->
                 <div class="flex justify-end space-x-4">
                     <a href="{{ route('blog.show', $post->slug) }}" class="px-6 py-2 border border-gray-300 rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-streamline-500 transition-colors">
@@ -185,7 +187,7 @@
         const imagePreview = document.getElementById('image-preview');
         const previewImage = document.getElementById('preview-image');
         const removeImageButton = document.getElementById('remove-image');
-        
+
         featuredImageInput.addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (file) {
@@ -197,7 +199,7 @@
                 reader.readAsDataURL(file);
             }
         });
-        
+
         removeImageButton.addEventListener('click', function() {
             featuredImageInput.value = '';
             imagePreview.classList.add('hidden');

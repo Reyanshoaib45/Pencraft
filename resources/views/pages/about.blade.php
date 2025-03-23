@@ -48,7 +48,7 @@
 
                 <div>
                     <div class="rounded-lg overflow-hidden mb-8">
-                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" alt="Team collaboration" class="w-full h-auto object-cover">
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" alt="Team collaboration" class="w-full h-auto object-cover">
                     </div>
 
                     <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">Our Team</h2>
@@ -61,19 +61,19 @@
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                         <div class="text-center">
                             <div class="w-24 h-24 mx-auto rounded-full overflow-hidden bg-gray-200 mb-3">
-                                <img src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81" alt="Team member" class="w-full h-full object-cover">
+                                <img loading="lazy" src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81" alt="Team member" class="w-full h-full object-cover">
                             </div>
                             <h4 class="font-semibold text-gray-900">Leadership</h4>
                         </div>
                         <div class="text-center">
                             <div class="w-24 h-24 mx-auto rounded-full overflow-hidden bg-gray-200 mb-3">
-                                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" alt="Team member" class="w-full h-full object-cover">
+                                <img loading="lazy" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" alt="Team member" class="w-full h-full object-cover">
                             </div>
                             <h4 class="font-semibold text-gray-900">Engineering</h4>
                         </div>
                         <div class="text-center">
                             <div class="w-24 h-24 mx-auto rounded-full overflow-hidden bg-gray-200 mb-3">
-                                <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d" alt="Team member" class="w-full h-full object-cover">
+                                <img loading="lazy" src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d" alt="Team member" class="w-full h-full object-cover">
                             </div>
                             <h4 class="font-semibold text-gray-900">Design</h4>
                         </div>

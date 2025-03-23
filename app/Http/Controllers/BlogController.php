@@ -8,6 +8,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -38,7 +39,7 @@ class BlogController extends Controller
     /**
      * Show the form for creating a new post.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|object|View
      */
     public function create()
     {
@@ -48,8 +49,8 @@ class BlogController extends Controller
     /**
      * Store a newly created post in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -91,7 +92,7 @@ class BlogController extends Controller
      * Display the specified post.
      *
      * @param  string  $slug
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show($slug)
     {
@@ -128,7 +129,7 @@ class BlogController extends Controller
      * Show the form for editing the specified post.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit($id)
     {
@@ -146,9 +147,9 @@ class BlogController extends Controller
     /**
      * Update the specified post in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, $id)
     {
@@ -200,7 +201,7 @@ class BlogController extends Controller
      * Remove the specified post from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy($id)
     {
@@ -226,9 +227,9 @@ class BlogController extends Controller
     /**
      * Store a newly created comment in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  int  $postId
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function storeComment(Request $request, $postId)
     {
@@ -268,9 +269,9 @@ class BlogController extends Controller
     /**
      * Update the like count for a post.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function like(Request $request, $id)
     {
@@ -291,9 +292,9 @@ class BlogController extends Controller
     /**
      * Update the dislike count for a post.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function dislike(Request $request, $id)
     {

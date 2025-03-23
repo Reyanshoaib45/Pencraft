@@ -34,7 +34,7 @@
                             <div class="flex items-center">
                                 <div class="flex-shrink-0 h-10 w-10">
                                     @if ($user->profile_picture)
-                                        <img class="h-10 w-10 rounded-full object-cover" src="{{ asset('storage/' . $user->profile_picture) }}" alt="{{ $user->name }}">
+                                        <img loading="lazy" class="h-10 w-10 rounded-full object-cover" src="{{ asset('storage/' . $user->profile_picture) }}" alt="{{ $user->name }}">
                                     @else
                                         <div class="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center">
                                             <span class="text-gray-600 font-medium">{{ substr($user->name, 0, 1) }}</span>

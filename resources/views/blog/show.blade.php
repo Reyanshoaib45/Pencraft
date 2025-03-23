@@ -31,18 +31,18 @@
                     {{ $post->category }}
                 </span>
             </div>
-            
+
             <!-- Title -->
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-gray-900 mb-6 max-w-4xl">
                 {{ $post->title }}
             </h1>
-            
+
             <!-- Post Metadata -->
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-sm text-gray-500">
                 <!-- Author Info -->
                 <div class="flex items-center">
                     @if ($post->author->profile_picture)
-                        <img src="{{ asset('storage/' . $post->author->profile_picture) }}" alt="{{ $post->author->name }}" class="w-10 h-10 rounded-full mr-3 object-cover">
+                        <img loading="lazy" src="{{ asset('storage/' . $post->author->profile_picture) }}" alt="{{ $post->author->name }}" class="w-10 h-10 rounded-full mr-3 object-cover">
                     @else
                         <div class="w-10 h-10 rounded-full bg-streamline-100 text-streamline-600 flex items-center justify-center mr-3">
                             {{ substr($post->author->name, 0, 1) }}
@@ -51,13 +51,13 @@
                     <div>
                         <div class="font-medium text-gray-900">{{ $post->author->name }}</div>
                         <div class="flex items-center text-gray-500">
-                            <span>{{ $post->published_at->format('M d, Y') }}</span>
+                            <span>{{ $post->published_at?->format('M d, Y') ?? 'Not Published' }}</span>
                             <span class="mx-2">•</span>
                             <span>{{ ceil(str_word_count(strip_tags($post->content)) / 200) }} min read</span>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Post Stats -->
                 <div class="flex items-center space-x-4">
                     <div class="flex items-center">
@@ -83,27 +83,27 @@
                 <!-- Featured Image -->
                 @if ($post->featured_image)
                     <div class="mb-8 rounded-xl overflow-hidden shadow-sm">
-                        <img 
-                            src="{{ asset('storage/' . $post->featured_image) }}" 
-                            alt="{{ $post->title }}" 
+                        <img loading="lazy"
+                            src="{{ asset('storage/' . $post->featured_image) }}"
+                            alt="{{ $post->title }}"
                             class="w-full h-auto"
                         />
                     </div>
                 @else
                     <div class="mb-8 rounded-xl overflow-hidden shadow-sm">
-                        <img 
-                            src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b" 
-                            alt="{{ $post->title }}" 
+                        <img loading="lazy"
+                            src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b"
+                            alt="{{ $post->title }}"
                             class="w-full h-auto"
                         />
                     </div>
                 @endif
-                
+
                 <!-- Content -->
                 <div class="prose prose-lg max-w-none mb-10">
                     {!! $post->content !!}
                 </div>
-                
+
                 <!-- Tags -->
                 @if(count($post->tags) > 0)
                     <div class="mb-10">
@@ -117,12 +117,12 @@
                         </div>
                     </div>
                 @endif
-                
+
                 <!-- Like/Dislike -->
                 <div class="flex items-center space-x-4 mb-10 border-t border-b border-gray-100 py-6">
                     <span class="text-gray-700 font-medium">Was this article helpful?</span>
-                    <button 
-                        type="button" 
+                    <button
+                        type="button"
                         class="like-button flex items-center bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-md transition-colors"
                         data-post-id="{{ $post->id }}">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -130,8 +130,8 @@
                         </svg>
                         Yes (<span id="likes-count">{{ $post->likes }}</span>)
                     </button>
-                    <button 
-                        type="button" 
+                    <button
+                        type="button"
                         class="dislike-button flex items-center bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-md transition-colors"
                         data-post-id="{{ $post->id }}">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -139,7 +139,7 @@
                         </svg>
                         No (<span id="dislikes-count">{{ $post->dislikes }}</span>)
                     </button>
-                    
+
                     <!-- Share Buttons -->
                     <div class="ml-auto">
                         <div class="flex items-center space-x-3">
@@ -164,12 +164,12 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Author Bio -->
                 <div class="bg-gray-50 rounded-xl p-6 mb-10">
                     <div class="flex flex-col md:flex-row gap-6">
                         @if ($post->author->profile_picture)
-                            <img src="{{ asset('storage/' . $post->author->profile_picture) }}" alt="{{ $post->author->name }}" class="w-20 h-20 rounded-full object-cover">
+                            <img loading="lazy" src="{{ asset('storage/' . $post->author->profile_picture) }}" alt="{{ $post->author->name }}" class="w-20 h-20 rounded-full object-cover">
                         @else
                             <div class="w-20 h-20 rounded-full bg-streamline-100 text-streamline-600 flex items-center justify-center text-2xl font-semibold">
                                 {{ substr($post->author->name, 0, 1) }}
@@ -217,13 +217,13 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Comments Section -->
                 <section class="mb-10">
                     <h3 class="text-2xl font-semibold text-gray-900 mb-6">
                         Comments (<span id="comments-count">{{ $post->comments->count() }}</span>)
                     </h3>
-                    
+
                     @auth
                     <!-- Comment Form -->
                     <div class="mb-8">
@@ -249,14 +249,14 @@
                         <p class="text-gray-700">Please <a href="{{ route('login') }}" class="text-streamline-600 hover:underline">log in</a> to leave a comment.</p>
                     </div>
                     @endauth
-                    
+
                     <!-- Comments List -->
                     <div id="comments-container" class="space-y-6">
                         @forelse($post->comments->where('parent_id', null) as $comment)
                             <div class="bg-white border border-gray-100 rounded-lg p-6" id="comment-{{ $comment->id }}">
                                 <div class="flex items-start gap-4">
                                     @if ($comment->user->profile_picture)
-                                        <img src="{{ asset('storage/' . $comment->user->profile_picture) }}" alt="{{ $comment->user->name }}" class="w-10 h-10 rounded-full object-cover">
+                                        <img loading="lazy" src="{{ asset('storage/' . $comment->user->profile_picture) }}" alt="{{ $comment->user->name }}" class="w-10 h-10 rounded-full object-cover">
                                     @else
                                         <div class="w-10 h-10 rounded-full bg-streamline-100 text-streamline-600 flex items-center justify-center">
                                             {{ substr($comment->user->name, 0, 1) }}
@@ -270,16 +270,16 @@
                                         <div class="text-gray-700 mb-4">
                                             {{ $comment->content }}
                                         </div>
-                                        
+
                                         @auth
                                         <!-- Reply Toggle -->
-                                        <button 
+                                        <button
                                             class="text-sm text-streamline-600 hover:text-streamline-700 mb-4 reply-toggle"
                                             data-comment-id="{{ $comment->id }}"
                                         >
                                             Reply
                                         </button>
-                                        
+
                                         <!-- Reply Form (Hidden by default) -->
                                         <div class="hidden reply-form" id="reply-form-{{ $comment->id }}">
                                             <form class="reply-comment-form" data-post-id="{{ $post->id }}" data-parent-id="{{ $comment->id }}">
@@ -305,7 +305,7 @@
                                             </form>
                                         </div>
                                         @endauth
-                                        
+
                                         <!-- Replies -->
                                         <div class="ml-6 pl-6 border-l border-gray-100 mt-4 space-y-4 replies-container" id="replies-container-{{ $comment->id }}">
                                             @if($comment->replies->count() > 0)
@@ -313,7 +313,7 @@
                                                     <div class="pt-4" id="comment-{{ $reply->id }}">
                                                         <div class="flex items-start gap-3">
                                                             @if ($reply->user->profile_picture)
-                                                                <img src="{{ asset('storage/' . $reply->user->profile_picture) }}" alt="{{ $reply->user->name }}" class="w-8 h-8 rounded-full object-cover">
+                                                                <img loading="lazy" src="{{ asset('storage/' . $reply->user->profile_picture) }}" alt="{{ $reply->user->name }}" class="w-8 h-8 rounded-full object-cover">
                                                             @else
                                                                 <div class="w-8 h-8 rounded-full bg-streamline-100 text-streamline-600 flex items-center justify-center text-xs">
                                                                     {{ substr($reply->user->name, 0, 1) }}
@@ -344,7 +344,7 @@
                     </div>
                 </section>
             </main>
-            
+
             <!-- Sidebar -->
             <aside class="w-full md:w-80 lg:w-96 animate-fade-in">
                 <!-- Author Card -->
@@ -368,16 +368,16 @@
                     @endauth
 
                     <h3 class="text-lg font-semibold text-gray-900 mb-6">Related Posts</h3>
-                    
+
                     @if($relatedPosts->count() > 0)
                         <div class="space-y-6">
                             @foreach($relatedPosts as $relatedPost)
                                 <div class="flex gap-4">
                                     <div class="flex-shrink-0 w-20 h-20 rounded-md overflow-hidden">
                                         @if ($relatedPost->featured_image)
-                                            <img 
-                                                src="{{ asset('storage/' . $relatedPost->featured_image) }}" 
-                                                alt="{{ $relatedPost->title }}" 
+                                            <img loading="lazy"
+                                                src="{{ asset('storage/' . $relatedPost->featured_image) }}"
+                                                alt="{{ $relatedPost->title }}"
                                                 class="w-full h-full object-cover"
                                             />
                                         @else
@@ -413,11 +413,11 @@
     document.addEventListener('DOMContentLoaded', function() {
         // CSRF Token
         const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-        
+
         // Reply toggle functionality
         const replyToggles = document.querySelectorAll('.reply-toggle');
         const cancelButtons = document.querySelectorAll('.cancel-reply');
-        
+
         replyToggles.forEach(button => {
             button.addEventListener('click', function() {
                 const commentId = this.getAttribute('data-comment-id');
@@ -425,7 +425,7 @@
                 replyForm.classList.toggle('hidden');
             });
         });
-        
+
         cancelButtons.forEach(button => {
             button.addEventListener('click', function() {
                 const commentId = this.getAttribute('data-comment-id');
@@ -439,12 +439,12 @@
         if (commentForm) {
             commentForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-                
+
                 const postId = this.getAttribute('data-post-id');
                 const content = this.querySelector('textarea[name="content"]').value;
-                
+
                 if (!content.trim()) return;
-                
+
                 // Send AJAX request
                 fetch(`/blog/${postId}/comment`, {
                     method: 'POST',
@@ -463,36 +463,36 @@
                     if (data.success) {
                         // Clear form
                         commentForm.reset();
-                        
+
                         // Update comments count
                         const commentsCount = document.getElementById('comments-count');
                         const commentCount = document.getElementById('comment-count');
                         const currentCount = parseInt(commentsCount.textContent);
                         commentsCount.textContent = currentCount + 1;
                         commentCount.textContent = currentCount + 1;
-                        
+
                         // Create new comment HTML
                         const commentsContainer = document.getElementById('comments-container');
                         const noCommentsMessage = document.getElementById('no-comments-message');
-                        
+
                         // Remove "no comments" message if it exists
                         if (noCommentsMessage) {
                             noCommentsMessage.remove();
                         }
-                        
+
                         // Create comment element
                         const commentElement = document.createElement('div');
                         commentElement.className = 'bg-white border border-gray-100 rounded-lg p-6';
                         commentElement.id = `comment-${data.comment.id}`;
-                        
+
                         // Profile picture HTML
                         let profilePicHtml = '';
                         if (data.user_profile_picture) {
-                            profilePicHtml = `<img src="${data.user_profile_picture}" alt="${data.username}" class="w-10 h-10 rounded-full object-cover">`;
+                            profilePicHtml = `<img loading="lazy" src="${data.user_profile_picture}" alt="${data.username}" class="w-10 h-10 rounded-full object-cover">`;
                         } else {
                             profilePicHtml = `<div class="w-10 h-10 rounded-full bg-streamline-100 text-streamline-600 flex items-center justify-center">${data.user_initial}</div>`;
                         }
-                        
+
                         // Set inner HTML
                         commentElement.innerHTML = `
                             <div class="flex items-start gap-4">
@@ -505,14 +505,14 @@
                                     <div class="text-gray-700 mb-4">
                                         ${data.comment.content}
                                     </div>
-                                    
-                                    <button 
+
+                                    <button
                                         class="text-sm text-streamline-600 hover:text-streamline-700 mb-4 reply-toggle"
                                         data-comment-id="${data.comment.id}"
                                     >
                                         Reply
                                     </button>
-                                    
+
                                     <div class="hidden reply-form" id="reply-form-${data.comment.id}">
                                         <form class="reply-comment-form" data-post-id="${postId}" data-parent-id="${data.comment.id}">
                                             <input type="hidden" name="_token" value="${csrfToken}">
@@ -536,19 +536,19 @@
                                             </div>
                                         </form>
                                     </div>
-                                    
+
                                     <div class="ml-6 pl-6 border-l border-gray-100 mt-4 space-y-4 replies-container" id="replies-container-${data.comment.id}">
                                     </div>
                                 </div>
                             </div>
                         `;
-                        
+
                         // Add new comment to top of comments
                         commentsContainer.prepend(commentElement);
-                        
+
                         // Re-bind event listeners for the new elements
                         bindReplyEvents();
-                        
+
                         // Show success message
                         showFlashMessage('Comment added successfully!', 'success');
                     }
@@ -559,7 +559,7 @@
                 });
             });
         }
-        
+
         // Function to bind reply form events for dynamically added elements
         function bindReplyEvents() {
             // Bind new reply toggle buttons
@@ -570,7 +570,7 @@
                     replyForm.classList.toggle('hidden');
                 });
             });
-            
+
             // Bind new cancel buttons
             document.querySelectorAll('.cancel-reply').forEach(button => {
                 button.addEventListener('click', function() {
@@ -579,18 +579,18 @@
                     replyForm.classList.add('hidden');
                 });
             });
-            
+
             // Bind reply form submissions
             document.querySelectorAll('.reply-comment-form').forEach(form => {
                 form.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    
+
                     const postId = this.getAttribute('data-post-id');
                     const parentId = this.getAttribute('data-parent-id');
                     const content = this.querySelector('textarea[name="content"]').value;
-                    
+
                     if (!content.trim()) return;
-                    
+
                     // Send AJAX request
                     fetch(`/blog/${postId}/comment`, {
                         method: 'POST',
@@ -612,30 +612,30 @@
                             form.reset();
                             const replyForm = document.getElementById('reply-form-' + parentId);
                             replyForm.classList.add('hidden');
-                            
+
                             // Update comments count
                             const commentsCount = document.getElementById('comments-count');
                             const commentCount = document.getElementById('comment-count');
                             const currentCount = parseInt(commentsCount.textContent);
                             commentsCount.textContent = currentCount + 1;
                             commentCount.textContent = currentCount + 1;
-                            
+
                             // Get replies container
                             const repliesContainer = document.getElementById('replies-container-' + parentId);
-                            
+
                             // Create reply element
                             const replyElement = document.createElement('div');
                             replyElement.className = 'pt-4';
                             replyElement.id = `comment-${data.comment.id}`;
-                            
+
                             // Profile picture HTML
                             let profilePicHtml = '';
                             if (data.user_profile_picture) {
-                                profilePicHtml = `<img src="${data.user_profile_picture}" alt="${data.username}" class="w-8 h-8 rounded-full object-cover">`;
+                                profilePicHtml = `<img loading="lazy" src="${data.user_profile_picture}" alt="${data.username}" class="w-8 h-8 rounded-full object-cover">`;
                             } else {
                                 profilePicHtml = `<div class="w-8 h-8 rounded-full bg-streamline-100 text-streamline-600 flex items-center justify-center text-xs">${data.user_initial}</div>`;
                             }
-                            
+
                             // Set inner HTML
                             replyElement.innerHTML = `
                                 <div class="flex items-start gap-3">
@@ -651,10 +651,10 @@
                                     </div>
                                 </div>
                             `;
-                            
+
                             // Add new reply to the replies container
                             repliesContainer.appendChild(replyElement);
-                            
+
                             // Show success message
                             showFlashMessage('Reply added successfully!', 'success');
                         }
@@ -666,18 +666,18 @@
                 });
             });
         }
-        
+
         // Bind initial reply events
         bindReplyEvents();
-        
+
         // Like/Dislike functionality
         const likeButton = document.querySelector('.like-button');
         const dislikeButton = document.querySelector('.dislike-button');
-        
+
         if (likeButton) {
             likeButton.addEventListener('click', function() {
                 const postId = this.getAttribute('data-post-id');
-                
+
                 fetch(`/blog/${postId}/like`, {
                     method: 'POST',
                     headers: {
@@ -701,11 +701,11 @@
                 });
             });
         }
-        
+
         if (dislikeButton) {
             dislikeButton.addEventListener('click', function() {
                 const postId = this.getAttribute('data-post-id');
-                
+
                 fetch(`/blog/${postId}/dislike`, {
                     method: 'POST',
                     headers: {
@@ -729,27 +729,27 @@
                 });
             });
         }
-        
+
         // Flash message function
         function showFlashMessage(message, type = 'success') {
             const container = document.getElementById('flash-message-container');
             const messageElement = document.createElement('div');
-            
+
             let bgColor = 'bg-green-100';
             let borderColor = 'border-green-500';
             let textColor = 'text-green-700';
-            
+
             if (type === 'error') {
                 bgColor = 'bg-red-100';
                 borderColor = 'border-red-500';
                 textColor = 'text-red-700';
             }
-            
+
             messageElement.className = `${bgColor} border-l-4 ${borderColor} ${textColor} p-4 mb-8 animate-fade-in`;
             messageElement.innerHTML = `<p>${message}</p>`;
-            
+
             container.appendChild(messageElement);
-            
+
             // Remove after 5 seconds
             setTimeout(() => {
                 messageElement.classList.add('animate-fade-out');
