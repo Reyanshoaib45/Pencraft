@@ -27,7 +27,7 @@
                         <div class="flex items-center">
                             @if ($post->featured_image)
                                 <div class="flex-shrink-0 h-10 w-16 mr-4">
-                                    <img class="h-10 w-16 object-cover rounded" src="{{ asset('storage/' . $post->featured_image) }}" alt="{{ $post->title }}">
+                                    <img loading="lazy" class="h-10 w-16 object-cover rounded" src="{{ asset('storage/' . $post->featured_image) }}" alt="{{ $post->title }}">
                                 </div>
                             @endif
                             <div>

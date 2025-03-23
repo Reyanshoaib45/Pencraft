@@ -127,7 +127,7 @@
             const reader = new FileReader();
 
             reader.onload = function(e) {
-                preview.innerHTML = `<img src="${e.target.result}" class="w-full h-full object-cover" alt="Profile Preview">`;
+                preview.innerHTML = `<img loading="lazy" src="${e.target.result}" class="w-full h-full object-cover" alt="Profile Preview">`;
             };
 
             reader.readAsDataURL(input.files[0]);

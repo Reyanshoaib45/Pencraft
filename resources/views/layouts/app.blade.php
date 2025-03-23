@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@yield('title', 'BlogHub - Modern Blogging Platform')</title>
+    <title>@yield('title', 'Pencraft - Modern Blogging Platform')</title>
     @if(isset($seo))
         @include('partials.seo-meta', $seo)
     @else
@@ -201,6 +201,11 @@
                 emailInput.val("");
                 submitButton.text(originalText).prop("disabled", false);
             }, 1500);
+        });
+    });
+    $(document).ready(function() {
+        $('#mobile-menu-button').click(function() {
+            $('#mobile-menu').slideToggle();
         });
     });
 </script>
