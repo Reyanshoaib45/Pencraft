@@ -46,17 +46,18 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 @forelse ($posts as $post)
                     <article class="bg-white rounded-xl shadow-subtle overflow-hidden group animate-fade-in">
+                        <a href="{{ route('blog.show', $post->id) }}">
                         <!-- Image -->
                         <div class="relative aspect-[16/9] overflow-hidden">
                             @if ($post->featured_image)
-                                <img loading="lazy"
+                                <img
                                     src="{{ asset('storage/' . $post->featured_image) }}"
                                     alt="{{ $post->title }}"
                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                                     loading="lazy"
                                 />
                             @else
-                                <img loading="lazy"
+                                <img
                                     src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b"
                                     alt="{{ $post->title }}"
                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -74,7 +75,7 @@
                         <!-- Content -->
                         <div class="p-6">
                             <h3 class="text-xl font-semibold text-gray-900 mb-3 group-hover:text-streamline-600 transition-colors">
-                                <a href="{{ route('blog.show', $post->slug) }}">{{ $post->title }}</a>
+                                {{ $post->title }}
                             </h3>
                             <p class="text-gray-600 mb-4">
                                 {{ \Illuminate\Support\Str::limit(strip_tags($post->content), 150) }}
@@ -116,7 +117,7 @@
                                 @endif
                                 <span class="text-sm font-medium text-gray-700">{{ $post->author->name }}</span>
                             </div>
-                        </div>
+                        </div></a>
                     </article>
                 @empty
                     <div class="col-span-3 text-center py-12">

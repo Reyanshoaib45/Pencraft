@@ -97,8 +97,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/blog/{post}/comment', [BlogController::class, 'storeComment'])->name('blog.comment');
 
     // Like/dislike routes
-    Route::post('/blog/{post}/like', [BlogController::class, 'like'])->name('blog.like');
-    Route::post('/blog/{post}/dislike', [BlogController::class, 'dislike'])->name('blog.dislike');
+    Route::post('/blog/like/{id}', [BlogController::class, 'like'])->name('blog.like');
 });
 
 // Admin Routes

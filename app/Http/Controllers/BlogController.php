@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Comment;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
@@ -91,13 +93,13 @@ class BlogController extends Controller
     /**
      * Display the specified post.
      *
-     * @param  string  $slug
-     * @return Response
+     * @param  string  $id
+     * @return Application|Factory|object|View
      */
-    public function show($slug)
+    public function show($id)
     {
         $post = Post::with(['author', 'comments.user', 'comments.replies.user'])
-            ->where('slug', $slug)
+            ->where('id', $id)
             ->firstOrFail();
 
         // Increment view count
@@ -149,7 +151,7 @@ class BlogController extends Controller
      *
      * @param Request $request
      * @param  int  $id
-     * @return Response
+     * @return RedirectResponse
      */
     public function update(Request $request, $id)
     {
@@ -201,7 +203,7 @@ class BlogController extends Controller
      * Remove the specified post from storage.
      *
      * @param  int  $id
-     * @return Response
+     * @return RedirectResponse
      */
     public function destroy($id)
     {
@@ -229,54 +231,80 @@ class BlogController extends Controller
      *
      * @param Request $request
      * @param  int  $postId
-     * @return Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function storeComment(Request $request, $postId)
     {
         $post = Post::findOrFail($postId);
 
         $validated = $request->validate([
-            'content' => 'required|string',
+            'content' => 'required|string|max:2000',
             'parent_id' => 'nullable|exists:comments,id',
         ]);
 
-        $comment = new Comment([
-            'content' => $validated['content'],
-            'user_id' => Auth::id(),
-            'parent_id' => $validated['parent_id'] ?? null,
-        ]);
-
-        $post->comments()->save($comment);
-
-        // Load the user relationship for the new comment
-        $comment->load('user');
-
-        if ($request->ajax()) {
-            return response()->json([
-                'success' => true,
-                'comment' => $comment,
-                'username' => $comment->user->name,
-                'created_at' => $comment->created_at->diffForHumans(),
-                'user_profile_picture' => $comment->user->profile_picture,
-                'user_initial' => substr($comment->user->name, 0, 1),
-                'comment_html' => view('partials.comment', ['comment' => $comment])->render()
+        try {
+            $comment = new Comment([
+                'content' => strip_tags($validated['content']),
+                'user_id' => Auth::id(),
+                'parent_id' => $validated['parent_id'] ?? null,
+                'post_id' => $post->id,
             ]);
-        }
 
-        return back()->with('success', 'Comment added successfully!');
+            $comment->save();
+
+            // Ensure user details are always available
+            $user = Auth::user();
+            $userData = [
+                'username' => $user ? $user->name : 'Unknown User',
+                'user_profile_picture' => $user && $user->profile_picture
+                    ? asset('storage/' . $user->profile_picture)
+                    : null,
+                'user_initial' => $user ? strtoupper(substr($user->name, 0, 1)) : 'U',
+            ];
+
+            // Response data
+            $responseData = [
+                'success' => true,
+                'message' => 'Comment added successfully',
+                'comment' => [
+                    'id' => $comment->id,
+                    'content' => $comment->content,
+                    'created_at' => $comment->created_at ? $comment->created_at->diffForHumans() : now()->diffForHumans(),
+                    'parent_id' => $comment->parent_id,
+                ],
+                'user' => $userData,
+                'comment_count' => $post->comments()->count(),
+            ];
+
+            return response()->json($responseData);
+        } catch (\Exception $e) {
+            \Log::error('Comment creation failed: ' . $e->getMessage());
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed to add comment. Please try again.',
+                'error' => config('app.debug') ? $e->getMessage() : null,
+            ], 500);
+        }
     }
 
     /**
      * Update the like count for a post.
      *
      * @param Request $request
-     * @param  int  $id
-     * @return Response
+     * @param int $id
+     * @return \Illuminate\Http\JsonResponse|RedirectResponse
      */
     public function like(Request $request, $id)
     {
-        $post = Post::findOrFail($id);
-        $post->increment('likes');
+        $post = Post::where('id', $id)->first();
+
+        if ($request->input('action') === 'like') {
+            $post->increment('likes');
+        } elseif ($request->input('action') === 'dislike') {
+            $post->decrement('likes'); // Decrease likes on dislike
+            $post->increment('dislikes'); // Increase dislike count
+        }
 
         if ($request->ajax()) {
             return response()->json([
@@ -289,16 +317,17 @@ class BlogController extends Controller
         return back();
     }
 
+
     /**
      * Update the dislike count for a post.
      *
      * @param Request $request
      * @param  int  $id
-     * @return Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function dislike(Request $request, $id)
     {
-        $post = Post::findOrFail($id);
+        $post = Post::where('id', $id)->first();
         $post->increment('dislikes');
 
         if ($request->ajax()) {
