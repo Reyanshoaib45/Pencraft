@@ -446,6 +446,30 @@
                 });
             });
 
+            $(document).on('click', '.like-button, .dislike-button', function () {
+                let postId = $(this).data('post-id');
+                let action = $(this).hasClass('like-button') ? 'like' : 'dislike';
+
+                $.ajax({
+                    url: "/blog/like/" + postId,
+                    type: "POST",
+                    data: {
+                        _token: $('meta[name="csrf-token"]').attr('content'),
+                        action: action
+                    },
+                    success: function (data) {
+                        if (data.success) {
+                            $('#likes-count').text(data.likes);
+                            $('#dislikes-count').text(data.dislikes);
+                            showFlashMessage('Thanks for your feedback!', 'success');
+                        }
+                    },
+                    error: function () {
+                        showFlashMessage('Error processing your request.', 'error');
+                    }
+                });
+            });
+
             // Update Comment Count
             function updateCommentCount() {
                 let count = parseInt($('#comments-count').text()) + 1;
@@ -485,29 +509,7 @@
                 }, 3000);
             }
         });
-        $(document).on('click', '.like-button, .dislike-button', function () {
-            let postId = $(this).data('post-id');
-            let action = $(this).hasClass('like-button') ? 'like' : 'dislike';
 
-            $.ajax({
-                url: "/blog/like/" + postId,
-                type: "POST",
-                data: {
-                    _token: $('meta[name="csrf-token"]').attr('content'),
-                    action: action
-                },
-                success: function (data) {
-                    if (data.success) {
-                        $('#likes-count').text(data.likes);
-                        $('#dislikes-count').text(data.dislikes);
-                        showFlashMessage('Thanks for your feedback!', 'success');
-                    }
-                },
-                error: function () {
-                    showFlashMessage('Error processing your request.', 'error');
-                }
-            });
-        });
     </script>
 
 @endsection
