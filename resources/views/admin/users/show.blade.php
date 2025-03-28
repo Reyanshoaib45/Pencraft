@@ -43,7 +43,7 @@
                         <li>
                             <span class="text-gray-600">Twitter:</span>
                             <a href="https://twitter.com/{{ $user->twitter }}" target="_blank" class="text-blue-500 hover:underline">
-                                @{{ $user->twitter }}
+                                {{ $user->twitter }}
                             </a>
                         </li>
                         @endif

@@ -5,7 +5,6 @@
             <div class="md:col-span-2">
                 <a href="/" class="inline-flex items-center mb-4">
                     <h1 class="text-2xl font-bold tracking-tight">Pencraft</h1>
-                    <span class="ml-1 text-black text-2xl">.</span>
                 </a>
                 <p class="text-gray-600 mb-6 pr-4">
                     Empowering writers and content creators with the tools they need to engage, inspire, and inform
@@ -105,7 +104,7 @@
                 <ul class="space-y-3">
                     <li><a href="{{ route('about') }}"
                            class="text-gray-600 hover:text-streamline-600 transition-colors">About Us</a></li>
-                    <li><a href="{{ route('blog-page') }}"
+                    <li><a href="{{ route('blog.index') }}"
                            class="text-gray-600 hover:text-streamline-600 transition-colors">Blog</a></li>
                     <li><a href="{{ route('careers') }}"
                            class="text-gray-600 hover:text-streamline-600 transition-colors">Careers</a></li>

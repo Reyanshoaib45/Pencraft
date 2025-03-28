@@ -1,12 +1,10 @@
-
 @extends('layouts.app')
-
 @section('content')
 <div class="bg-streamline-50 py-12">
     <div class="container mx-auto px-4 md:px-6 max-w-4xl">
         <!-- Back Button -->
         <div class="mb-8">
-            <a href="{{ route('blog.show', $post->slug) }}" class="text-streamline-600 hover:text-streamline-700 inline-flex items-center transition-colors">
+            <a href="{{ route('blog.show', $post->id) }}" class="text-streamline-600 hover:text-streamline-700 inline-flex items-center transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                 </svg>
@@ -38,7 +36,7 @@
 
         <!-- Blog Post Form -->
         <div class="bg-white rounded-xl shadow-subtle p-6 md:p-8 animate-fade-in">
-            <form action="{{ route('blog.update', $post->id) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('blog.update', $post->id) }}" method="PUT" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
@@ -168,7 +166,7 @@
 
                 <!-- Submit Buttons -->
                 <div class="flex justify-end space-x-4">
-                    <a href="{{ route('blog.show', $post->slug) }}" class="px-6 py-2 border border-gray-300 rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-streamline-500 transition-colors">
+                    <a href="{{ route('blog.show', $post->id) }}" class="px-6 py-2 border border-gray-300 rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-streamline-500 transition-colors">
                         Cancel
                     </a>
                     <button type="submit" class="px-6 py-2 bg-streamline-600 hover:bg-streamline-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-streamline-500 transition-colors">

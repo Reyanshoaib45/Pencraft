@@ -84,7 +84,7 @@
                             </svg>
                             <div class="flex text-sm text-gray-600 justify-center">
                                 <label for="featured_image" class="relative cursor-pointer bg-white rounded-md font-medium text-streamline-600 hover:text-streamline-700 focus-within:outline-none">
-                                    <span>Upload an image</span>
+                                    <span class="text-blue-600">Upload an image</span>
                                     <input id="featured_image" name="featured_image" type="file" class="sr-only" accept="image/*">
                                 </label>
                                 <p class="pl-1">or drag and drop</p>

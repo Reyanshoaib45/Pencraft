@@ -1,6 +1,8 @@
 @extends('layouts.app')
-
 @section('content')
+    @php
+        use Illuminate\Support\Str;
+    @endphp
     <div class="bg-white py-12">
         <div class="container mx-auto px-4 md:px-6">
             <!-- Back Button -->
@@ -320,11 +322,12 @@
                                                 <div
                                                     class="text-sm text-gray-500">{{ $comment->created_at->diffForHumans() }}</div>
                                             </div>
-                                            <div class="text-gray-700 mb-4">
-                                                {{ $comment->content }}
+                                            <div class="prose prose-lg text-gray-700 mb-4">
+                                                {!! Str::markdown(e($post->content)) !!}
                                             </div>
 
-                                            @auth
+
+                                        @auth
 
                                             @endauth
 

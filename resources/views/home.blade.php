@@ -28,7 +28,7 @@
 
                     <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in-up"
                          style="animation-delay: 0.6s;">
-                        <button
+                        <a href="{{ route('blog.create') }}"
                             class="bg-black hover:bg-gray-800 text-white px-6 py-3 rounded-md text-lg flex items-center justify-center">
                             Start Writing
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 24 24" fill="none"
@@ -36,11 +36,12 @@
                                 <path d="M5 12h14"></path>
                                 <path d="m12 5 7 7-7 7"></path>
                             </svg>
-                        </button>
-                        <button
+                        </a>
+                        <a
+                            href="{{ route('blog.index') }}"
                             class="bg-white hover:bg-gray-100 text-black border border-gray-200 px-6 py-3 rounded-md text-lg">
-                            Explore Articles
-                        </button>
+                            Explore Blogs
+                        </a>
                     </div>
                 </div>
             </div>
