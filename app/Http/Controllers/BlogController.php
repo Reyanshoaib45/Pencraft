@@ -296,26 +296,36 @@ class BlogController extends Controller
      * @return \Illuminate\Http\JsonResponse|RedirectResponse
      */
     public function like(Request $request, $id)
-    {
-        $post = Post::where('id', $id)->first();
+{
+    $post = Post::findOrFail($id);
+    $sessionKey = 'post_liked_' . $id;
 
+    if (session()->has($sessionKey)) {
+        // User already liked/disliked this post, remove the reaction
+        if (session($sessionKey) === 'like') {
+            $post->decrement('likes');
+        } elseif (session($sessionKey) === 'dislike') {
+            $post->decrement('dislikes');
+        }
+        session()->forget($sessionKey);
+    } else {
+        // Add like or dislike
         if ($request->input('action') === 'like') {
             $post->increment('likes');
+            session([$sessionKey => 'like']);
         } elseif ($request->input('action') === 'dislike') {
-            $post->decrement('likes'); // Decrease likes on dislike
-            $post->increment('dislikes'); // Increase dislike count
+            $post->increment('dislikes');
+            session([$sessionKey => 'dislike']);
         }
-
-        if ($request->ajax()) {
-            return response()->json([
-                'success' => true,
-                'likes' => $post->likes,
-                'dislikes' => $post->dislikes
-            ]);
-        }
-
-        return back();
     }
+
+    return response()->json([
+        'success' => true,
+        'likes' => $post->likes,
+        'dislikes' => $post->dislikes
+    ]);
+}
+
 
 
     /**

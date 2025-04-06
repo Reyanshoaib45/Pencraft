@@ -8,11 +8,11 @@
             <!-- Back Button -->
             <div class="mb-8">
                 <a href="{{ route('blog.index') }}"
-                   class="text-streamline-600 hover:text-streamline-700 inline-flex items-center transition-colors">
+                    class="text-streamline-600 hover:text-streamline-700 inline-flex items-center transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
-                         stroke="currentColor">
+                        stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                            d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                     </svg>
                     Back to all posts
                 </a>
@@ -31,9 +31,9 @@
             <header class="mb-10 animate-fade-in">
                 <!-- Category Badge -->
                 <div class="mb-4">
-                <span class="bg-streamline-100 text-streamline-600 text-sm font-medium px-3 py-1 rounded-full">
-                    {{ $post->category }}
-                </span>
+                    <span class="bg-streamline-100 text-streamline-600 text-sm font-medium px-3 py-1 rounded-full">
+                        {{ $post->category }}
+                    </span>
                 </div>
 
                 <!-- Title -->
@@ -47,7 +47,7 @@
                     <div class="flex items-center">
                         @if ($post->author->profile_picture)
                             <img loading="lazy" src="{{ asset('storage/' . $post->author->profile_picture) }}"
-                                 alt="{{ $post->author->name }}" class="w-10 h-10 rounded-full mr-3 object-cover">
+                                alt="{{ $post->author->name }}" class="w-10 h-10 rounded-full mr-3 object-cover">
                         @else
                             <div
                                 class="w-10 h-10 rounded-full bg-streamline-100 text-streamline-600 flex items-center justify-center mr-3">
@@ -68,19 +68,19 @@
                     <div class="flex items-center space-x-4">
                         <div class="flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24"
-                                 stroke="currentColor">
+                                stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                             </svg>
                             {{ $post->views }} views
                         </div>
                         <div class="flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24"
-                                 stroke="currentColor">
+                                stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+                                    d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
                             </svg>
                             <span id="comment-count">{{ $post->comments->count() }}</span> comments
                         </div>
@@ -94,19 +94,13 @@
                     <!-- Featured Image -->
                     @if ($post->featured_image)
                         <div class="mb-8 rounded-xl overflow-hidden shadow-sm">
-                            <img loading="lazy"
-                                 src="{{ asset('storage/' . $post->featured_image) }}"
-                                 alt="{{ $post->title }}"
-                                 class="w-full h-auto"
-                            />
+                            <img loading="lazy" src="{{ asset('storage/' . $post->featured_image) }}"
+                                alt="{{ $post->title }}" class="w-full h-auto" />
                         </div>
                     @else
                         <div class="mb-8 rounded-xl overflow-hidden shadow-sm">
-                            <img loading="lazy"
-                                 src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b"
-                                 alt="{{ $post->title }}"
-                                 class="w-full h-auto"
-                            />
+                            <img loading="lazy" src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b"
+                                alt="{{ $post->title }}" class="w-full h-auto" />
                         </div>
                     @endif
 
@@ -116,14 +110,14 @@
                     </div>
 
                     <!-- Tags -->
-                    @if(count($post->tags) > 0)
+                    @if (count($post->tags) > 0)
                         <div class="mb-10">
                             <h3 class="text-lg font-semibold mb-3">Tags</h3>
                             <div class="flex flex-wrap gap-2">
-                                @foreach($post->tags as $tag)
+                                @foreach ($post->tags as $tag)
                                     <span class="bg-gray-100 text-gray-800 text-sm font-medium px-3 py-1 rounded-full">
-                                    #{{ $tag }}
-                                </span>
+                                        #{{ $tag }}
+                                    </span>
                                 @endforeach
                             </div>
                         </div>
@@ -132,25 +126,23 @@
                     <!-- Like/Dislike -->
                     <div class="flex items-center space-x-4 mb-10 border-t border-b border-gray-100 py-6">
                         <span class="text-gray-700 font-medium">Was this article helpful?</span>
-                        <button
-                            type="button"
+                        <button type="button"
                             class="like-button flex items-center bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-md transition-colors"
                             data-post-id="{{ $post->id }}">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
-                                 stroke="currentColor">
+                                stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"/>
+                                    d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
                             </svg>
                             Yes (<span id="likes-count">{{ $post->likes }}</span>)
                         </button>
-                        <button
-                            type="button"
+                        <button type="button"
                             class="dislike-button flex items-center bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-md transition-colors"
                             data-post-id="{{ $post->id }}">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
-                                 stroke="currentColor">
+                                stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M10 14H5.236a2 2 0 01-1.789-2.894l3.5-7A2 2 0 018.736 3h4.018a2 2 0 01.485.06l3.76.94m-7 10v5a2 2 0 002 2h.095c.5 0 .905-.405.905-.905 0-.714.211-1.412.608-2.006L17 13V4m-7 10h2m5-10h2a2 2 0 012 2v6a2 2 0 01-2 2h-2.5"/>
+                                    d="M10 14H5.236a2 2 0 01-1.789-2.894l3.5-7A2 2 0 018.736 3h4.018a2 2 0 01.485.06l3.76.94m-7 10v5a2 2 0 002 2h.095c.5 0 .905-.405.905-.905 0-.714.211-1.412.608-2.006L17 13V4m-7 10h2m5-10h2a2 2 0 012 2v6a2 2 0 01-2 2h-2.5" />
                             </svg>
                             No (<span id="dislikes-count">{{ $post->dislikes }}</span>)
                         </button>
@@ -160,30 +152,31 @@
                             <div class="flex items-center space-x-3">
                                 <span class="text-gray-700">Share:</span>
                                 <a href="https://twitter.com/intent/tweet?url={{ urlencode(request()->url()) }}&text={{ urlencode($post->title) }}"
-                                   target="_blank" class="text-gray-500 hover:text-blue-400 transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                         stroke-linejoin="round" class="h-5 w-5">
+                                    target="_blank" class="text-gray-500 hover:text-blue-400 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
                                         <path
-                                            d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                                            d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z">
+                                        </path>
                                     </svg>
                                 </a>
                                 <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(request()->url()) }}"
-                                   target="_blank" class="text-gray-500 hover:text-blue-600 transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                         stroke-linejoin="round" class="h-5 w-5">
-                                        <path
-                                            d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                                    target="_blank" class="text-gray-500 hover:text-blue-600 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+                                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
                                     </svg>
                                 </a>
                                 <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ urlencode(request()->url()) }}&title={{ urlencode($post->title) }}"
-                                   target="_blank" class="text-gray-500 hover:text-blue-700 transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                         stroke-linejoin="round" class="h-5 w-5">
+                                    target="_blank" class="text-gray-500 hover:text-blue-700 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
                                         <path
-                                            d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                            d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                        </path>
                                         <rect x="2" y="9" width="4" height="12"></rect>
                                         <circle cx="4" cy="4" r="2"></circle>
                                     </svg>
@@ -197,7 +190,7 @@
                         <div class="flex flex-col md:flex-row gap-6">
                             @if ($post->author->profile_picture)
                                 <img loading="lazy" src="{{ asset('storage/' . $post->author->profile_picture) }}"
-                                     alt="{{ $post->author->name }}" class="w-20 h-20 rounded-full object-cover">
+                                    alt="{{ $post->author->name }}" class="w-20 h-20 rounded-full object-cover">
                             @else
                                 <div
                                     class="w-20 h-20 rounded-full bg-streamline-100 text-streamline-600 flex items-center justify-center text-2xl font-semibold">
@@ -211,50 +204,58 @@
                                     {{ $post->author->bio ?? 'This author has not added a bio yet.' }}
                                 </p>
                                 <div class="flex space-x-4">
-                                    @if($post->author->twitter)
+                                    @if ($post->author->twitter)
                                         <a href="{{ $post->author->twitter }}" target="_blank"
-                                           class="text-gray-500 hover:text-blue-400 transition-colors">
+                                            class="text-gray-500 hover:text-blue-400 transition-colors">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                 stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                class="h-5 w-5">
                                                 <path
-                                                    d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                                                    d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z">
+                                                </path>
                                             </svg>
                                         </a>
                                     @endif
-                                    @if($post->author->facebook)
+                                    @if ($post->author->facebook)
                                         <a href="{{ $post->author->facebook }}" target="_blank"
-                                           class="text-gray-500 hover:text-blue-600 transition-colors">
+                                            class="text-gray-500 hover:text-blue-600 transition-colors">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                 stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
-                                                <path
-                                                    d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                class="h-5 w-5">
+                                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z">
+                                                </path>
                                             </svg>
                                         </a>
                                     @endif
-                                    @if($post->author->linkedin)
+                                    @if ($post->author->linkedin)
                                         <a href="{{ $post->author->linkedin }}" target="_blank"
-                                           class="text-gray-500 hover:text-blue-700 transition-colors">
+                                            class="text-gray-500 hover:text-blue-700 transition-colors">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                 stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                class="h-5 w-5">
                                                 <path
-                                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                                </path>
                                                 <rect x="2" y="9" width="4" height="12"></rect>
                                                 <circle cx="4" cy="4" r="2"></circle>
                                             </svg>
                                         </a>
                                     @endif
-                                    @if($post->author->instagram)
+                                    @if ($post->author->instagram)
                                         <a href="{{ $post->author->instagram }}" target="_blank"
-                                           class="text-gray-500 hover:text-pink-600 transition-colors">
+                                            class="text-gray-500 hover:text-pink-600 transition-colors">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                 stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
-                                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                class="h-5 w-5">
+                                                <rect x="2" y="2" width="20" height="20" rx="5"
+                                                    ry="5"></rect>
                                                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5">
+                                                </line>
                                             </svg>
                                         </a>
                                     @endif
@@ -277,16 +278,12 @@
                                     <div class="mb-4">
                                         <label for="content" class="block text-sm font-medium text-gray-700 mb-2">Leave
                                             a comment</label>
-                                        <textarea
-                                            id="content"
-                                            name="content"
-                                            rows="4"
+                                        <textarea id="content" name="content" rows="4"
                                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-transparent"
-                                            required
-                                        ></textarea>
+                                            required></textarea>
                                     </div>
                                     <button type="submit"
-                                            class="bg-streamline-600 hover:bg-streamline-700 text-white font-medium py-2 px-4 rounded-md transition-colors text-sm">
+                                        class="bg-streamline-600 hover:bg-streamline-700 text-white font-medium py-2 px-4 rounded-md transition-colors text-sm">
                                         Post Comment
                                     </button>
                                 </form>
@@ -294,7 +291,7 @@
                         @else
                             <div class="bg-gray-50 p-4 rounded-md mb-8">
                                 <p class="text-gray-700">Please <a href="{{ route('login') }}"
-                                                                   class="text-streamline-600 hover:underline">log
+                                        class="text-streamline-600 hover:underline">log
                                         in</a> to leave a comment.</p>
                             </div>
                         @endauth
@@ -303,13 +300,13 @@
                         <div id="comments-container" class="space-y-6">
                             @forelse($post->comments->where('parent_id', null) as $comment)
                                 <div class="bg-white border border-gray-100 rounded-lg p-6"
-                                     id="comment-{{ $comment->id }}">
+                                    id="comment-{{ $comment->id }}">
                                     <div class="flex items-start gap-4">
                                         @if ($comment->user->profile_picture)
                                             <img loading="lazy"
-                                                 src="{{ asset('storage/' . $comment->user->profile_picture) }}"
-                                                 alt="{{ $comment->user->name }}"
-                                                 class="w-10 h-10 rounded-full object-cover">
+                                                src="{{ asset('storage/' . $comment->user->profile_picture) }}"
+                                                alt="{{ $comment->user->name }}"
+                                                class="w-10 h-10 rounded-full object-cover">
                                         @else
                                             <div
                                                 class="w-10 h-10 rounded-full bg-streamline-100 text-streamline-600 flex items-center justify-center">
@@ -319,15 +316,15 @@
                                         <div class="flex-1">
                                             <div class="flex items-center justify-between mb-2">
                                                 <div class="font-medium text-gray-900">{{ $comment->user->name }}</div>
-                                                <div
-                                                    class="text-sm text-gray-500">{{ $comment->created_at->diffForHumans() }}</div>
+                                                <div class="text-sm text-gray-500">
+                                                    {{ $comment->created_at->diffForHumans() }}</div>
                                             </div>
                                             <div class="prose prose-lg text-gray-700 mb-4">
                                                 {!! Str::markdown(e($post->content)) !!}
                                             </div>
 
 
-                                        @auth
+                                            @auth
 
                                             @endauth
 
@@ -350,18 +347,18 @@
                     <div class="bg-white border border-gray-100 rounded-xl p-6 mb-8 sticky top-24">
                         <!-- Post Actions -->
                         @auth
-                            @if($post->author_id === Auth::id())
+                            @if ($post->author_id === Auth::id())
                                 <div class="flex gap-2 mb-6">
                                     <a href="{{ route('blog.edit', $post->id) }}"
-                                       class="bg-streamline-600 hover:bg-streamline-700 text-white px-3 py-1 rounded text-sm flex-1 text-center">
+                                        class="bg-streamline-600 hover:bg-streamline-700 text-white px-3 py-1 rounded text-sm flex-1 text-center">
                                         Edit
                                     </a>
                                     <form action="{{ route('blog.destroy', $post->id) }}" method="POST" class="flex-1"
-                                          onsubmit="return confirm('Are you sure you want to delete this post?');">
+                                        onsubmit="return confirm('Are you sure you want to delete this post?');">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"
-                                                class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm w-full">
+                                            class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm w-full">
                                             Delete
                                         </button>
                                     </form>
@@ -371,35 +368,36 @@
 
                         <h3 class="text-lg font-semibold text-gray-900 mb-6">Related Posts</h3>
 
-                        @if($relatedPosts->count() > 0)
+                        @if ($relatedPosts->count() > 0)
                             <div class="space-y-6">
-                                @foreach($relatedPosts as $relatedPost)
+                                @foreach ($relatedPosts as $relatedPost)
                                     <a href="{{ route('blog.show', $relatedPost->id) }}">
                                         <div class="flex gap-4">
                                             <div class="flex-shrink-0 w-20 h-20 rounded-md overflow-hidden">
                                                 @if ($relatedPost->featured_image)
                                                     <img loading="lazy"
-                                                         src="{{ asset('storage/' . $relatedPost->featured_image) }}"
-                                                         alt="{{ $relatedPost->title }}"
-                                                         class="w-full h-full object-cover"
-                                                    />
+                                                        src="{{ asset('storage/' . $relatedPost->featured_image) }}"
+                                                        alt="{{ $relatedPost->title }}"
+                                                        class="w-full h-full object-cover" />
                                                 @else
                                                     <div
                                                         class="w-full h-full bg-streamline-100 flex items-center justify-center text-streamline-600">
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8"
-                                                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
-                                                                  stroke-width="2"
-                                                                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                                                stroke-width="2"
+                                                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                                         </svg>
                                                     </div>
                                                 @endif
                                             </div>
                                             <div>
-                                                <h4 class="font-medium text-gray-900 hover:text-streamline-600 transition-colors line-clamp-2">
+                                                <h4
+                                                    class="font-medium text-gray-900 hover:text-streamline-600 transition-colors line-clamp-2">
                                                     {{ $relatedPost->title }}
                                                 </h4>
-                                                <p class="text-sm text-gray-500 mt-1">{{ $relatedPost->published_at->format('M d, Y') }}</p>
+                                                <p class="text-sm text-gray-500 mt-1">
+                                                    {{ $relatedPost->published_at->format('M d, Y') }}</p>
                                             </div>
                                         </div>
                                     </a>
@@ -417,11 +415,11 @@
 @section('scripts')
     <script src="{{ asset('js/blog.js') }}"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             const csrfToken = $('meta[name="csrf-token"]').attr('content');
 
             // Submit Comment
-            $('#comment-form').submit(function (e) {
+            $('#comment-form').submit(function(e) {
                 e.preventDefault();
 
                 let postId = $(this).data('post-id');
@@ -432,10 +430,14 @@
                 $.ajax({
                     url: `/blog/${postId}/comment`,
                     type: 'POST',
-                    data: JSON.stringify({ content: content }),
+                    data: JSON.stringify({
+                        content: content
+                    }),
                     contentType: 'application/json',
-                    headers: { 'X-CSRF-TOKEN': csrfToken },
-                    success: function (data) {
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken
+                    },
+                    success: function(data) {
                         if (data.success) {
                             $('#comment-form')[0].reset();
                             updateCommentCount();
@@ -443,15 +445,17 @@
                             showFlashMessage('Comment added successfully!', 'success');
                         }
                     },
-                    error: function () {
+                    error: function() {
                         showFlashMessage('Error posting comment. Try again.', 'error');
                     }
                 });
             });
 
-            $(document).on('click', '.like-button, .dislike-button', function () {
+            $(document).on('click', '.like-button, .dislike-button', function() {
                 let postId = $(this).data('post-id');
                 let action = $(this).hasClass('like-button') ? 'like' : 'dislike';
+                let likeBtn = $('.like-button[data-post-id="' + postId + '"]');
+                let dislikeBtn = $('.dislike-button[data-post-id="' + postId + '"]');
 
                 $.ajax({
                     url: "/blog/like/" + postId,
@@ -460,18 +464,29 @@
                         _token: $('meta[name="csrf-token"]').attr('content'),
                         action: action
                     },
-                    success: function (data) {
+                    success: function(data) {
                         if (data.success) {
                             $('#likes-count').text(data.likes);
                             $('#dislikes-count').text(data.dislikes);
-                            showFlashMessage('Thanks for your feedback!', 'success');
+
+                            if (action === "like") {
+                                likeBtn.css('color', likeBtn.css('color') === 'rgb(255, 0, 0)' ?
+                                    'black' : 'red');
+                                dislikeBtn.css('color', 'black'); // Reset dislike color
+                            } else {
+                                dislikeBtn.css('color', dislikeBtn.css('color') ===
+                                    'rgb(255, 0, 0)' ? 'black' : 'red');
+                                likeBtn.css('color', 'black'); // Reset like color
+                            }
                         }
-                    },
-                    error: function () {
-                        showFlashMessage('Error processing your request.', 'error');
                     }
                 });
             });
+
+
+
+
+
 
             // Update Comment Count
             function updateCommentCount() {
@@ -482,9 +497,9 @@
             // Add New Comment
             function prependComment(data) {
                 let username = data.user.username || "Unknown User";
-                let profilePic = data.user.user_profile_picture
-                    ? `<img src="${data.user.user_profile_picture}" class="w-10 h-10 rounded-full">`
-                    : `<div class="w-10 h-10 bg-gray-300 flex items-center justify-center rounded-full">${data.user.user_initial}</div>`;
+                let profilePic = data.user.user_profile_picture ?
+                    `<img src="${data.user.user_profile_picture}" class="w-10 h-10 rounded-full">` :
+                    `<div class="w-10 h-10 bg-gray-300 flex items-center justify-center rounded-full">${data.user.user_initial}</div>`;
 
                 $('#comments-container').prepend(`
             <div class="bg-white border rounded-lg p-4" id="comment-${data.comment.id}">
@@ -502,17 +517,18 @@
 
             // Show Flash Message
             function showFlashMessage(message, type = 'success') {
-                let bgColor = type === 'error' ? 'bg-red-100 text-red-700 border-red-500' : 'bg-green-100 text-green-700 border-green-500';
+                let bgColor = type === 'error' ? 'bg-red-100 text-red-700 border-red-500' :
+                    'bg-green-100 text-green-700 border-green-500';
 
                 let messageElement = $(`<div class="border-l-4 ${bgColor} p-3 mb-2">${message}</div>`);
                 $('#flash-message-container').append(messageElement);
 
                 setTimeout(() => {
-                    messageElement.fadeOut(500, function () { $(this).remove(); });
+                    messageElement.fadeOut(500, function() {
+                        $(this).remove();
+                    });
                 }, 3000);
             }
         });
-
     </script>
-
 @endsection

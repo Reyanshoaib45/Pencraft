@@ -3,7 +3,7 @@
 @section('content')
     <main>
         <!-- Hero Section -->
-        <section class="pt-32 pb-20 md:pt-44 md:pb-28 relative overflow-hidden">
+        <section class="pt-20 pb-20  relative overflow-hidden">
             <!-- Background Element -->
             <div class="absolute top-0 right-0 w-1/2 h-1/2 opacity-50 -z-10">
                 <div
@@ -14,7 +14,8 @@
             <div class="blog-container">
                 <div class="max-w-3xl mx-auto text-center">
                     <h2 class="inline-block px-4 py-1.5 mb-6 text-sm font-medium rounded-full bg-gray-100 animate-fade-in">
-                        Professional Blogging Platform
+
+                        <span></span><span> Professional Blogging Platform </span>
                     </h2>
 
                     <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight animate-fade-in"

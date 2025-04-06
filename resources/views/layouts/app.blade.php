@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title', 'Pencraft - Modern Blogging Platform')</title>
-    @if(isset($seo))
+    @if (isset($seo))
         @include('partials.seo-meta', $seo)
     @else
         <title>{{ config('seo.default_title') }}</title>
@@ -21,6 +21,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Jquery-->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,7 +39,7 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#000000',  // Black
+                        primary: '#000000', // Black
                         secondary: '#333333', // Dark Gray
                         tertiary: '#666666', // Medium Gray
                         dark: '#000000', // Black
@@ -123,99 +125,29 @@
                 }
             }
         }
-
     </script>
 </head>
 
 <body class="bg-gray-50 font-sans text-gray-800">
-@include('partials.navbar') <!-- Include Navbar -->
+    @unless (Route::is('login') || Route::is('register'))
+        @include('partials.navbar') <!-- Include Navbar -->
+    @endunless
+    <div class="container mt-16">
+        @yield('content') <!-- Dynamic Content -->
+    </div>
+    @unless (Route::is('login') || Route::is('register'))
+        @include('partials.footer') <!-- Include Footer -->
+    @endunless
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('js/homedesign.js') }}"></script>
+    <script src="{{ asset('js/chat.js') }}"></script>
+    {{-- <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script> --}}
 
-<div class="container mt-16">
-    @yield('content') <!-- Dynamic Content -->
-</div>
 
-@include('partials.footer') <!-- Include Footer -->
-
-    <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" >
-</script>
-<script src="{{ asset('js/custom.js') }}"></script>
-<script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-
-<script>
-    $(document).ready(function () {
-        // Load navbar and footer
-        $("#navbar-container").load("navbar.html", function () {
-            // Execute navbar script after loading
-            $("#mobile-menu-button").on("click", function () {
-                $("#mobile-menu").toggleClass("hidden");
-            });
-
-            // Navbar scroll effect
-            $(window).on("scroll", function () {
-                if ($(window).scrollTop() > 10) {
-                    $("#navbar").addClass("bg-white/90 backdrop-blur-sm shadow-sm").removeClass("bg-transparent");
-                } else {
-                    $("#navbar").removeClass("bg-white/90 backdrop-blur-sm shadow-sm").addClass("bg-transparent");
-                }
-            });
-        });
-
-        $("#footer-container").load("footer.html");
-
-        // Featured posts slider
-        let activeIndex = 0;
-        const totalSlides = 5;
-
-        function updateSlider() {
-            $("#slider-container").css("transform", `translateX(-${activeIndex * 100}%)`);
-        }
-
-        $("#next-slide").on("click", function () {
-            activeIndex = (activeIndex === totalSlides - 1) ? 0 : activeIndex + 1;
-            updateSlider();
-        });
-
-        $("#prev-slide").on("click", function () {
-            activeIndex = (activeIndex === 0) ? totalSlides - 1 : activeIndex - 1;
-            updateSlider();
-        });
-
-        // Auto-slide
-        setInterval(function () {
-            activeIndex = (activeIndex === totalSlides - 1) ? 0 : activeIndex + 1;
-            updateSlider();
-        }, 5000);
-
-        // Subscribe form
-        $("#subscribe-form").on("submit", function (e) {
-            e.preventDefault();
-            let emailInput = $(this).find('input[type="email"]');
-            let submitButton = $(this).find('button[type="submit"]');
-
-            // Save original button text
-            let originalText = submitButton.text();
-            submitButton.text("Subscribing...").prop("disabled", true);
-
-            // Simulate API call
-            setTimeout(function () {
-                alert("Thank you for subscribing!");
-                emailInput.val("");
-                submitButton.text(originalText).prop("disabled", false);
-            }, 1500);
-        });
-    });
-    $(document).ready(function() {
-        $('#mobile-menu-button').click(function() {
-            $('#mobile-menu').slideToggle();
-        });
-    });
-</script>
-
-<!-- Page-Specific Scripts -->
-@stack('scripts')
-<!-- Section for Blade Script -->
-@yield('scripts')
+    <!-- Page-Specific Scripts -->
+    @stack('scripts')
+    <!-- Section for Blade Script -->
+    @yield('scripts')
 </body>
 
 </html>

@@ -62,14 +62,12 @@ class AuthController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
+            'email' => 'required|string|email|max:255|unique:users|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/',  // Improved email regex validation
+            'password' => 'required|string|min:8|confirmed|regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/',  // Strong password regex (uppercase, lowercase, number, special char)
             'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'bio' => 'nullable|string',
-            'twitter' => 'nullable|string|max:255',
-            'facebook' => 'nullable|string|max:255',
-            'linkedin' => 'nullable|string|max:255',
-            'instagram' => 'nullable|string|max:255',
+            'bio' => 'nullable|string|max:500', 
+            'facebook' => 'nullable|string|max:255|url',  
+            'instagram' => 'nullable|string|max:255|url',
         ]);
 
         if ($validator->fails()) {
@@ -84,9 +82,7 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'bio' => $request->bio,
-            'twitter' => $request->twitter,
             'facebook' => $request->facebook,
-            'linkedin' => $request->linkedin,
             'instagram' => $request->instagram,
         ];
 
