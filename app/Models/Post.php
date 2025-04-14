@@ -18,6 +18,7 @@ class Post extends Model
         'title',
         'content',
         'featured_image',
+        'featured_image_md',
         'category',
         'tags',
         'slug',

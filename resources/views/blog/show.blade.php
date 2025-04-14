@@ -91,22 +91,37 @@
             <div class="flex flex-col md:flex-row gap-10">
                 <!-- Main Content -->
                 <main class="flex-1 animate-fade-in">
-                    <!-- Featured Image -->
+                    <!-- First Featured Image -->
                     @if ($post->featured_image)
-                        <div class="mb-8 rounded-xl overflow-hidden shadow-sm">
+                        <div class="mb-8 rounded-xl overflow-hidden shadow-lg">
                             <img loading="lazy" src="{{ asset('storage/' . $post->featured_image) }}"
-                                alt="{{ $post->title }}" class="w-full h-auto" />
-                        </div>
-                    @else
-                        <div class="mb-8 rounded-xl overflow-hidden shadow-sm">
-                            <img loading="lazy" src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b"
-                                alt="{{ $post->title }}" class="w-full h-auto" />
+                                alt="{{ $post->title }}" class="w-full h-auto rounded-xl">
                         </div>
                     @endif
 
-                    <!-- Content -->
-                    <div class="prose prose-lg max-w-none mb-10">
-                        {!! $post->content !!}
+                    @php
+
+                        $content = $post->content;
+                        $splitPosition = floor(strlen($content) / 2);
+                        $contentParts = [substr($content, 0, $splitPosition), substr($content, $splitPosition)];
+                    @endphp
+
+                    <!-- First Half of Content -->
+                    <div class="prose prose-lg max-w-none mb-6" style="line-height:1.8; font-size:22px;">
+                        {!! \Mews\Purifier\Facades\Purifier::clean($contentParts[0]) !!}
+                    </div>
+
+                    <!-- Second Featured Image (Now in MIDDLE of content) -->
+                    @if ($post->featured_image_md)
+                        <div class="my-8 rounded-xl overflow-hidden d-flex justify-center">
+                            <img loading="lazy" src="{{ asset('storage/' . $post->featured_image_md) }}"
+                                alt="{{ $post->title }} - additional image" class="w-50 h-50 rounded-xl">
+                        </div>
+                    @endif
+
+                    <!-- Second Half of Content -->
+                    <div class="prose prose-lg max-w-none mt-6" style="line-height:1.8; font-size:22px;">
+                        {!! \Mews\Purifier\Facades\Purifier::clean($contentParts[1]) !!}
                     </div>
 
                     <!-- Tags -->
@@ -482,11 +497,6 @@
                     }
                 });
             });
-
-
-
-
-
 
             // Update Comment Count
             function updateCommentCount() {

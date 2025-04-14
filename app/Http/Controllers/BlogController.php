@@ -56,10 +56,12 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
+
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
             'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'featured_image_md' => 'required|nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'category' => 'required|string|max:50',
             'tags' => 'nullable|string',
             'is_published' => 'boolean',
@@ -69,6 +71,10 @@ class BlogController extends Controller
         if ($request->hasFile('featured_image')) {
             $imagePath = $request->file('featured_image')->store('featured_images', 'public');
             $validated['featured_image'] = $imagePath;
+        }
+        if ($request->hasFile('featured_image_md')) {
+            $imageMdPath = $request->file('featured_image_md')->store('featured_images_md', 'public');
+            $validated['featured_image_md'] = $imageMdPath;
         }
 
         // Convert tags string to array
@@ -167,6 +173,7 @@ class BlogController extends Controller
             'title' => 'required|string|max:255',
             'content' => 'required|string',
             'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'featured_image_md' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'category' => 'required|string|max:50',
             'tags' => 'nullable|string',
             'is_published' => 'boolean',
@@ -182,7 +189,15 @@ class BlogController extends Controller
             $imagePath = $request->file('featured_image')->store('featured_images', 'public');
             $validated['featured_image'] = $imagePath;
         }
-
+        if ($request->hasFile('featured_image_md')) {
+            // Delete old image if it exists
+            if ($post->featured_image_md) {
+                Storage::disk('public')->delete($post->featured_image_md);
+            }
+    
+            $imageMdPath = $request->file('featured_image_md')->store('featured_images_md', 'public');
+            $validated['featured_image_md'] = $imageMdPath;
+        }
         // Convert tags string to array
         if (isset($validated['tags'])) {
             $validated['tags'] = array_map('trim', explode(',', $validated['tags']));

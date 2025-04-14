@@ -1,4 +1,3 @@
-
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -19,6 +18,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->text('content');
             $table->string('featured_image')->nullable();
+            $table->string('featured_image_md')->nullable();
             $table->string('category');
             $table->json('tags')->nullable();
             $table->string('slug')->unique();
