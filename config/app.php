@@ -47,6 +47,7 @@ return [
         Illuminate\Pipeline\PipelineServiceProvider::class, // Middleware pipeline system
         Illuminate\Queue\QueueServiceProvider::class, // Queue system
         Illuminate\Redis\RedisServiceProvider::class, // Redis cache and session support
+        App\Providers\ExceptionServiceProvider::class,
         Illuminate\Auth\Passwords\PasswordResetServiceProvider::class, // Password resets
         Illuminate\Session\SessionServiceProvider::class, // Session handling
         Illuminate\Translation\TranslationServiceProvider::class, // Language translation
