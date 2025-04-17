@@ -95,7 +95,7 @@
                     @if ($post->featured_image)
                         <div class="mb-8 rounded-xl overflow-hidden shadow-lg">
                             <img loading="lazy" src="{{ asset('storage/' . $post->featured_image) }}"
-                                alt="{{ $post->title }}" class="w-full h-auto rounded-xl">
+                                alt="{{ $post->title }}" style="height: 340px" class="w-full  rounded-xl">
                         </div>
                     @endif
 
