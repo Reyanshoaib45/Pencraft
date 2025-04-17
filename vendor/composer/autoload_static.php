@@ -555,6 +555,7 @@ class ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad
         'App\\Models\\Status' => __DIR__ . '/../..' . '/app/Models/Status.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
+        'App\\Providers\\ExceptionServiceProvider' => __DIR__ . '/../..' . '/app/Providers/ExceptionServiceProvider.php',
         'App\\Providers\\SeoServiceProvider' => __DIR__ . '/../..' . '/app/Providers/SeoServiceProvider.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Brick\\Math\\BigDecimal' => __DIR__ . '/..' . '/brick/math/src/BigDecimal.php',

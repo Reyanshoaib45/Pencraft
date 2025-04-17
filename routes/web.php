@@ -123,3 +123,12 @@ Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 Route::get('/statuses', [StatusController::class, 'adminIndex'])->name('admin.statuses.index');
 Route::get('/statuses/{id}/edit', [StatusController::class, 'edit'])->name('admin.statuses.edit');
 Route::put('/statuses/{id}', [StatusController::class, 'update'])->name('admin.statuses.update');
+Route::get('/test-css', function () {
+    $path = base_path('vendor/laravel/framework/src/Illuminate/Foundation/resources/exceptions/renderer/dist/styles.css');
+
+    if (!file_exists($path)) {
+        return "File not found!";
+    }
+
+    return file_get_contents($path);
+});

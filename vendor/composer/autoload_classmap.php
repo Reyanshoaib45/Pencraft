@@ -23,6 +23,7 @@ return array(
     'App\\Models\\Status' => $baseDir . '/app/Models/Status.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
+    'App\\Providers\\ExceptionServiceProvider' => $baseDir . '/app/Providers/ExceptionServiceProvider.php',
     'App\\Providers\\SeoServiceProvider' => $baseDir . '/app/Providers/SeoServiceProvider.php',
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'Brick\\Math\\BigDecimal' => $vendorDir . '/brick/math/src/BigDecimal.php',
