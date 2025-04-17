@@ -26,25 +26,25 @@ class UsersTableSeeder extends Seeder
         ]);
 
         // Create regular users
-        User::create([
-            'name' => 'John Doe',
-            'email' => 'john@example.com',
-            'password' => Hash::make('password'),
-            'bio' => 'Tech enthusiast and avid blogger.',
-            'profile_picture' => 'https://randomuser.me/api/portraits/men/2.jpg',
-            'twitter' => 'johndoe',
-            'linkedin' => 'johndoe',
-        ]);
+        // User::create([
+        //     'name' => 'John Doe',
+        //     'email' => 'john@example.com',
+        //     'password' => Hash::make('password'),
+        //     'bio' => 'Tech enthusiast and avid blogger.',
+        //     'profile_picture' => 'https://randomuser.me/api/portraits/men/2.jpg',
+        //     'twitter' => 'johndoe',
+        //     'linkedin' => 'johndoe',
+        // ]);
 
-        User::create([
-            'name' => 'Jane Smith',
-            'email' => 'jane@example.com',
-            'password' => Hash::make('password'),
-            'bio' => 'Content writer specializing in travel and lifestyle topics.',
-            'profile_picture' => 'https://randomuser.me/api/portraits/women/2.jpg',
-            'instagram' => 'janesmith',
-            'facebook' => 'janesmith',
-        ]);
+        // User::create([
+        //     'name' => 'Jane Smith',
+        //     'email' => 'jane@example.com',
+        //     'password' => Hash::make('password'),
+        //     'bio' => 'Content writer specializing in travel and lifestyle topics.',
+        //     'profile_picture' => 'https://randomuser.me/api/portraits/women/2.jpg',
+        //     'instagram' => 'janesmith',
+        //     'facebook' => 'janesmith',
+        // ]);
 
         // Create several test users
         User::factory(5)->create();
