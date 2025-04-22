@@ -64,6 +64,10 @@
                             <option value="Productivity"
                                 {{ old('category', $post->category) == 'Productivity' ? 'selected' : '' }}>Productivity
                             </option>
+                            <option value="Lifestyle" {{ old('category') == 'Lifestyle' ? 'selected' : '' }}>Life style
+                            </option>
+                            <option value="health" {{ old('category') == 'health' ? 'selected' : '' }}>Health
+                            </option>
                             <option value="Design" {{ old('category', $post->category) == 'Design' ? 'selected' : '' }}>
                                 Design</option>
                             <option value="Business" {{ old('category', $post->category) == 'Business' ? 'selected' : '' }}>

@@ -60,7 +60,7 @@
                             <option value="">Select a category</option>
                             <option value="Technology" {{ old('category') == 'Technology' ? 'selected' : '' }}>Technology
                             </option>
-                            <option value="Livestyle" {{ old('category') == 'Livestyle' ? 'selected' : '' }}>Live style
+                            <option value="Lifestyle" {{ old('category') == 'Lifestyle' ? 'selected' : '' }}>Life style
                             </option>
                             <option value="health" {{ old('category') == 'health' ? 'selected' : '' }}>Health
                             </option>
