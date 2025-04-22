@@ -91,37 +91,117 @@
             <div class="flex flex-col md:flex-row gap-10">
                 <!-- Main Content -->
                 <main class="flex-1 animate-fade-in">
+                    <!-- Main Heading and Content -->
+                    @if ($post->main_heading)
+                        <div class="mb-8">
+                            <h2 class="text-3xl font-bold text-gray-900 mb-4">{{ $post->main_heading }}</h2>
+                            @if ($post->main_content)
+                                <div class="prose prose-lg max-w-none text-gray-700 mb-6">
+                                    {!! \Mews\Purifier\Facades\Purifier::clean($post->main_content) !!}
+                                </div>
+                            @endif
+                        </div>
+                    @endif
+
                     <!-- First Featured Image -->
                     @if ($post->featured_image)
-                        <div class="mb-8 rounded-xl overflow-hidden shadow-lg">
-                            <img loading="lazy" src="{{ asset('storage/' . $post->featured_image) }}"
-                                alt="{{ $post->title }}" style="height: 340px" class="w-full  rounded-xl">
+                        <div class="mb-8 rounded-xl overflow-hidden">
+                            <img loading="lazy" style="height: 400px !important;"
+                                src="{{ asset('storage/' . $post->featured_image) }}" alt="{{ $post->title }}"
+                                class="w-full h-auto rounded-xl shadow-lg">
                         </div>
                     @endif
 
-                    @php
+                    <!-- Main Content Sections -->
+                    <div class="prose prose-lg max-w-none mb-10">
+                        <!-- First Subheading Section -->
+                        @if ($post->subheading_1)
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4">{{ $post->subheading_1 }}</h3>
+                            @if ($post->subcontent_1)
+                                <div class="text-gray-700 mb-6 leading-relaxed">
+                                    {!! \Mews\Purifier\Facades\Purifier::clean($post->subcontent_1) !!}
+                                </div>
+                            @endif
+                        @endif
 
-                        $content = $post->content;
-                        $splitPosition = floor(strlen($content) / 2);
-                        $contentParts = [substr($content, 0, $splitPosition), substr($content, $splitPosition)];
-                    @endphp
+                        <!-- Second Subheading Section -->
+                        @if ($post->subheading_2)
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4">{{ $post->subheading_2 }}</h3>
+                            @if ($post->subcontent_2)
+                                <div class="text-gray-700 mb-6 leading-relaxed">
+                                    {!! \Mews\Purifier\Facades\Purifier::clean($post->subcontent_2) !!}
+                                </div>
+                            @endif
+                        @endif
 
-                    <!-- First Half of Content -->
-                    <div class="prose prose-lg max-w-none mb-6" style="line-height:1.8; font-size:22px;">
-                        {!! \Mews\Purifier\Facades\Purifier::clean($contentParts[0]) !!}
-                    </div>
+                        <!-- Third Subheading Section -->
+                        @if ($post->subheading_3)
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4">{{ $post->subheading_3 }}</h3>
+                            @if ($post->subcontent_3)
+                                <div class="text-gray-700 mb-6 leading-relaxed">
+                                    {!! \Mews\Purifier\Facades\Purifier::clean($post->subcontent_3) !!}
+                                </div>
+                            @endif
+                        @endif
 
-                    <!-- Second Featured Image (Now in MIDDLE of content) -->
-                    @if ($post->featured_image_md)
-                        <div class="my-8 rounded-xl overflow-hidden d-flex justify-center">
-                            <img loading="lazy" src="{{ asset('storage/' . $post->featured_image_md) }}"
-                                alt="{{ $post->title }} - additional image" class="w-50 h-50 rounded-xl">
-                        </div>
-                    @endif
+                        <!-- Middle Image -->
+                        @if ($post->featured_image_md)
+                            <div class="my-8 rounded-xl overflow-hidden flex justify-center">
+                                <img loading="lazy" src="{{ asset('storage/' . $post->featured_image_md) }}"
+                                    alt="{{ $post->title }} - additional image"
+                                    class="rounded-xl shadow-lg max-w-full h-auto">
+                            </div>
+                        @endif
 
-                    <!-- Second Half of Content -->
-                    <div class="prose prose-lg max-w-none mt-6" style="line-height:1.8; font-size:22px;">
-                        {!! \Mews\Purifier\Facades\Purifier::clean($contentParts[1]) !!}
+                        <!-- Fourth Subheading Section -->
+                        @if ($post->subheading_4)
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4">{{ $post->subheading_4 }}</h3>
+                            @if ($post->subcontent_4)
+                                <div class="text-gray-700 mb-6 leading-relaxed">
+                                    {!! \Mews\Purifier\Facades\Purifier::clean($post->subcontent_4) !!}
+                                </div>
+                            @endif
+                        @endif
+
+                        <!-- Fifth Subheading Section -->
+                        @if ($post->subheading_5)
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4">{{ $post->subheading_5 }}</h3>
+                            @if ($post->subcontent_5)
+                                <div class="text-gray-700 mb-6 leading-relaxed">
+                                    {!! \Mews\Purifier\Facades\Purifier::clean($post->subcontent_5) !!}
+                                </div>
+                            @endif
+                        @endif
+
+                        <!-- Sixth Subheading Section -->
+                        @if ($post->subheading_6)
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4">{{ $post->subheading_6 }}</h3>
+                            @if ($post->subcontent_6)
+                                <div class="text-gray-700 mb-6 leading-relaxed">
+                                    {!! \Mews\Purifier\Facades\Purifier::clean($post->subcontent_6) !!}
+                                </div>
+                            @endif
+                        @endif
+
+                        <!-- Seventh Subheading Section -->
+                        @if ($post->subheading_7)
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4">{{ $post->subheading_7 }}</h3>
+                            @if ($post->subcontent_7)
+                                <div class="text-gray-700 mb-6 leading-relaxed">
+                                    {!! \Mews\Purifier\Facades\Purifier::clean($post->subcontent_7) !!}
+                                </div>
+                            @endif
+                        @endif
+
+                        <!-- Final Content -->
+                        @if ($post->final_content)
+                            <div class="mt-8">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-4">Conclusion</h3>
+                                <div class="text-gray-700 leading-relaxed">
+                                    {!! \Mews\Purifier\Facades\Purifier::clean($post->final_content) !!}
+                                </div>
+                            </div>
+                        @endif
                     </div>
 
                     <!-- Tags -->
@@ -154,8 +234,8 @@
                         <button type="button"
                             class="dislike-button flex items-center bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-md transition-colors"
                             data-post-id="{{ $post->id }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M10 14H5.236a2 2 0 01-1.789-2.894l3.5-7A2 2 0 018.736 3h4.018a2 2 0 01.485.06l3.76.94m-7 10v5a2 2 0 002 2h.095c.5 0 .905-.405.905-.905 0-.714.211-1.412.608-2.006L17 13V4m-7 10h2m5-10h2a2 2 0 012 2v6a2 2 0 01-2 2h-2.5" />
                             </svg>

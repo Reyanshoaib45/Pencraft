@@ -60,13 +60,18 @@
                             <option value="">Select a category</option>
                             <option value="Technology" {{ old('category') == 'Technology' ? 'selected' : '' }}>Technology
                             </option>
+                            <option value="Livestyle" {{ old('category') == 'Livestyle' ? 'selected' : '' }}>Live style
+                            </option>
+                            <option value="health" {{ old('category') == 'health' ? 'selected' : '' }}>Health
+                            </option>
                             <option value="Productivity" {{ old('category') == 'Productivity' ? 'selected' : '' }}>
                                 Productivity</option>
                             <option value="Design" {{ old('category') == 'Design' ? 'selected' : '' }}>Design</option>
                             <option value="Business" {{ old('category') == 'Business' ? 'selected' : '' }}>Business</option>
                             <option value="Marketing" {{ old('category') == 'Marketing' ? 'selected' : '' }}>Marketing
                             </option>
-                            <option value="Remote Work" {{ old('category') == 'Remote Work' ? 'selected' : '' }}>Remote Work
+                            <option value="Remote Work" {{ old('category') == 'Remote Work' ? 'selected' : '' }}>Remote
+                                Work
                             </option>
                         </select>
                     </div>
@@ -109,7 +114,6 @@
                     </div>
 
                     <!-- Image-2  -->
-
                     <div class="mb-6">
                         <label for="featured_image_md" class="block text-sm font-medium text-gray-700 mb-2">Middle
                             Image</label>
@@ -146,13 +150,152 @@
                         </div>
                     </div>
 
-                    <!-- Content -->
+                    <!-- Main Heading and Content -->
                     <div class="mb-6">
-                        <label for="content" class="block text-sm font-medium text-gray-700 mb-2">Content</label>
-                        <textarea id="content" name="content" rows="12"
+                        <label for="main_heading" class="block text-sm font-medium text-gray-700 mb-2">Main
+                            Heading</label>
+                        <input type="text" id="main_heading" name="main_heading"
                             class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-transparent"
-                            placeholder="Write your blog post content here..." required>{{ old('content') }}</textarea>
-                        <p class="text-sm text-gray-500 mt-1">Markdown formatting supported</p>
+                            placeholder="Enter main heading" value="{{ old('main_heading') }}">
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="main_content" class="block text-sm font-medium text-gray-700 mb-2">Main
+                            Content</label>
+                        <textarea id="main_content" name="main_content" rows="5"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-transparent"
+                            placeholder="Write your main content here...">{{ old('main_content') }}</textarea>
+                    </div>
+
+                    <!-- First Set of Subheadings (3) -->
+                    <div class="mb-8 border-t pt-6">
+                        <h3 class="text-lg font-medium text-gray-900 mb-4">First Set of Subheadings</h3>
+
+                        <div class="mb-6">
+                            <label for="subheading_1" class="block text-sm font-medium text-gray-700 mb-2">Subheading
+                                1</label>
+                            <input type="text" id="subheading_1" name="subheading_1"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-transparent"
+                                placeholder="Enter subheading 1" value="{{ old('subheading_1') }}">
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="subcontent_1" class="block text-sm font-medium text-gray-700 mb-2">Content for
+                                Subheading 1</label>
+                            <textarea id="subcontent_1" name="subcontent_1" rows="4"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-transparent"
+                                placeholder="Write content for subheading 1...">{{ old('subcontent_1') }}</textarea>
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="subheading_2" class="block text-sm font-medium text-gray-700 mb-2">Subheading
+                                2</label>
+                            <input type="text" id="subheading_2" name="subheading_2"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-transparent"
+                                placeholder="Enter subheading 2" value="{{ old('subheading_2') }}">
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="subcontent_2" class="block text-sm font-medium text-gray-700 mb-2">Content for
+                                Subheading 2</label>
+                            <textarea id="subcontent_2" name="subcontent_2" rows="4"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-transparent"
+                                placeholder="Write content for subheading 2...">{{ old('subcontent_2') }}</textarea>
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="subheading_3" class="block text-sm font-medium text-gray-700 mb-2">Subheading
+                                3</label>
+                            <input type="text" id="subheading_3" name="subheading_3"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-transparent"
+                                placeholder="Enter subheading 3" value="{{ old('subheading_3') }}">
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="subcontent_3" class="block text-sm font-medium text-gray-700 mb-2">Content for
+                                Subheading 3</label>
+                            <textarea id="subcontent_3" name="subcontent_3" rows="4"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-transparent"
+                                placeholder="Write content for subheading 3...">{{ old('subcontent_3') }}</textarea>
+                        </div>
+                    </div>
+
+                    <!-- Second Set of Subheadings (4) -->
+                    <div class="mb-8 border-t pt-6">
+                        <h3 class="text-lg font-medium text-gray-900 mb-4">Second Set of Subheadings</h3>
+
+                        <div class="mb-6">
+                            <label for="subheading_4" class="block text-sm font-medium text-gray-700 mb-2">Subheading
+                                4</label>
+                            <input type="text" id="subheading_4" name="subheading_4"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-transparent"
+                                placeholder="Enter subheading 4" value="{{ old('subheading_4') }}">
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="subcontent_4" class="block text-sm font-medium text-gray-700 mb-2">Content for
+                                Subheading 4</label>
+                            <textarea id="subcontent_4" name="subcontent_4" rows="4"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-transparent"
+                                placeholder="Write content for subheading 4...">{{ old('subcontent_4') }}</textarea>
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="subheading_5" class="block text-sm font-medium text-gray-700 mb-2">Subheading
+                                5</label>
+                            <input type="text" id="subheading_5" name="subheading_5"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-transparent"
+                                placeholder="Enter subheading 5" value="{{ old('subheading_5') }}">
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="subcontent_5" class="block text-sm font-medium text-gray-700 mb-2">Content for
+                                Subheading 5</label>
+                            <textarea id="subcontent_5" name="subcontent_5" rows="4"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-transparent"
+                                placeholder="Write content for subheading 5...">{{ old('subcontent_5') }}</textarea>
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="subheading_6" class="block text-sm font-medium text-gray-700 mb-2">Subheading
+                                6</label>
+                            <input type="text" id="subheading_6" name="subheading_6"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-transparent"
+                                placeholder="Enter subheading 6" value="{{ old('subheading_6') }}">
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="subcontent_6" class="block text-sm font-medium text-gray-700 mb-2">Content for
+                                Subheading 6</label>
+                            <textarea id="subcontent_6" name="subcontent_6" rows="4"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-transparent"
+                                placeholder="Write content for subheading 6...">{{ old('subcontent_6') }}</textarea>
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="subheading_7" class="block text-sm font-medium text-gray-700 mb-2">Subheading
+                                7</label>
+                            <input type="text" id="subheading_7" name="subheading_7"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-transparent"
+                                placeholder="Enter subheading 7" value="{{ old('subheading_7') }}">
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="subcontent_7" class="block text-sm font-medium text-gray-700 mb-2">Content for
+                                Subheading 7</label>
+                            <textarea id="subcontent_7" name="subcontent_7" rows="4"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-transparent"
+                                placeholder="Write content for subheading 7...">{{ old('subcontent_7') }}</textarea>
+                        </div>
+                    </div>
+
+                    <!-- Final Content -->
+                    <div class="mb-6">
+                        <label for="final_content" class="block text-sm font-medium text-gray-700 mb-2">Final
+                            Content</label>
+                        <textarea id="final_content" name="final_content" rows="5"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-streamline-500 focus:border-transparent"
+                            placeholder="Write your final content here...">{{ old('final_content') }}</textarea>
                     </div>
 
                     <!-- Tags -->
@@ -221,7 +364,6 @@
                 previewImage.src = '#';
             });
         });
-
 
         document.addEventListener('DOMContentLoaded', function() {
             const featuredImageInput = document.getElementById('featured_image_md');

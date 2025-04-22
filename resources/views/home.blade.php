@@ -52,10 +52,15 @@
         </section>
 
         <!-- Featured Posts Section -->
+        @php
+            use Illuminate\Support\Str;
+        @endphp
+
         <section class="py-20 bg-gray-50">
             <div class="blog-container">
+                <!-- Section Header -->
                 <div class="text-center mb-16">
-                    <span class="px-3 py-1 text-xs font-medium rounded-full border border-gray-200 mb-4 inline-block">
+                    <span class="inline-block mb-4 px-3 py-1 text-xs font-medium rounded-full border border-gray-200">
                         Featured Articles
                     </span>
                     <h2 class="text-3xl md:text-4xl font-bold mb-4">Trending on Pencraft</h2>
@@ -64,137 +69,90 @@
                     </p>
                 </div>
 
-                <!-- Slider Section -->
+                <!-- Featured Posts Slider -->
                 <div class="relative overflow-hidden" id="featured-slider">
                     <div class="flex transition-transform duration-500 ease-in-out" id="slider-container">
+                        @foreach ([1, 2, 3] as $postId)
+                            @php
+                                $post = App\Models\Post::find($postId);
 
-                        <!-- Slide 1 -->
-                        <div class="w-full flex-shrink-0 px-4">
-                            <div
-                                class="bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col md:flex-row">
-                                <div class="md:w-1/2 relative h-64 md:h-auto">
-                                    <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&q=80"
-                                        alt="Technology Blog" class="w-full h-full object-cover" loading="lazy" />
-                                </div>
-                                <div class="md:w-1/2 p-8 flex flex-col justify-between">
-                                    <div>
-                                        <div class="flex items-center mb-4">
-                                            <span class="bg-gray-100 text-xs font-medium px-2.5 py-0.5 rounded mr-2">
-                                                Writing
-                                            </span>
-                                            <div class="flex items-center text-sm text-gray-500">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1"
-                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                    <circle cx="12" cy="12" r="10" />
-                                                    <polyline points="12 6 12 12 16 14" />
+                                if (!$post) {
+                                    continue;
+                                }
+
+                                // Calculate estimated read time (~200 words/min)
+                                $content = strip_tags($post->main_content ?? $post->content);
+                                $readTime = ceil(str_word_count($content) / 200);
+                                $excerpt = \Illuminate\Support\Str::limit($content, 150);
+                            @endphp
+
+                            <!-- Slide Item -->
+                            <div class="w-full flex-shrink-0 px-4">
+                                <div
+                                    class="bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col md:flex-row">
+
+                                    <!-- Post Image -->
+                                    <div class="md:w-1/2 h-64 md:h-auto relative">
+                                        @if ($post->featured_image)
+                                            <img src="{{ Storage::url($post->featured_image) }}" alt="{{ $post->title }}"
+                                                style="height: 500px;" class="w-full  object-cover" loading="lazy">
+                                        @else
+                                            <div class="w-full h-full  bg-gray-100 flex items-center justify-center">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-400"
+                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                                 </svg>
-                                                6 min read
                                             </div>
-                                        </div>
-                                        <h3 class="text-2xl font-bold mb-4">The Art of Crafting Compelling Blog Content</h3>
-                                        <p class="text-gray-600 mb-4">Discover the secrets to writing blog posts that
-                                            captivate your audience.</p>
+                                        @endif
                                     </div>
-                                    <div class="mt-auto flex items-center justify-between">
+
+                                    <!-- Post Content -->
+                                    <div class="md:w-1/2 p-8 flex flex-col justify-between">
                                         <div>
-                                            <p class="font-medium">Emma Johnson</p>
-                                            <p class="text-sm text-gray-500">May 15, 2023</p>
+                                            <!-- Category & Read Time -->
+                                            <div class="flex items-center mb-4">
+                                                <span class="bg-gray-100 text-xs font-medium px-2.5 py-0.5 rounded mr-2">
+                                                    {{ $post->category }}
+                                                </span>
+                                                <div class="flex items-center text-sm text-gray-500">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1"
+                                                        fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                        stroke-width="2">
+                                                        <circle cx="12" cy="12" r="10" />
+                                                        <polyline points="12 6 12 12 16 14" />
+                                                    </svg>
+                                                    {{ $readTime }} min read
+                                                </div>
+                                            </div>
+
+                                            <!-- Title & Excerpt -->
+                                            <h3 class="text-2xl font-bold mb-4">{{ $post->title }}</h3>
+                                            <p class="text-gray-600 mb-4 line-clamp-3">{{ $excerpt }}</p>
                                         </div>
-                                        <button class="text-black hover:text-gray-600">
-                                            Read Article
-                                        </button>
+
+                                        <!-- Author Info and CTA -->
+                                        <div class="mt-auto flex items-center justify-between">
+                                            <div>
+                                                <p class="font-medium">{{ $post->author->name }}</p>
+                                                <p class="text-sm text-gray-500">
+                                                    {{ optional($post->published_at)->format('M d, Y') ?? 'Not published' }}
+                                                </p>
+                                            </div>
+                                            <a href="{{ route('blog.show', $post->id) }}"
+                                                class="text-black hover:text-gray-600 font-medium">
+                                                Read Full Article
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <!-- Slide 2 -->
-                        <div class="w-full flex-shrink-0 px-4">
-                            <div
-                                class="bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col md:flex-row">
-                                <div class="md:w-1/2 relative h-64 md:h-auto">
-                                    <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=80"
-                                        alt="Business Blog" class="w-full h-full object-cover" loading="lazy" />
-                                </div>
-                                <div class="md:w-1/2 p-8 flex flex-col justify-between">
-                                    <div>
-                                        <div class="flex items-center mb-4">
-                                            <span class="bg-gray-100 text-xs font-medium px-2.5 py-0.5 rounded mr-2">
-                                                Business
-                                            </span>
-                                            <div class="flex items-center text-sm text-gray-500">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1"
-                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                    <circle cx="12" cy="12" r="10" />
-                                                    <polyline points="12 6 12 12 16 14" />
-                                                </svg>
-                                                8 min read
-                                            </div>
-                                        </div>
-                                        <h3 class="text-2xl font-bold mb-4">Mastering the Art of Business Blogging</h3>
-                                        <p class="text-gray-600 mb-4">Learn how to create blog content that boosts your
-                                            brand and revenue.</p>
-                                    </div>
-                                    <div class="mt-auto flex items-center justify-between">
-                                        <div>
-                                            <p class="font-medium">John Doe</p>
-                                            <p class="text-sm text-gray-500">June 20, 2023</p>
-                                        </div>
-                                        <button class="text-black hover:text-gray-600">
-                                            Read Article
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Slide 3 (Newly Added) -->
-                        <div class="w-full flex-shrink-0 px-4">
-                            <div
-                                class="bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col md:flex-row">
-                                <div class="md:w-1/2 relative h-64 md:h-auto">
-                                    <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=80"
-                                        alt="Business Blog" class="w-full h-full object-cover" loading="lazy" />
-                                </div>
-                                <div class="md:w-1/2 p-8 flex flex-col justify-between">
-                                    <div>
-                                        <div class="flex items-center mb-4">
-                                            <span class="bg-gray-100 text-xs font-medium px-2.5 py-0.5 rounded mr-2">
-                                                Marketing
-                                            </span>
-                                            <div class="flex items-center text-sm text-gray-500">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1"
-                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                    <circle cx="12" cy="12" r="10" />
-                                                    <polyline points="12 6 12 12 16 14" />
-                                                </svg>
-                                                10 min read
-                                            </div>
-                                        </div>
-                                        <h3 class="text-2xl font-bold mb-4">Content Marketing Strategies for 2024</h3>
-                                        <p class="text-gray-600 mb-4">Discover the latest trends in content marketing that
-                                            drive engagement.</p>
-                                    </div>
-                                    <div class="mt-auto flex items-center justify-between">
-                                        <div>
-                                            <p class="font-medium">Sarah Lee</p>
-                                            <p class="text-sm text-gray-500">July 5, 2023</p>
-                                        </div>
-                                        <button class="text-black hover:text-gray-600">
-                                            Read Article
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                        @endforeach
                     </div>
                 </div>
             </div>
         </section>
+
 
 
 
