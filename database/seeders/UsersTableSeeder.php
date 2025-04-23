@@ -17,9 +17,9 @@ class UsersTableSeeder extends Seeder
     {
         // Create admin user
         User::create([
-            'name' => 'Admin User',
-            'email' => 'admin@example.com',
-            'password' => Hash::make('password'),
+            'name' => 'Administrator',
+            'email' => 'Reyanshoaib@admin.com',
+            'password' => Hash::make('password123@098'),
             'bio' => 'System administrator with full access privileges.',
             'profile_picture' => 'https://randomuser.me/api/portraits/men/1.jpg',
             'is_admin' => true,
