@@ -92,6 +92,16 @@
                 <!-- Main Content -->
                 <main class="flex-1 animate-fade-in">
                     <!-- Main Heading and Content -->
+
+                    <!-- First Featured Image -->
+                    @if ($post->featured_image)
+                        <div class="mb-8 rounded-xl overflow-hidden">
+                            <img loading="lazy" style="height: 400px !important;"
+                                src="{{ asset('storage/' . $post->featured_image) }}" alt="{{ $post->title }}"
+                                class="w-full h-auto rounded-xl shadow-lg">
+                        </div>
+                    @endif
+
                     @if ($post->main_heading)
                         <div class="mb-8">
                             <h2 class="text-3xl font-bold text-gray-900 mb-4">{{ $post->main_heading }}</h2>
@@ -103,14 +113,6 @@
                         </div>
                     @endif
 
-                    <!-- First Featured Image -->
-                    @if ($post->featured_image)
-                        <div class="mb-8 rounded-xl overflow-hidden">
-                            <img loading="lazy" style="height: 400px !important;"
-                                src="{{ asset('storage/' . $post->featured_image) }}" alt="{{ $post->title }}"
-                                class="w-full h-auto rounded-xl shadow-lg">
-                        </div>
-                    @endif
 
                     <!-- Main Content Sections -->
                     <div class="prose prose-lg max-w-none mb-10">
