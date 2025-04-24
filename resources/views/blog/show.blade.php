@@ -417,7 +417,7 @@
                                                     {{ $comment->created_at->diffForHumans() }}</div>
                                             </div>
                                             <div class="prose prose-lg text-gray-700 mb-4">
-                                                {!! Str::markdown(e($post->content)) !!}
+                                                {!! Str::markdown(e($comment->content)) !!}
                                             </div>
 
 

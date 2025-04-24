@@ -133,7 +133,12 @@ class BlogController extends Controller
             ->firstOrFail();
 
         // Increment view count
-        $post->increment('views');
+        $viewed = session()->get('viewed_posts', []);
+
+        if (!in_array($post->id, $viewed)) {
+            $post->increment('views');
+            session()->push('viewed_posts', $post->id);
+        }
 
         // Get related posts
         $relatedPosts = Post::published()
