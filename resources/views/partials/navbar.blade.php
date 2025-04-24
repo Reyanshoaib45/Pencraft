@@ -64,7 +64,7 @@
             <div class="flex flex-col space-y-4">
                 <a href="{{ route('home') }}"
                     class="text-lg font-medium text-black hover:text-gray-600 transition-colors">Home</a>
-                <a href="{{ route('blog-page') }}"
+                <a href="{{ route('blog.index') }}"
                     class="text-lg font-medium text-black hover:text-gray-600 transition-colors">Blog</a>
                 <a href="{{ route('contact') }}"
                     class="text-lg font-medium text-black hover:text-gray-600 transition-colors">Contact</a>
