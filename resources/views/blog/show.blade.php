@@ -469,7 +469,7 @@
                             <div class="space-y-6">
                                 @foreach ($relatedPosts as $relatedPost)
                                     <a href="{{ route('blog.show', $relatedPost->id) }}">
-                                        <div class="flex gap-4">
+                                        <div class="flex gap-4" style="margin-bottom:10px">
                                             <div class="flex-shrink-0 w-20 h-20 rounded-md overflow-hidden">
                                                 @if ($relatedPost->featured_image)
                                                     <img loading="lazy"
