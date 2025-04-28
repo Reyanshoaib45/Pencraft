@@ -24,7 +24,7 @@ $(document).ready(function () {
 
     // Featured posts slider (auto-slide without user controls)
     var activeIndex = 0;
-    var totalSlides = 5; // Make sure this matches the total number of slides
+    var totalSlides = 4; // Make sure this matches the total number of slides
 
     function updateSlider() {
         // Prevent the slider from going blank by keeping it within bounds

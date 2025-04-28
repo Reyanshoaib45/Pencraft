@@ -79,7 +79,7 @@
                 <!-- Featured Posts Slider -->
                 <div class="relative overflow-hidden" id="featured-slider">
                     <div class="flex transition-transform duration-500 ease-in-out" id="slider-container">
-                        @foreach ([1, 2, 3] as $postId)
+                        @foreach ([1, 2, 3, 4] as $postId)
                             @php
                                 $post = App\Models\Post::find($postId);
 
