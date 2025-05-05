@@ -75,7 +75,7 @@
                                     {{ $post->title }}
                                 </h3>
                                 <p class="text-gray-600 mb-4">
-                                    {{ \Illuminate\Support\Str::limit(strip_tags($post->content), 150) }}
+                                    {{ \Illuminate\Support\Str::limit(strip_tags($post->main_content), 100) }}
 
                                 </p>
 

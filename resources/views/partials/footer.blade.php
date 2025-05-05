@@ -16,7 +16,7 @@
                 </p>
                 <div class="flex space-x-3">
                     <!-- Twitter -->
-                    <a href="#"
+                    <a href="https://x.com/PENCRAFTOFFICAL" target="_blank"
                         class="p-2 border border-gray-200 rounded-full hover:bg-gray-100 hover:text-black transition-colors"
                         aria-label="Twitter">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
@@ -27,7 +27,7 @@
                         </svg>
                     </a>
                     <!-- Facebook -->
-                    <a href="#"
+                    <a href="https://www.facebook.com/share/194sUvtPFb/?mibextid=qi2Omg" target="_blank"
                         class="p-2 border border-gray-200 rounded-full hover:bg-gray-100 hover:text-black transition-colors"
                         aria-label="Facebook">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
@@ -36,7 +36,7 @@
                         </svg>
                     </a>
                     <!-- Instagram -->
-                    <a href="#"
+                    <a href="https://www.instagram.com/pencraft_official?igsh=NnFsMWNqZHhodzVj" target="_blank"
                         class="p-2 border border-gray-200 rounded-full hover:bg-gray-100 hover:text-black transition-colors"
                         aria-label="Instagram">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
@@ -47,7 +47,7 @@
                         </svg>
                     </a>
                     <!-- LinkedIn -->
-                    <a href="#"
+                    <a href="https://www.linkedin.com/in/pencraft-offical-bb1412364/" target="_blank"
                         class="p-2 border border-gray-200 rounded-full hover:bg-gray-100 hover:text-black transition-colors"
                         aria-label="LinkedIn">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
@@ -74,8 +74,8 @@
                             class="text-gray-600 hover:text-streamline-600 transition-colors">Writing Tips</a></li>
                     <li><a href="{{ route('changelog') }}"
                             class="text-gray-600 hover:text-streamline-600 transition-colors">Changelog</a></li>
-                    <li><a href="{{ route('writing.tips') }}"
-                            class="text-gray-600 hover:text-streamline-600 transition-colors">Changelog</a></li>
+                    {{-- <li><a href="{{ route('writing.tips') }}"
+                            class="text-gray-600 hover:text-streamline-600 transition-colors">Changelog</a></li> --}}
                     <li><a href="{{ route('documentation') }}"
                             class="text-gray-600 hover:text-streamline-600 transition-colors">Documentation</a></li>
                 </ul>
@@ -88,16 +88,16 @@
                     Resources
                 </h3>
                 <ul class="space-y-3">
-                    <li><a href="{{ route('help-center') }}"
-                            class="text-gray-600 hover:text-streamline-600 transition-colors">Help Center</a></li>
+                    {{-- <li><a href="{{ route('help-center') }}"
+                            class="text-gray-600 hover:text-streamline-600 transition-colors">Help Center</a></li> --}}
                     <li><a href="{{ route('contact') }}"
                             class="text-gray-600 hover:text-streamline-600 transition-colors">Contact Us</a></li>
                     <li><a href="{{ route('privacy') }}"
                             class="text-gray-600 hover:text-streamline-600 transition-colors">Privacy Policy</a></li>
                     <li><a href="{{ route('terms') }}"
                             class="text-gray-600 hover:text-streamline-600 transition-colors">Terms of Service</a></li>
-                    <li><a href="{{ route('status') }}"
-                            class="text-gray-600 hover:text-streamline-600 transition-colors">Status</a></li>
+                    {{-- <li><a href="{{ route('status') }}"
+                            class="text-gray-600 hover:text-streamline-600 transition-colors">Status</a></li> --}}
                 </ul>
             </div>
 
