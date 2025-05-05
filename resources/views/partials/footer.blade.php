@@ -27,7 +27,8 @@
                         </svg>
                     </a>
                     <!-- Facebook -->
-                    <a href="https://www.facebook.com/share/194sUvtPFb/?mibextid=qi2Omg" target="_blank"
+                    <a href="https://www.facebook.com/OfficialPencraft?mibextid=qi2Omg&rdid=wPVVEh7FwCDAnWCo&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1AQwGsXmTi%2F%3Fmibextid%3Dqi2Omg#"
+                        target="_blank"
                         class="p-2 border border-gray-200 rounded-full hover:bg-gray-100 hover:text-black transition-colors"
                         aria-label="Facebook">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
