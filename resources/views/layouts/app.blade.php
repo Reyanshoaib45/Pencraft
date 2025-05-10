@@ -134,6 +134,7 @@
     @endunless
     <div class="container mt-16">
         @yield('content') <!-- Dynamic Content -->
+
     </div>
     @unless (Route::is('login') || Route::is('register'))
         @include('partials.footer') <!-- Include Footer -->
