@@ -165,7 +165,7 @@
         atOptions = {
             'key': 'ddfdbfaa6fc309a34dc403f5af22d742',
             'format': 'iframe',
-            'height': 300,
+            'height': 200,
             'width': 160,
             'params': {}
         };
