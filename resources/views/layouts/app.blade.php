@@ -151,6 +151,8 @@
     @stack('scripts')
     <!-- Section for Blade Script -->
     @yield('scripts')
+    <script type='text/javascript' src='//pl26622304.profitableratecpm.com/22/0a/0b/220a0b4b918c1cfb0077179c382d248c.js'>
+    </script>
 </body>
 
 </html>
