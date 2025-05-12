@@ -5,6 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script type='text/javascript' src='//pl26622104.profitableratecpm.com/ab/af/df/abafdff1bb39bc0bb023d95918f38590.js'>
+    </script>
 
     <title>@yield('title', 'Pencraft - Modern Blogging Platform')</title>
     @if (isset($seo))
