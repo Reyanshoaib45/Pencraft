@@ -131,6 +131,7 @@
 </head>
 
 <body class="bg-gray-50 font-sans text-gray-800">
+    <div id="container-929ddc13b26b272d3a3d80ba79e648dd"></div>
     @unless (Route::is('login') || Route::is('register'))
         @include('partials.navbar') <!-- Include Navbar -->
     @endunless
@@ -160,7 +161,17 @@
     </script>
     <script async="async" data-cfasync="false"
         src="//pl26627394.profitableratecpm.com/929ddc13b26b272d3a3d80ba79e648dd/invoke.js"></script>
-    <div id="container-929ddc13b26b272d3a3d80ba79e648dd"></div>
+    <script type="text/javascript">
+        atOptions = {
+            'key': 'ddfdbfaa6fc309a34dc403f5af22d742',
+            'format': 'iframe',
+            'height': 300,
+            'width': 160,
+            'params': {}
+        };
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/ddfdbfaa6fc309a34dc403f5af22d742/invoke.js">
+    </script>
 
 </body>
 
