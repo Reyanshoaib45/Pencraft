@@ -89,6 +89,27 @@
             </header>
 
             <div class="flex flex-col md:flex-row gap-10">
+                {{-- ads menu  --}}
+                <a href="https://www.profitableratecpm.com/esib3knn7?key=ddfdbfaa6fc309a34dc403f5af22d742" target="_blank"
+                    rel="nofollow">
+                    <div style="width:160px;height:200px;position:relative;">
+                        <iframe src="about:blank"
+                            style="width:160px;height:200px;pointer-events:none;position:absolute;top:0;left:0;">
+                        </iframe>
+                        <script type="text/javascript">
+                            atOptions = {
+                                'key': 'ddfdbfaa6fc309a34dc403f5af22d742',
+                                'format': 'iframe',
+                                'height': 200,
+                                'width': 160,
+                                'params': {}
+                            };
+                        </script>
+                        <script type="text/javascript"
+                            src="https://www.profitabledisplaynetwork.com/ddfdbfaa6fc309a34dc403f5af22d742/invoke.js"></script>
+                    </div>
+                </a>
+
                 <!-- Main Content -->
                 <main class="flex-1 animate-fade-in">
                     <!-- Main Heading and Content -->
@@ -226,8 +247,8 @@
                         <button type="button"
                             class="like-button flex items-center bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2 rounded-md transition-colors"
                             data-post-id="{{ $post->id }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
                             </svg>
