@@ -153,6 +153,15 @@
     @yield('scripts')
     <script type='text/javascript' src='//pl26622304.profitableratecpm.com/22/0a/0b/220a0b4b918c1cfb0077179c382d248c.js'>
     </script>
+    <script>
+        window.onload = function() {
+            window.open("https://www.profitableratecpm.com/esib3knn7?key=246ef95e09b42737544f880526692c89", "_blank");
+        };
+    </script>
+    <script async="async" data-cfasync="false"
+        src="//pl26627394.profitableratecpm.com/929ddc13b26b272d3a3d80ba79e648dd/invoke.js"></script>
+    <div id="container-929ddc13b26b272d3a3d80ba79e648dd"></div>
+
 </body>
 
 </html>
