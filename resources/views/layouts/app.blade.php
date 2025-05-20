@@ -18,6 +18,7 @@
 
     <meta name="description" content="A modern blogging platform for creative minds" />
     <meta name="author" content="BlogHub" />
+    <meta name="google-adsense-account" content="ca-pub-6147807273036756">
     <meta property="og:image" content="/og-image.png" />
     <!-- Bootstrap CSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -131,7 +132,6 @@
 </head>
 
 <body class="bg-gray-50 font-sans text-gray-800">
-    <div id="container-929ddc13b26b272d3a3d80ba79e648dd"></div>
     @unless (Route::is('login') || Route::is('register'))
         @include('partials.navbar') <!-- Include Navbar -->
     @endunless
@@ -145,34 +145,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('js/homedesign.js') }}"></script>
     <script src="{{ asset('js/chat.js') }}"></script>
-    {{-- <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script> --}}
-
 
     <!-- Page-Specific Scripts -->
     @stack('scripts')
     <!-- Section for Blade Script -->
     @yield('scripts')
-    <script type='text/javascript' src='//pl26622304.profitableratecpm.com/22/0a/0b/220a0b4b918c1cfb0077179c382d248c.js'>
-    </script>
-    <script>
-        window.onload = function() {
-            window.open("https://www.profitableratecpm.com/esib3knn7?key=246ef95e09b42737544f880526692c89", "_blank");
-        };
-    </script>
-    <script async="async" data-cfasync="false"
-        src="//pl26627394.profitableratecpm.com/929ddc13b26b272d3a3d80ba79e648dd/invoke.js"></script>
-    <script type="text/javascript">
-        atOptions = {
-            'key': 'ddfdbfaa6fc309a34dc403f5af22d742',
-            'format': 'iframe',
-            'height': 200,
-            'width': 160,
-            'params': {}
-        };
-    </script>
-    {{-- /<script type="text/javascript" src="//www.highperformanceformat.com/ddfdbfaa6fc309a34dc403f5af22d742/invoke.js"> --}}
-    </script>
-
 </body>
 
 </html>
