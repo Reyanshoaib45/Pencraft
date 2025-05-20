@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="google-adsense-account" content="ca-pub-6147807273036756">
     <script type='text/javascript' src='//pl26622104.profitableratecpm.com/ab/af/df/abafdff1bb39bc0bb023d95918f38590.js'>
     </script>
 
