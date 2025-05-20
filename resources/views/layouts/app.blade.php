@@ -5,8 +5,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <script type='text/javascript' src='//pl26622104.profitableratecpm.com/ab/af/df/abafdff1bb39bc0bb023d95918f38590.js'>
-    </script>
+    <meta name="google-adsense-account" content="ca-pub-6147807273036756">
+    <meta name="description" content="A modern blogging platform for creative minds" />
+    <meta name="author" content="Pencraft" />
+    <meta property="og:image" content="/og-image.png" />
 
     <title>@yield('title', 'Pencraft - Modern Blogging Platform')</title>
     @if (isset($seo))
@@ -16,10 +18,7 @@
         <meta name="description" content="{{ config('seo.default_description') }}">
     @endif
 
-    <meta name="description" content="A modern blogging platform for creative minds" />
-    <meta name="author" content="BlogHub" />
-    <meta name="google-adsense-account" content="ca-pub-6147807273036756">
-    <meta property="og:image" content="/og-image.png" />
+
     <!-- Bootstrap CSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Tailwind CSS CDN -->
