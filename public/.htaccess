@@ -1,25 +1,57 @@
 <IfModule mod_rewrite.c>
-    <IfModule mod_negotiation.c>
-        Options -MultiViews -Indexes
-    </IfModule>
+    # Allow direct access to storage files
+    RewriteRule ^storage/(.*)$ public/storage/$1 [L,NC]
+    
+    <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico)$">
+        Require all granted
+        Order allow,deny
+        Allow from all
+    </FilesMatch>
+</IfModule>
 
     RewriteEngine On
 
+    # ========================
+    # FIX FOR 403 IMAGE ERRORS
+    # ========================
+    <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico|css|js|woff2)$">
+        Require all granted
+        Order allow,deny
+        Allow from all
+        Header set Cache-Control "public, max-age=31536000"
+        Header unset ETag
+        FileETag None
+    </FilesMatch>
+
+    # ========================
+    # CORE LARAVEL RULES
+    # ========================
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
-    # Handle X-XSRF-Token Header
-    RewriteCond %{HTTP:x-xsrf-token} .
-    RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:X-XSRF-Token}]
-
-    # Redirect Trailing Slashes If Not A Folder...
+    # Redirect Trailing Slashes
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_URI} (.+)/$
     RewriteRule ^ %1 [L,R=301]
 
-    # Send Requests To Front Controller...
+    # Handle Front Controller
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+
+    # ========================
+    # SECURITY HEADERS
+    # ========================
+    <IfModule mod_headers.c>
+        Header always set X-Content-Type-Options "nosniff"
+        Header always set X-Frame-Options "SAMEORIGIN"
+        Header always set X-XSS-Protection "1; mode=block"
+        Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    </IfModule>
 </IfModule>
+
+# ========================
+# DISABLE SERVER SIGNATURE
+# ========================
+ServerSignature Off
