@@ -132,10 +132,11 @@
 </head>
 
 <body class="bg-gray-50 font-sans text-gray-800">
-    <div id="container-929ddc13b26b272d3a3d80ba79e648dd"></div>
+
     @unless (Route::is('login') || Route::is('register'))
         @include('partials.navbar') <!-- Include Navbar -->
     @endunless
+    <div id="container-929ddc13b26b272d3a3d80ba79e648dd"></div>
     <div class="container mt-16">
         @yield('content') <!-- Dynamic Content -->
 
@@ -146,8 +147,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('js/homedesign.js') }}"></script>
     <script src="{{ asset('js/chat.js') }}"></script>
-    {{-- <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script> --}}
-
 
     <!-- Page-Specific Scripts -->
     @stack('scripts')
