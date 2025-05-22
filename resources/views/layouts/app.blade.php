@@ -46,14 +46,11 @@
     @unless (Route::is('login') || Route::is('register'))
         @include('partials.navbar') <!-- Include Navbar -->
     @endunless
+    <div id="container-929ddc13b26b272d3a3d80ba79e648dd"></div>
     <div class="container mt-16">
         @yield('content') <!-- Dynamic Content -->
-        <div id="container-929ddc13b26b272d3a3d80ba79e648dd"></div>
-
 
     </div>
-    <div id="container-929ddc13b26b272d3a3d80ba79e648dd"></div>
-
     @unless (Route::is('login') || Route::is('register'))
         @include('partials.footer') <!-- Include Footer -->
     @endunless
