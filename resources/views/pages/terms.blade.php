@@ -7,7 +7,7 @@
             <div class="bg-white shadow-sm rounded-lg p-6 mb-8">
                 <h2 class="text-xl font-semibold mb-4 text-streamline-700">1. Introduction</h2>
                 <p class="mb-4 text-gray-700">
-                    Welcome to BlogHub. These Terms and Conditions govern your use of our website and services.
+                    Welcome to Pencraft. These Terms and Conditions govern your use of our website and services.
                     By accessing or using our platform, you agree to be bound by these Terms.
                 </p>
 
@@ -71,7 +71,7 @@
 
                 <h2 class="text-xl font-semibold mb-4 text-streamline-700">10. Contact Information</h2>
                 <p class="mb-4 text-gray-700">
-                    If you have any questions about these Terms, please contact us at support@BlogHub.com.
+                    If you have any questions about these Terms, please contact us at support@Pencraft.com.
                 </p>
             </div>
 

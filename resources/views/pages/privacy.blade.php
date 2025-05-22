@@ -7,7 +7,7 @@
             <div class="bg-white shadow-sm rounded-lg p-6 mb-8">
                 <h2 class="text-xl font-semibold mb-4 text-streamline-700">1. Introduction</h2>
                 <p class="mb-4 text-gray-700">
-                    BlogHub is committed to protecting your privacy. This Privacy Policy explains how we collect,
+                    Pencraft is committed to protecting your privacy. This Privacy Policy explains how we collect,
                     use, disclose, and safeguard your information when you visit our website or use our services.
                 </p>
 
@@ -82,7 +82,7 @@
 
                 <h2 class="text-xl font-semibold mb-4 text-streamline-700">9. Contact Us</h2>
                 <p class="mb-4 text-gray-700">
-                    If you have any questions about this Privacy Policy, please contact us at privacy@BlogHub.com.
+                    If you have any questions about this Privacy Policy, please contact us at privacy@Pencraft.com.
                 </p>
 
                 <p class="mt-8 text-gray-500 text-sm">Last Updated: July 1, 2024</p>
